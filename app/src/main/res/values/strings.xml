@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">iHealth</string>
-<<<<<<< HEAD
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
-=======
 
     <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
     <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
@@ -16,5 +14,4 @@
     <string name="tutorial_healthy_way_content">Find a doctor, a specialist near your location using the Chatbot and book an appointment with just a click</string>
     <string name="tutorial_healthy_way_title">HealthWay \n Best way to reach your doctor</string>
 
->>>>>>> dev
 </resources>
