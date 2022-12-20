@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">iHealth</string>
     <string name="open_ihealth">Open iHealth...</string>
+    <string name="skip">Skip</string>
 </resources>
