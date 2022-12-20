@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">iHealth</string>
+    <string name="open_ihealth">Open iHealth...</string>
 </resources>
