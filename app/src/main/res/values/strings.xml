@@ -2,4 +2,13 @@
     <string name="app_name">iHealth</string>
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="main_home">Home</string>
+    <string name="main_social">Social</string>
+    <string name="main_search">Search</string>
+    <string name="main_profile">Profile</string>
+
+
 </resources>

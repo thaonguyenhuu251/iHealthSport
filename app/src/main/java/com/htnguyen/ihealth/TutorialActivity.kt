@@ -23,8 +23,6 @@ class TutorialActivity : AppCompatActivity() {
         binding.viewPager2.adapter = adapter
         binding.dotsIndicator.attachTo(binding.viewPager2)
 
-        binding.viewPager2
-
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)

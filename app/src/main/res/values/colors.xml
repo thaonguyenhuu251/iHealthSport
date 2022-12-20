@@ -10,4 +10,34 @@
 
     <color name="color_blue_general">#1648CE</color>
     <color name="color_white_background">#FAFAFE</color>
+    <color name="color_background_grey">#F6F6F6</color>
+    <color name="color_black">#011813</color>
+    <color name="color_grey">#999999</color>
+    <color name="color_green">#09BF91</color>
+    <color name="color_black_little">#333333</color>
+    <color name="color_yellow">#FFC233</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_gray">#F7F7F7</color>
+    <color name="color_grey_dark">#EDEDED</color>
+    <color name="color_red">#E5463B</color>
+    <color name="color_grey_black">#333333</color>
+
+    <color name="color_primary_orange">#FF9C3C</color>
+    <color name="color_red_dark">#C53851</color>
+    <color name="color_gray_dark">#AAAAAA</color>
+    <color name="color_gray_background">#11111180</color>
+    <color name="color_black11">#111111</color>
+    <color name="color_red_task_priority">#FF6363</color>
+    <color name="color_gray_task">#EFEFEF</color>
+    <color name="color_card_task_shadow">#CC111111</color>
+    <color name="color_separate_line_color">#EFEFEF</color>
+    <color name="color_blue_button_color">#318BCB</color>
+    <color name="color_notification_time_color">#888888</color>
+    <color name="color_blue_bg_task">#E5F4FF</color>
+    <color name="color_bg_task_shadow">#66318BCB</color>
+    <color name="color_blue">#318BCB</color>
+    <color name="color_gray_delete_task">#999999</color>
+    <color name="color_red_alert">#E45927</color>
+    <color name="color_gray_scroll_bar">#DDDDDD</color>
+    <color name="color_disable_button_accept_term">#CDCDCE</color>
 </resources>
