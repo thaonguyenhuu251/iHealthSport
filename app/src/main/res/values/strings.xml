@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">iHealth</string>
 
+    <string name="open_ihealth">Open iHealth...</string>
+    <string name="skip">Skip</string>
+
     <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
     <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
     <string name="tutorial_exercise_comfort_content_two">The choice of sports guide as you want</string>
