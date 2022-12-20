@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">iHealth</string>
-<<<<<<< HEAD
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
-<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -11,10 +9,6 @@
     <string name="main_social">Social</string>
     <string name="main_search">Search</string>
     <string name="main_profile">Profile</string>
-
-
-=======
-=======
 
     <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
     <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
@@ -26,7 +20,5 @@
     <string name="tutorial_choose_doctor_content">Connect with specialists right from the comfort of your home via video call, audio call or live chat</string>
     <string name="tutorial_healthy_way_content">Find a doctor, a specialist near your location using the Chatbot and book an appointment with just a click</string>
     <string name="tutorial_healthy_way_title">HealthWay \n Best way to reach your doctor</string>
-
->>>>>>> dev
->>>>>>> master
+    
 </resources>
