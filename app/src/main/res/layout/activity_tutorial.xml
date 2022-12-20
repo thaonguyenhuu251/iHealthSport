@@ -23,6 +23,7 @@
         app:layout_constraintGuide_percent="0.7" />
 
     <TextView
+        android:id="@+id/txtSkip"
         style="@style/text_normal"
         android:layout_margin="30dp"
         android:text="Skip"
