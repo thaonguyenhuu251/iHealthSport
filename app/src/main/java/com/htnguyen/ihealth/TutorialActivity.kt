@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,28 +24,46 @@ class TutorialActivity : AppCompatActivity() {
         binding.viewPager2.adapter = adapter
         binding.dotsIndicator.attachTo(binding.viewPager2)
 
-        binding.viewPager2
-
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == 2) {
-                    binding.txtNext.text = "Get started"
-                } else {
-                    binding.txtNext.text = "Next"
+                when (position) {
+                    5 -> {
+                        binding.txtNext.text = "Get started"
+                    }
+                    0 -> {
+                        binding.txtBack.visibility = View.GONE
+                    }
+                    else -> {
+                        binding.txtNext.text = "Next"
+                    }
                 }
             }
         })
 
         binding.txtNext.setOnClickListener {
             val currentPage = binding.viewPager2.currentItem
-            if (currentPage < 2) {
+            if (currentPage < 5) {
                 binding.viewPager2.setCurrentItem(currentPage + 1, false)
+                binding.txtBack.visibility = View.VISIBLE
             } else {
                 startActivity(Intent(this@TutorialActivity, MainActivity::class.java))
                 finish()
             }
 
+        }
+
+        binding.txtBack.setOnClickListener {
+            val currentPage = binding.viewPager2.currentItem
+            if (currentPage > 0) {
+                binding.viewPager2.setCurrentItem(currentPage - 1, false)
+            }
+
+        }
+
+        binding.txtSkip.setOnClickListener {
+            startActivity(Intent(this@TutorialActivity, MainActivity::class.java))
+            finish()
         }
     }
 
@@ -55,7 +74,12 @@ class TutorialActivity : AppCompatActivity() {
         lateinit var context: Context
 
         val listTutorial = mutableListOf<Tutorial>().apply {
-
+            add(Tutorial(R.drawable.img_splash_tutorial_one, R.string.tutorial_exercise_comfort_title, R.string.tutorial_exercise_comfort_content_one))
+            add(Tutorial(R.drawable.img_splash_tutorial_two, R.string.tutorial_exercise_comfort_title, R.string.tutorial_exercise_comfort_content_two))
+            add(Tutorial(R.drawable.img_splash_tutorial_three, R.string.tutorial_exercise_comfort_title, R.string.tutorial_exercise_comfort_content_three))
+            add(Tutorial(R.drawable.img_splash_tutorial_file, R.string.tutorial_connect_doctor_title, R.string.tutorial_connect_doctor_content))
+            add(Tutorial(R.drawable.img_splash_tutorial_six, R.string.tutorial_choose_doctor_title, R.string.tutorial_choose_doctor_content))
+            add(Tutorial(R.drawable.img_splash_tutorial_seven, R.string.tutorial_healthy_way_title, R.string.tutorial_healthy_way_content))
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
