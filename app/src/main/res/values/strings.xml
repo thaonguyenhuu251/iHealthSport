@@ -4,6 +4,15 @@
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="main_home">Home</string>
+    <string name="main_social">Social</string>
+    <string name="main_chat">Chat</string>
+    <string name="main_search">Search</string>
+    <string name="main_profile">Profile</string>
+
     <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
     <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
     <string name="tutorial_exercise_comfort_content_two">The choice of sports guide as you want</string>

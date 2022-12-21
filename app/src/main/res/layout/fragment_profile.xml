@@ -4,25 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white_background"
-    tools:context=".SplashActivity">
+    android:background="@color/color_background_grey"
+    tools:context=".view.profile.ProfileFragment">
 
-    <ImageView
-        style="@style/image_wrap_normal"
-        android:src="@drawable/ic_splash_logo"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        style="@style/text_wrap_large"
-        android:text="@string/open_ihealth"
-        android:textStyle="bold"
-        android:textColor="@color/color_blue_general"
-        android:layout_margin="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

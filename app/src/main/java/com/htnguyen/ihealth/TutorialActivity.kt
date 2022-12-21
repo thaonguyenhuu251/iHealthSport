@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.htnguyen.ihealth.databinding.ActivityTutorialBinding
+import com.htnguyen.ihealth.view.main.MainActivity
 
 class TutorialActivity : AppCompatActivity() {
     lateinit var binding: ActivityTutorialBinding
