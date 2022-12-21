@@ -28,6 +28,15 @@
         <item name="android:background">@drawable/bg_white_border_grey</item>
     </style>
 
+    <style name="image_profile_information">
+        <item name="android:layout_width">@dimen/dimen_xxl</item>
+        <item name="android:layout_height">@dimen/dimen_xxl</item>
+        <item name="android:padding">@dimen/dimen_normal</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+        <item name="android:elevation">@dimen/_2sdp</item>
+        <item name="android:background">@drawable/bg_white_border_grey_small</item>
+    </style>
+
     <style name="text_wrap_large">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -67,7 +76,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingBottom">@dimen/dimen_normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">@dimen/dimen_large</item>
+        <item name="android:layout_margin">@dimen/dimen_normal</item>
         <item name="android:drawablePadding">@dimen/dimen_normal</item>
         <item name="android:background">@drawable/bg_white_four_corner_normal</item>
     </style>
