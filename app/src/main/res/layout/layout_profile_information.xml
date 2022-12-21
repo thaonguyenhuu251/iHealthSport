@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_white_four_corner_normal">
+
+    <TextView
+        android:layout_gravity="end"
+        style="@style/text_wrap_exercise"
+        android:layout_margin="@dimen/_10sdp"
+        android:textSize="@dimen/_8ssp"
+        android:text="Edit"/>
+
+    <TextView
+        android:layout_gravity="center"
+        style="@style/text_normal"
+        android:layout_margin="@dimen/_10sdp"
+        android:textSize="@dimen/_20ssp"
+        android:text="Nguyen Huu Thao"/>
+
+    <TextView
+        android:layout_gravity="center"
+        style="@style/text_normal"
+        android:text="Level 2 - 50/100 XP"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/image_profile_information"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_black"
+            android:drawablePadding="@dimen/_10sdp"
+            android:text="300 Friends"
+            app:drawableStartCompat="@drawable/ic_profile_friends" />
+
+        <ImageView
+            style="@style/image_profile_information"
+            android:src="@drawable/ic_profile_qr"/>
+
+        <ImageView
+            style="@style/image_profile_information"
+            android:src="@drawable/ic_profile_add_friend"/>
+
+    </LinearLayout>
+
+</LinearLayout>

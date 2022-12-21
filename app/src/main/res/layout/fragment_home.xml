@@ -26,8 +26,8 @@
 
     <ImageView
         style="@style/image_wrap_normal"
-        android:layout_margin="15dp"
-        android:padding="5dp"
+        android:layout_margin="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         android:src="@drawable/ic_home_notification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
