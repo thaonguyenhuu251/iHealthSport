@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_small_super">@dimen/_10ssp</dimen>
+
+    <dimen name="text_normal">@dimen/_14ssp</dimen>
+
+    <dimen name="text_large">@dimen/_18ssp</dimen>
+    <dimen name="text_large_plus">@dimen/_22ssp</dimen>
+
+    <dimen name="dimen_small_super">@dimen/_10sdp</dimen>
+    <dimen name="dimen_normal">@dimen/_12sdp</dimen>
+    <dimen name="dimen_large">@dimen/_18sdp</dimen>
+
+    <dimen name="dimen_xxl">@dimen/_40sdp</dimen>
+</resources>

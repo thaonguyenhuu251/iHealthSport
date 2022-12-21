@@ -1,4 +1,4 @@
-package com.htnguyen.ihealth
+package com.htnguyen.ihealth.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
+import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
+import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
         R.drawable.ic_main_social,
+        R.drawable.ic_main_chat,
         R.drawable.ic_main_search,
         R.drawable.ic_main_profile
     )
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val stringResId = intArrayOf(
         R.string.main_home,
         R.string.main_social,
+        R.string.main_chat,
         R.string.main_search,
         R.string.main_profile
     )
@@ -68,14 +72,15 @@ class MainActivity : AppCompatActivity() {
             return when (position) {
                 0 -> HomeFragment()
                 1 -> SocialFragment()
-                2 -> SearchFragment()
-                3 -> ProfileFragment()
+                2 -> ChatFragment()
+                3 -> SearchFragment()
+                4 -> ProfileFragment()
                 else -> HomeFragment()
             }
         }
 
         override fun getItemCount(): Int {
-            return 4
+            return 5
         }
     }
 }

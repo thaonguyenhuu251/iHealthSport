@@ -8,8 +8,7 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/image_wrap_normal"
         android:src="@drawable/ic_splash_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,11 +16,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/text_wrap_large"
         android:text="@string/open_ihealth"
         android:textStyle="bold"
-        android:textSize="@dimen/_18ssp"
         android:textColor="@color/color_blue_general"
         android:layout_margin="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="parent"

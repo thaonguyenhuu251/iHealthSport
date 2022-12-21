@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background_grey"
     tools:context=".view.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txtHelloUser"
+        style="@style/text_wrap_large_plus"
+        android:layout_margin="@dimen/_15sdp"
+        android:text="Hello Thao"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtHelloTile"
+        style="@style/text_wrap_normal"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:text="Good Morning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHelloUser" />
+
+    <ImageView
+        style="@style/image_wrap_normal"
+        android:layout_margin="15dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_home_notification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHelloTile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_25sdp">
+
+            <include layout="@layout/layout_home_daily_plan" />
+
+            <include layout="@layout/layout_home_daily_activities" />
+
+            <include layout="@layout/layout_home_step" />
+
+            <include layout="@layout/layout_home_exercise" />
+
+            <include layout="@layout/layout_home_foods" />
+
+            <include layout="@layout/layout_home_water" />
+
+            <include layout="@layout/layout_home_heartbeat" />
+
+            <include layout="@layout/layout_home_weight" />
+
+            <include layout="@layout/layout_home_stress" />
+
+            <include layout="@layout/layout_home_you_feel" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

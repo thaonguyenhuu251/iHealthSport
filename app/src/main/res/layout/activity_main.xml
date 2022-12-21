@@ -5,32 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background_grey"
-    tools:context=".MainActivity">
+    tools:context=".view.main.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toTopOf="@+id/viewLine"
+        android:layout_marginBottom="-30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayoutMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/viewLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/color_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayoutMain" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_white_large"
+        app:tabBackground="@android:color/transparent"
         app:tabTextAppearance="@style/TabLayoutStyle"
         app:tabTextColor="@color/color_grey"
         app:tabSelectedTextColor="@color/color_blue_general"
