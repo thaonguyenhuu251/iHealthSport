@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_four_corner_normal"
+    android:layout_marginVertical="@dimen/_5sdp">
+
+    <TextView
+        style="@style/text_normal"
+        android:layout_width="match_parent"
+        android:text="Shred challenges"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"/>
+
+</LinearLayout>

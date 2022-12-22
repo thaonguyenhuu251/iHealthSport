@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/txtTodayTime"
-        style="@style/text_wrap_normal"
+        style="@style/text_normal"
         android:text="Tue 20 Des"
         app:layout_constraintBottom_toBottomOf="@+id/txtTodayPlan"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,8 +11,7 @@
     <TextView
         style="@style/text_wrap_normal"
         android:text="Your Information Detail"
-        android:textStyle="bold"
-        app:drawableStartCompat="@drawable/ic_home_food" />
+        app:drawableStartCompat="@drawable/ic_profile_user_card" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:textColor="@color/color_black"
             android:drawablePadding="@dimen/_10sdp"
             android:text="Female"
-            app:drawableStartCompat="@drawable/ic_profile_friends" />
+            app:drawableStartCompat="@drawable/ic_profile_gender" />
 
         <TextView
             style="@style/image_profile_information"
@@ -34,7 +33,7 @@
             android:textColor="@color/color_black"
             android:drawablePadding="@dimen/_10sdp"
             android:text="Sep 23, 1999"
-            app:drawableStartCompat="@drawable/ic_profile_friends" />
+            app:drawableStartCompat="@drawable/ic_profile_birthday" />
 
     </LinearLayout>
 
@@ -51,7 +50,7 @@
             android:textColor="@color/color_black"
             android:drawablePadding="@dimen/_10sdp"
             android:text="52 Kg"
-            app:drawableStartCompat="@drawable/ic_profile_friends" />
+            app:drawableStartCompat="@drawable/ic_profile_weight_scale" />
 
         <TextView
             style="@style/image_profile_information"
@@ -59,7 +58,7 @@
             android:textColor="@color/color_black"
             android:drawablePadding="@dimen/_10sdp"
             android:text="170.3 cm"
-            app:drawableStartCompat="@drawable/ic_profile_friends" />
+            app:drawableStartCompat="@drawable/ic_profile_body_height" />
 
     </LinearLayout>
 

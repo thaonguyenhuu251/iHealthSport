@@ -19,7 +19,6 @@
             android:id="@+id/textView3"
             style="@style/text_wrap_normal"
             android:text="Heartbeat"
-            android:textStyle="bold"
             app:drawableStartCompat="@drawable/ic_home_heartbeat" />
 
         <LinearLayout

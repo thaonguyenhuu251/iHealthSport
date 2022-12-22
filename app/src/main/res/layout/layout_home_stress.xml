@@ -19,7 +19,6 @@
             android:id="@+id/textView3"
             style="@style/text_wrap_normal"
             android:text="Stress"
-            android:textStyle="bold"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 
         <LinearLayout

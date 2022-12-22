@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.search.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/color_background_grey"
+        android:paddingBottom="@dimen/_20sdp"
+        tools:context=".view.search.SearchFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp">
+
+            <include layout="@layout/layout_search_first" />
+
+            <include
+                layout="@layout/layout_search_list"
+                android:visibility="gone" />
+
+            <include layout="@layout/layout_search_list_normal" />
+
+            <include layout="@layout/layout_search_list_normal" />
+
+            <include layout="@layout/layout_search_list_normal" />
+
+            <TextView
+                android:id="@+id/txtTodayPlan"
+                style="@style/text_wrap_normal"
+                android:text="Propose"
+                android:textStyle="bold" />
+
+            <include layout="@layout/layout_search_propose" />
+
+            <include layout="@layout/layout_search_propose" />
+
+            <include layout="@layout/layout_search_propose" />
+
+            <include layout="@layout/layout_search_propose" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
