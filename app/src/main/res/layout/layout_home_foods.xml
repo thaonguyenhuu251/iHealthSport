@@ -19,7 +19,6 @@
             android:id="@+id/textView3"
             style="@style/text_wrap_normal"
             android:text="Foods"
-            android:textStyle="bold"
             app:drawableStartCompat="@drawable/ic_home_food" />
 
         <LinearLayout
@@ -38,7 +37,12 @@
     </LinearLayout>
 
     <TextView
-        style="@style/text_wrap_exercise"
-        android:text="Data"/>
+        style="@style/text_normal"
+        android:text="Measure"
+        android:layout_margin="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:elevation="@dimen/_2sdp"
+        android:background="@drawable/bg_white_border_grey" />
 
 </LinearLayout>

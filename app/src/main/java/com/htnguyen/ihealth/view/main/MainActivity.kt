@@ -2,6 +2,8 @@ package com.htnguyen.ihealth.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -53,6 +55,16 @@ class MainActivity : AppCompatActivity() {
         binding.tabLayoutMain.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.position.let { binding.viewPagerMain.setCurrentItem(it, false) }
+
+                if (tab.position == 4) {
+                    binding.imgSetting.visibility = View.VISIBLE
+
+                    binding.imgSetting.setOnClickListener {
+                        binding.drawerMain.openDrawer(GravityCompat.END)
+                    }
+                } else {
+                    binding.imgSetting.visibility = View.GONE
+                }
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
@@ -62,8 +74,6 @@ class MainActivity : AppCompatActivity() {
     private fun setViewPager() {
         binding.viewPagerMain.adapter = BottomNavigationMainAdapter(this@MainActivity)
         binding.viewPagerMain.isUserInputEnabled = false
-
-
     }
 
     private class BottomNavigationMainAdapter(private val fragmentActivity: FragmentActivity) :

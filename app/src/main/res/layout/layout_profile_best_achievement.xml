@@ -11,7 +11,6 @@
     <TextView
         style="@style/text_wrap_normal"
         android:text="Best Achievement"
-        android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_profile_achievement" />
 
     <LinearLayout
@@ -25,7 +24,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
         <View
@@ -39,7 +37,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
         <View
@@ -53,7 +50,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Time"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>
@@ -69,7 +65,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_calo" />
 
         <View
@@ -83,7 +78,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_path_distance" />
 
         <View
@@ -97,7 +91,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_mountain" />
 
     </LinearLayout>

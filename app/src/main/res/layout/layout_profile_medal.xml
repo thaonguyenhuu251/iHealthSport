@@ -11,7 +11,6 @@
     <TextView
         style="@style/text_wrap_normal"
         android:text="Medal"
-        android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_profile_sports_medal" />
 
     <LinearLayout
@@ -21,29 +20,56 @@
         android:orientation="horizontal">
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Time"
-            android:textStyle="bold"
+            app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_normal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="19.294 \n Step"
+            app:drawableTopCompat="@drawable/ic_profile_person_walking" />
+
+
+        <TextView
+            style="@style/text_normal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="19.294 \n Step"
+            app:drawableTopCompat="@drawable/ic_profile_person_walking" />
+
+
+        <TextView
+            style="@style/text_normal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Time"
             app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>
@@ -55,60 +81,27 @@
         android:orientation="horizontal">
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_calo" />
+            app:drawableTopCompat="@drawable/ic_profile_person_walking" />
+
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
             android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_path_distance" />
+            app:drawableTopCompat="@drawable/ic_profile_person_walking" />
+
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_mountain" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/text_wrap_normal"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_calo" />
-
-        <TextView
-            style="@style/text_wrap_normal"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_path_distance" />
-
-        <TextView
-            style="@style/text_wrap_normal"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="19.294 \n Step"
-            android:textStyle="bold"
-            app:drawableTopCompat="@drawable/ic_profile_mountain" />
+            android:text="Time"
+            app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>
 

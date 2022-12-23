@@ -11,14 +11,13 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView3"
             style="@style/text_wrap_normal"
-            android:textStyle="bold"
             android:text="Daily Activities"
             app:drawableStartCompat="@drawable/ic_home_plan" />
 
@@ -38,13 +37,48 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="@dimen/_60sdp"
-        android:layout_height="@dimen/_60sdp"
-        android:layout_margin="@dimen/_5sdp"
-        android:padding="@dimen/_7sdp"
-        android:elevation="@dimen/_2sdp"
-        android:background="@drawable/bg_white_border_grey"
-        android:src="@drawable/ic_home_exercise_more"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center">
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="@dimen/_5sdp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_width="@dimen/_5sdp"
+            app:cpb_round_border="true" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar2"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_gravity="center"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="@dimen/_5sdp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_width="@dimen/_5sdp"
+            app:cpb_round_border="true" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar3"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_gravity="center"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="@dimen/_5sdp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="@color/color_green"
+            app:cpb_progressbar_width="@dimen/_5sdp"
+            app:cpb_round_border="true" />
+    </FrameLayout>
 
 </LinearLayout>

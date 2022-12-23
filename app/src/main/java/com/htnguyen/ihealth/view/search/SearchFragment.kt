@@ -6,55 +6,68 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.base.BaseFragment
+import com.htnguyen.ihealth.databinding.FragmentProfileBinding
+import com.htnguyen.ihealth.databinding.FragmentSearchBinding
+import com.htnguyen.ihealth.view.profile.ProfileViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
+    override val layout: Int
+        get() = R.layout.fragment_search
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentSearchBinding {
+        TODO("Not yet implemented")
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    override fun initView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        binding: FragmentSearchBinding
+    ) {
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        listRecent()
+        listNew()
+        listTrending()
+        listActivities()
+        listShred()
+        listWorkout()
+        listYoga()
     }
+
+    private fun listRecent() {
+        binding.layoutRecent.txtTitle.setText(R.string.search_recent)
+    }
+
+    private fun listNew() {
+        binding.layoutNew.txtTitle.setText(R.string.search_new)
+    }
+
+    private fun listTrending() {
+        binding.layoutTrending.txtTitle.setText(R.string.search_trending)
+    }
+
+    private fun listActivities() {
+        binding.layoutActivities.txtTitle.setText(R.string.search_activity)
+    }
+
+    private fun listShred() {
+        binding.layoutShredChallenges.txtTitle.setText(R.string.search_shred)
+    }
+
+    private fun listWorkout() {
+        binding.layoutWorkout.txtTitle.setText(R.string.search_workouts)
+    }
+
+    private fun listYoga() {
+        binding.layoutYoga.txtTitle.setText(R.string.search_yoga)
+    }
+
 }
