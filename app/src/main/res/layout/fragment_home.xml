@@ -54,9 +54,13 @@
 
                 <include layout="@layout/layout_home_daily_plan" />
 
-                <include layout="@layout/layout_home_daily_activities" />
+                <include
+                    android:id="@+id/layoutDailyActivities"
+                    layout="@layout/layout_home_daily_activities" />
 
-                <include layout="@layout/layout_home_step" />
+                <include
+                    android:id="@+id/layoutStep"
+                    layout="@layout/layout_home_step" />
 
                 <include layout="@layout/layout_home_exercise" />
 

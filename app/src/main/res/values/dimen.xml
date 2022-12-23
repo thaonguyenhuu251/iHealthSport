@@ -3,7 +3,7 @@
     <dimen name="text_small_super">@dimen/_10ssp</dimen>
     <dimen name="text_small">@dimen/_10ssp</dimen>
     <dimen name="text_normal">@dimen/_14ssp</dimen>
-
+    <dimen name="text_normal_plus">@dimen/_16ssp</dimen>
     <dimen name="text_large">@dimen/_18ssp</dimen>
     <dimen name="text_large_plus">@dimen/_22ssp</dimen>
 

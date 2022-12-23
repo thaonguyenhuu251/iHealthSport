@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.htnguyen.ihealth.support.DiffResult
 
 
 abstract class BaseListAdapter<T, V : ViewDataBinding> : RecyclerView.Adapter<BaseListAdapter.BindingHolder<V>>() {

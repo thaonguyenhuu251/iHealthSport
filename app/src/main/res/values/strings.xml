@@ -13,6 +13,20 @@
     <string name="main_search">Search</string>
     <string name="main_profile">Profile</string>
 
+    <string name="search_recent">Recent</string>
+    <string name="search_new">What\'s New</string>
+    <string name="search_trending">Trending</string>
+    <string name="search_activity">Activities</string>
+    <string name="search_shred">Shred Challenge</string>
+    <string name="search_workouts">Home Workouts</string>
+    <string name="search_yoga">Yoga For Fast Lost</string>
+
+    <string name="profile_home">Home</string>
+    <string name="profile_social">Social</string>
+    <string name="profile_chat">Chat</string>
+    <string name="profile_search">Search</string>
+    <string name="profile_profile">Profile</string>
+
     <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
     <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
     <string name="tutorial_exercise_comfort_content_two">The choice of sports guide as you want</string>

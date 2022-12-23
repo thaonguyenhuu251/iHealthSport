@@ -19,15 +19,15 @@ import com.htnguyen.ihealth.R
 abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment() {
 
     private val TAG = this::class.java.name
-    private lateinit var _binding: B
-    private val binding get() = _binding
+
+    lateinit var binding: B
 
     protected abstract val layout: Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val root by lazy { _binding.root }
-        if (!this::_binding.isInitialized) {
-            _binding = DataBindingUtil.inflate(inflater, layout, container, false)
+        val root by lazy { binding.root }
+        if (!this::binding.isInitialized) {
+            binding = DataBindingUtil.inflate(inflater, layout, container, false)
             binding.lifecycleOwner = this
             onCreateView(savedInstanceState)
         } else {

@@ -23,25 +23,38 @@
                 layout="@layout/layout_search_list"
                 android:visibility="gone" />
 
-            <include layout="@layout/layout_search_list_normal" />
+            <include
+                android:id="@+id/layoutRecent"
+                layout="@layout/layout_search_list_normal" />
 
-            <include layout="@layout/layout_search_list_normal" />
+            <include
+                android:id="@+id/layoutNew"
+                layout="@layout/layout_search_list_normal" />
 
-            <include layout="@layout/layout_search_list_normal" />
+            <include
+                android:id="@+id/layoutTrending"
+                layout="@layout/layout_search_list_normal" />
 
             <TextView
-                android:id="@+id/txtTodayPlan"
                 style="@style/text_wrap_normal"
                 android:text="Propose"
                 android:textStyle="bold" />
 
-            <include layout="@layout/layout_search_propose" />
+            <include
+                android:id="@+id/layoutActivities"
+                layout="@layout/layout_search_propose" />
 
-            <include layout="@layout/layout_search_propose" />
+            <include
+                android:id="@+id/layoutShredChallenges"
+                layout="@layout/layout_search_propose" />
 
-            <include layout="@layout/layout_search_propose" />
+            <include
+                android:id="@+id/layoutWorkout"
+                layout="@layout/layout_search_propose" />
 
-            <include layout="@layout/layout_search_propose" />
+            <include
+                android:id="@+id/layoutYoga"
+                layout="@layout/layout_search_propose" />
 
         </LinearLayout>
 

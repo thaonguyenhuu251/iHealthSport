@@ -1,13 +1,12 @@
 package com.htnguyen.ihealth.view.profile
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseFragment
-import com.htnguyen.ihealth.databinding.FragmentHomeBinding
 import com.htnguyen.ihealth.databinding.FragmentProfileBinding
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
@@ -27,6 +26,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         container: ViewGroup?
     ): FragmentProfileBinding {
         TODO("Not yet implemented")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        actionMoveScreen()
+    }
+
+    private fun actionMoveScreen() {
+
     }
 
 }

@@ -38,7 +38,12 @@
     </LinearLayout>
 
     <TextView
-        style="@style/text_wrap_exercise"
-        android:text="Measure"/>
+        style="@style/text_normal"
+        android:text="Measure"
+        android:layout_margin="@dimen/_5sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:elevation="@dimen/_2sdp"
+        android:background="@drawable/bg_white_border_grey" />
 
 </LinearLayout>
