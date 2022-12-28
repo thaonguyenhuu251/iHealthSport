@@ -10,11 +10,10 @@ import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
-import android.view.*
-import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.support.InputMethodManager
+import com.htnguyen.ihealth.support.hideKeyboard
 
 abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment() {
 
@@ -37,6 +36,14 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
         return root
     }
 
+
+    fun bindHideKeyboardListener(vararg view: View) {
+        val input = InputMethodManager(context ?: return) ?: return
+        for (v in view) {
+            v.setOnClickListener { input.hideKeyboard(it) }
+            v.isClickable = true
+        }
+    }
     protected open fun onCreateView(savedInstanceState: Bundle?) {}
 
     abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, binding: B)

@@ -1,23 +1,32 @@
 package com.htnguyen.ihealth.view.main
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.home.HomeFragment
+import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
 
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
+
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
         R.drawable.ic_main_social,
@@ -37,8 +46,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = FirebaseAuth.getInstance()
         setViewPager()
         setTabLayout()
+        openDrawerSetting()
     }
 
     private fun setTabLayout() {
@@ -68,6 +79,30 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+    }
+
+    private fun openDrawerSetting() {
+        binding.drawerMain.addDrawerListener(object :
+            DrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                // Whatever you want
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+                binding.navMain.findViewById<TextView>(R.id.txtLogout).setOnClickListener {
+                    auth.signOut()
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                }
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                // Whatever you want
+            }
+
+            override fun onDrawerStateChanged(newState: Int) {
+                // Whatever you want
+            }
         })
     }
 

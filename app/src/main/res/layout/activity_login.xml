@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.login.LoginViewModel" />
+    </data>
+
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background_grey"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".view.login.LoginActivity">
+
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/ic_splash_logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/text_heading_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:text="Sign In Your Account" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            style="@style/edt_normal"
+            android:layout_marginTop="20dp"
+            android:drawableStart="@drawable/ic_login_email"
+            android:drawablePadding="@dimen/_10sdp"
+            android:inputType="text"
+            android:lines="1"
+            android:text="@={viewModel.idAccount}"
+            android:imeOptions="actionNext"
+            android:hint="Email address or Phone number" />
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:background="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:passwordToggleDrawable="@drawable/ic_login_eye"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/color_blue_general">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtPassword"
+                style="@style/edt_normal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_login_password"
+                android:drawablePadding="@dimen/_10sdp"
+                android:hint="Password"
+                android:text="@={viewModel.password}"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/text_small"
+            android:layout_gravity="end"
+            android:layout_margin="30dp"
+            android:text="@string/common_forgot_password" />
+
+        <Button
+            android:id="@+id/tvSignIn"
+            style="@style/button_navigation"
+            android:layout_marginTop="30dp"
+            android:stateListAnimator="@null"
+            android:text="@string/sign_in"/>
+
+        <LinearLayout
+            android:id="@+id/lnNotAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_small"
+                android:text="@string/common_account_not_have"
+                android:textColor="@color/color_black_little" />
+
+            <TextView
+                style="@style/text_small"
+                android:text="@string/sign_up_small" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

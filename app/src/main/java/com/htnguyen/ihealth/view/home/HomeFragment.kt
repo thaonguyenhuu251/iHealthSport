@@ -39,9 +39,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun optionDailyActivities() {
         binding.layoutDailyActivities.circularProgressBar.apply {
             // Set Progress
-            progress = 65f
+            progress = 105f
             // or with animation
-            setProgressWithAnimation(65f, 1000) // =1s
+            setProgressWithAnimation(105f, 1000) // =1s
 
             // Set Progress Max
             progressMax = 200f
@@ -91,9 +91,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
         binding.layoutDailyActivities.circularProgressBar3.apply {
             // Set Progress
-            progress = 65f
+            progress = 85f
             // or with animation
-            setProgressWithAnimation(65f, 1000) // =1s
+            setProgressWithAnimation(85f, 1000) // =1s
 
             // Set Progress Max
             progressMax = 200f

@@ -24,15 +24,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/textView4"
                 style="@style/text_normal"
                 android:paddingVertical="@dimen/_5sdp"
-                android:text="638/7000"
+                android:text="638"
+                android:layout_marginHorizontal="@dimen/dimen_large"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp" />
+                android:textSize="@dimen/_12ssp"
+                app:drawableTopCompat="@drawable/ic_home_active_running" />
+
+            <TextView
+                style="@style/text_normal"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="638"
+                android:layout_marginHorizontal="@dimen/dimen_large"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableTopCompat="@drawable/ic_home_active_timer" />
+
+            <TextView
+                style="@style/text_normal"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="638"
+                android:layout_marginHorizontal="@dimen/dimen_large"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:drawableTopCompat="@drawable/ic_home_active_calo" />
         </LinearLayout>
 
     </LinearLayout>
@@ -40,7 +61,6 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_gravity="center">
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
@@ -48,10 +68,10 @@
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
-            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_color="#F8C5AE"
             app:cpb_background_progressbar_width="@dimen/_5sdp"
             app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_color="#FF6723"
             app:cpb_progressbar_width="@dimen/_5sdp"
             app:cpb_round_border="true" />
 
@@ -60,10 +80,10 @@
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:layout_gravity="center"
-            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_color="#A9CFEA"
             app:cpb_background_progressbar_width="@dimen/_5sdp"
             app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_color="#318BCB"
             app:cpb_progressbar_width="@dimen/_5sdp"
             app:cpb_round_border="true" />
 
@@ -73,10 +93,10 @@
             android:layout_height="@dimen/_80sdp"
             android:layout_margin="@dimen/_5sdp"
             android:layout_gravity="center"
-            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_color="#A9A5BA"
             app:cpb_background_progressbar_width="@dimen/_5sdp"
             app:cpb_progress_direction="to_right"
-            app:cpb_progressbar_color="@color/color_green"
+            app:cpb_progressbar_color="#FF67579A"
             app:cpb_progressbar_width="@dimen/_5sdp"
             app:cpb_round_border="true" />
     </FrameLayout>
