@@ -76,8 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"/>
 
-            <TextView
-                android:id="@+id/txtNext"
+            <Button
+                android:id="@+id/txtLogout"
                 style="@style/button_navigation"
                 android:layout_gravity="bottom"
                 android:background="@color/color_red"

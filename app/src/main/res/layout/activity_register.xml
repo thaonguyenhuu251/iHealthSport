@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.login.RegisterViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background_grey">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context=".view.login.RegisterActivity">
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/ic_splash_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/text_heading_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="30dp"
+                android:text="@string/sign_up_create_your_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <RadioGroup
+                android:id="@+id/rgOptionRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/bg_white_four_corner_normal"
+                android:backgroundTint="@color/color_grey_dark"
+                android:checkedButton="@id/rdEmail"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rdEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_color_selector_register"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="Email" />
+
+                <RadioButton
+                    android:id="@+id/rdPhoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_color_selector_register"
+                    android:button="@android:color/transparent"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:text="Phone Number" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/edtEmail"
+                style="@style/edt_normal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableStart="@drawable/ic_login_email"
+                android:drawablePadding="@dimen/_10sdp"
+                android:hint="Email address"
+                android:imeOptions="actionNone"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="@={viewModel.email}"/>
+
+            <LinearLayout
+                android:id="@+id/lnPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvAreaCode"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/bg_white_four_corner_normal"
+                    android:gravity="center"
+                    android:text="Area Code" />
+
+                <EditText
+                    android:id="@+id/edtPhoneNumber"
+                    style="@style/edt_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:digits="0123456789"
+                    android:drawableStart="@drawable/ic_register_phone"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="Phone number"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="9"
+                    android:maxLines="1"
+                    android:text="@={viewModel.phone}"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ErrorMessageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.validationEmailMsg}"
+                android:visibility="@{viewModel.validationEmailMsg != null ? View.VISIBLE : View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ErrorMessageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.validationPhoneMsg}"
+                android:visibility="@{viewModel.validationPhoneMsg != null ? View.VISIBLE : View.GONE}" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:imeOptions="actionNext"
+                android:lines="1"
+                app:boxBackgroundMode="none"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:passwordToggleDrawable="@drawable/ic_login_eye"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_blue_general">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    style="@style/edt_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_login_password"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ErrorMessageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.validationPasswordMsg}"
+                android:visibility="@{viewModel.validationPasswordMsg != null ? View.VISIBLE : View.GONE}" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:imeOptions="actionNext"
+                android:lines="1"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:passwordToggleDrawable="@drawable/ic_login_eye"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_blue_general">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtConfirmPassword"
+                    style="@style/edt_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_login_password"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.confirmPassword}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ErrorMessageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.validationConfirmPasswordMsg}"
+                android:visibility="@{viewModel.validationConfirmPasswordMsg != null ? View.VISIBLE : View.GONE}" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/ErrorMessageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.validationMatchPasswordMsg}"
+                android:visibility="@{viewModel.validationMatchPasswordMsg != null ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/text_small"
+                android:layout_gravity="end"
+                android:layout_margin="30dp"
+                android:text="@string/common_forgot_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+            <Button
+                android:id="@+id/tvRegister"
+                style="@style/button_navigation"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:enabled="false"
+                android:text="@string/sign_in" />
+
+            <LinearLayout
+                android:id="@+id/lnHaveAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    style="@style/text_small"
+                    android:text="@string/common_account_not_have"
+                    android:textColor="@color/color_black_little" />
+
+                <TextView
+                    style="@style/text_small"
+                    android:text="@string/sign_up_small" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
+

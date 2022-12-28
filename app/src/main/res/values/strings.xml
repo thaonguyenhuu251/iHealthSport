@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">iHealth</string>
 
+    <!-- preferences -->
+    <string name="pref_name_ihealth">pref_name_ihealth</string>
+
+    <string name="common_back">Back</string>
+    <string name="common_password">Password</string>
+    <string name="common_email_address">Email address</string>
+    <string name="common_forgot_password">Forgot Password</string>
+    <string name="common_account_not_have">I don’t have an account?</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_your_account">Sign In Your Account</string>
+    <string name="sign_in_by">Hoặc đăng nhập bằng</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_small">Sign up</string>
+    <string name="sign_up_create_your_account">Create Your Account</string>
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
 

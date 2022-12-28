@@ -70,6 +70,8 @@
 
                 <include layout="@layout/layout_home_heartbeat" />
 
+                <include layout="@layout/layout_home_blood" />
+
                 <include layout="@layout/layout_home_weight" />
 
                 <include layout="@layout/layout_home_stress" />
