@@ -21,6 +21,7 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.databinding.DialogOtpVerificationBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 
 
@@ -265,6 +266,9 @@ class OTPVerificationDialog : DialogFragment() {
                 // we are displaying a success toast message.
                 loadingDialog?.dismissDialog()
                 val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
+                PreferencesUtil.idUser = numberPhone
+                PreferencesUtil.passWord = passWord
+                intent.putExtra(Constant.USER_ID, numberPhone)
                 startActivity(intent)
                 requireActivity().finish()
             }

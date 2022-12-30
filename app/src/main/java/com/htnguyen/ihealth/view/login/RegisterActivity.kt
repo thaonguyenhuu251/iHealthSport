@@ -15,6 +15,8 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityRegisterBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.component.OTPVerificationDialog
 import com.htnguyen.ihealth.view.main.MainActivity
@@ -104,6 +106,9 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                                 .addOnSuccessListener {
                                     loadingDialog?.dismissDialog()
                                     val intent = Intent(this@RegisterActivity, ProfileEditActivity::class.java)
+                                    intent.putExtra(Constant.USER_ID, email)
+                                    PreferencesUtil.idUser = email
+                                    PreferencesUtil.passWord = password
                                     startActivity(intent)
                                     finish()
                                 }

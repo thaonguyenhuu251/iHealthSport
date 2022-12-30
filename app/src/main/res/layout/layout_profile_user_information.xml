@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/_5sdp"
-    android:background="@drawable/bg_white_four_corner_normal"
-    android:orientation="vertical"
-    android:padding="@dimen/_10sdp">
+<layout>
 
-    <TextView
-        style="@style/text_wrap_normal"
-        android:text="Your Information Detail"
-        app:drawableStartCompat="@drawable/ic_profile_user_card" />
+    <data>
 
-    <LinearLayout
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.profile.ProfileViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_white_four_corner_normal"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
 
         <TextView
-            style="@style/image_profile_information"
-            android:layout_weight="1"
-            android:textColor="@color/color_black"
-            android:drawablePadding="@dimen/_10sdp"
-            android:text="Female"
-            app:drawableStartCompat="@drawable/ic_profile_gender" />
+            style="@style/text_wrap_normal"
+            android:text="Your Information Detail"
+            app:drawableStartCompat="@drawable/ic_profile_user_card" />
 
-        <TextView
-            style="@style/image_profile_information"
-            android:layout_weight="1"
-            android:textColor="@color/color_black"
-            android:drawablePadding="@dimen/_10sdp"
-            android:text="Sep 23, 1999"
-            app:drawableStartCompat="@drawable/ic_profile_birthday" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/image_profile_information"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@{viewModel.gender == false ? @string/profile_gender_female : @string/profile_gender_male}"
+                android:textColor="@color/color_black"
+                app:drawableStartCompat="@drawable/ic_profile_gender" />
+
+            <TextView
+                style="@style/image_profile_information"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@{viewModel.birthDay}"
+                android:textColor="@color/color_black"
+                app:drawableStartCompat="@drawable/ic_profile_birthday" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/image_profile_information"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@{viewModel.progressWeight.toString()}"
+                android:textColor="@color/color_black"
+                app:drawableStartCompat="@drawable/ic_profile_weight_scale" />
+
+            <TextView
+                style="@style/image_profile_information"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="@{viewModel.progressHeight.toString()}"
+                android:textColor="@color/color_black"
+                app:drawableStartCompat="@drawable/ic_profile_body_height" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/image_profile_information"
-            android:layout_weight="1"
-            android:textColor="@color/color_black"
-            android:drawablePadding="@dimen/_10sdp"
-            android:text="52 Kg"
-            app:drawableStartCompat="@drawable/ic_profile_weight_scale" />
-
-        <TextView
-            style="@style/image_profile_information"
-            android:layout_weight="1"
-            android:textColor="@color/color_black"
-            android:drawablePadding="@dimen/_10sdp"
-            android:text="170.3 cm"
-            app:drawableStartCompat="@drawable/ic_profile_body_height" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</layout>

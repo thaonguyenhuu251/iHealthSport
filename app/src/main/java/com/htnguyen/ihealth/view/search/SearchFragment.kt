@@ -9,7 +9,6 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentProfileBinding
 import com.htnguyen.ihealth.databinding.FragmentSearchBinding
-import com.htnguyen.ihealth.view.profile.ProfileViewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val layout: Int

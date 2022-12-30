@@ -1,9 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.profile.ProfileEditActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.profile.ProfileEditViewModel" />
+    </data>
+
+        <ScrollView
+            android:id="@+id/scrollviewProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".view.profile.ProfileEditActivity">
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_20sdp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/text_heading_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:text="Give us some basic information" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_profile_user_card"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="What your name ?"
+                    android:text="@={viewModel.name}"
+                    android:inputType="text"
+                    android:lines="1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ErrorMessageText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="0dp"
+                    android:text="@{viewModel.validationNameMsg}"
+                    android:visibility="@{viewModel.validationNameMsg != null ? View.VISIBLE : View.GONE}" />
+
+                <EditText
+                    android:id="@+id/edtBirthDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_profile_birthday"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="Your Birthday"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:text="@{viewModel.birthDay}"
+                    android:lines="1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ErrorMessageText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="0dp"
+                    android:text="@{viewModel.validationBirthDayMsg}"
+                    android:visibility="@{viewModel.validationBirthDayMsg != null ? View.VISIBLE : View.GONE}" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:checkedButton="@id/rdFeMale"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdMale"
+                        style="@style/text_normal"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:button="@null"
+                        android:drawableTop="@drawable/ic_profile_male"
+                        android:drawableBottom="@drawable/selector_radio"
+                        android:gravity="center"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/rdFeMale"
+                        style="@style/text_normal"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:button="@null"
+                        android:drawableTop="@drawable/ic_profile_female"
+                        android:drawableBottom="@drawable/selector_radio"
+                        android:gravity="center"
+                        android:text="Female" />
+
+                </RadioGroup>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ErrorMessageText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="0dp"
+                    android:text="@{viewModel.validationGenderMsg}"
+                    android:visibility="@{viewModel.validationGenderMsg != null ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    style="@style/text_wrap_normal"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:text="Height"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/seekbarHeight"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile_height_min" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/seekbarHeight"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile_height_max" />
+
+                    <androidx.appcompat.widget.AppCompatSeekBar
+                        android:id="@+id/seekbarHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:max="250"
+                        android:min="50"
+                        android:maxHeight="@dimen/_10sdp"
+                        android:thumbOffset="@dimen/_10sdp"
+                        android:progressDrawable="@drawable/seekbar_progress_style"
+                        android:thumb="@drawable/seekbar_thumb"
+                        android:progress="@={viewModel.progressHeight}"/>
+
+                    <EditText
+                        style="@style/edt_normal"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_above="@+id/seekbarHeight"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:backgroundTint="@color/color_gray"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:padding="@dimen/_5sdp"
+                        android:maxLength="3"
+                        android:text="@={viewModel.toString(viewModel.progressHeight)}"
+                        android:textSize="@dimen/text_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/seekbarHeight"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="50cm" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/seekbarHeight"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="250cm" />
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/text_wrap_normal"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:text="weight"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp">
+
+                    <ImageView
+                        android:id="@+id/imgWeightMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/seekbarWeight"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile_weight_min" />
+
+                    <ImageView
+                        android:id="@+id/imgWeightMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/seekbarWeight"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_profile_weight_max" />
+
+                    <androidx.appcompat.widget.AppCompatSeekBar
+                        android:id="@+id/seekbarWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:max="300"
+                        android:min="20"
+                        android:maxHeight="@dimen/_10sdp"
+                        android:padding="0dp"
+                        android:thumbOffset="@dimen/_10sdp"
+                        android:progressDrawable="@drawable/seekbar_progress_style"
+                        android:thumb="@drawable/seekbar_thumb"
+                        android:progress="@={viewModel.progressWeight}"/>
+
+                    <EditText
+                        style="@style/edt_normal"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_above="@+id/seekbarWeight"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:backgroundTint="@color/color_gray"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:padding="@dimen/_5sdp"
+                        android:maxLength="3"
+                        android:text="@={viewModel.toString(viewModel.progressWeight)}"
+                        android:textSize="@dimen/text_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/seekbarWeight"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="20Kg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/seekbarWeight"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="300Kg" />
+
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imgNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_next" />
+            </LinearLayout>
+        </ScrollView>
+</layout>

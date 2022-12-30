@@ -12,8 +12,10 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityLoginBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.main.MainActivity
+import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -48,7 +50,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun actionMoveScreen() {
         binding.tvSignIn.setOnClickListener {
             loadingDialog?.showDialog()
-            if (viewModel.password.value.toString().contains("@")) {
+            if (viewModel.idAccount.value.toString().contains("@")) {
                 loginWithEmail()
             } else {
                 loginWithPhoneNumber()
@@ -66,6 +68,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                     val user = auth.currentUser
                     loadingDialog?.dismissDialog()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    PreferencesUtil.idUser = email
+                    PreferencesUtil.passWord = password
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
@@ -87,6 +91,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                     if (user?.passWord == password) {
                         val login = Intent(this@LoginActivity, MainActivity::class.java)
                         loadingDialog?.dismissDialog()
+                        PreferencesUtil.idUser = phone
+                        PreferencesUtil.passWord = password
                         startActivity(login)
                         finish()
                     } else {
