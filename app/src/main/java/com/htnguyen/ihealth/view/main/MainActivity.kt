@@ -4,21 +4,29 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
+import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
+import com.htnguyen.ihealth.view.profile.ProfileViewModel
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
 
@@ -26,7 +34,6 @@ import com.htnguyen.ihealth.view.social.SocialFragment
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
         R.drawable.ic_main_social,
@@ -42,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         R.string.main_search,
         R.string.main_profile
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -51,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         setTabLayout()
         openDrawerSetting()
     }
+
+
 
     private fun setTabLayout() {
         for (index in imageResId.indices) {
@@ -63,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         /*TabLayoutMediator(binding.tabLayoutMain, binding.viewPagerMain) { tab, position ->
             tab.setIcon(imageResId[position])
         }.attach()*/
-        binding.tabLayoutMain.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        binding.tabLayoutMain.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.position.let { binding.viewPagerMain.setCurrentItem(it, false) }
 
@@ -77,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                     binding.imgSetting.visibility = View.GONE
                 }
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
@@ -90,10 +102,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDrawerOpened(drawerView: View) {
-                binding.navMain.findViewById<TextView>(R.id.txtLogout).setOnClickListener {
-                    auth.signOut()
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                }
+                binding.navMain.findViewById<TextView>(R.id.txtLogout)
+                    .setOnClickListener {
+                        auth.signOut()
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                LoginActivity::class.java
+                            )
+                        )
+
+                        PreferencesUtil.idUser = null
+                        PreferencesUtil.passWord = null
+                    }
             }
 
             override fun onDrawerClosed(drawerView: View) {

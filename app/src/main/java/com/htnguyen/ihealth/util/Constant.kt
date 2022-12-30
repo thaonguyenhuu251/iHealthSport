@@ -31,4 +31,6 @@ object Constant {
     const val USER_OTP = "user_otp"
     const val USER_PASSWORD = "user_password"
 
+    const val USER_BIRTHDAY = "user_birthday"
+
 }

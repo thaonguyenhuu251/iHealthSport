@@ -21,6 +21,9 @@ object PreferencesUtil {
     const val PREF_NOTIFICATION = "PREF_NOTIFICATION"
     const val PREF_NOTIFICATION_COUNT = "PREF_NOTIFICATION_COUNT"
 
+    const val PREF_USER_ID = "PREF_USER_ID"
+    const val PREF_USER_PASSWORD = "PREF_USER_PASSWORD"
+
     fun deleteCache() {
         preferencesEdit.clear().commit()
     }
@@ -78,4 +81,19 @@ object PreferencesUtil {
             preferencesEdit.putBoolean(PREF_NOTIFICATION_COUNT, value).apply()
         }
 
+    var idUser: String?
+        get() {
+            return preferences.getString(PREF_USER_ID, null)
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_ID, value).apply()
+        }
+
+    var passWord: String?
+        get() {
+            return preferences.getString(PREF_USER_PASSWORD, null)
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_PASSWORD, value).apply()
+        }
 }
