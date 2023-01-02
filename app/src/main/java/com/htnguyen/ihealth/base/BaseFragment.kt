@@ -46,13 +46,13 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
     }
     protected open fun onCreateView(savedInstanceState: Bundle?) {}
 
-    abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, binding: B)
+    //abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, binding: B)
 
     override fun onDestroyView() {
         super.onDestroyView()
     }
 
-    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): B
+    //abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
     protected fun transitFragment(
         fragment: BaseFragment<*,*>,

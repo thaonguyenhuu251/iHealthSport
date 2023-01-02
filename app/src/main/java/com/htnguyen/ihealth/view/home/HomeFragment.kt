@@ -1,37 +1,22 @@
 package com.htnguyen.ihealth.view.home
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
-import com.mikhaellopez.circularprogressbar.CircularProgressBar
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override val layout: Int
         get() = R.layout.fragment_home
 
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentHomeBinding {
-        TODO("Not yet implemented")
-    }
-
-    override fun initView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        binding: FragmentHomeBinding
-    ) {
-
-    }
+    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
         optionDailyActivities()
         optionStep()
     }

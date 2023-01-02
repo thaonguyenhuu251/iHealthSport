@@ -14,21 +14,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val layout: Int
         get() = R.layout.fragment_search
 
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentSearchBinding {
-        TODO("Not yet implemented")
-    }
-
-    override fun initView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        binding: FragmentSearchBinding
-    ) {
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -12,20 +12,4 @@ class ChatFragment : BaseFragment<FragmentChatBinding, ChatViewModel>() {
     override val layout: Int
         get() = R.layout.fragment_chat
 
-    override fun initView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        binding: FragmentChatBinding
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentChatBinding {
-        TODO("Not yet implemented")
-    }
-
-
 }
