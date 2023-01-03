@@ -15,7 +15,6 @@ import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.main.MainActivity
-import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -66,16 +65,39 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-                    loadingDialog?.dismissDialog()
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    PreferencesUtil.idUser = email
-                    PreferencesUtil.passWord = password
-                    finish()
+                    db.collection("user").document(email).get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                val user = document.toObject(User::class.java)
+                                val login = Intent(this@LoginActivity, MainActivity::class.java)
+                                loadingDialog?.dismissDialog()
+                                PreferencesUtil.idUser = email
+                                PreferencesUtil.passWord = password
+                                if (user != null) {
+                                    PreferencesUtil.userName = user.name
+                                    PreferencesUtil.userBirthDay = user.birthDay
+                                    PreferencesUtil.userGender = user.gender ?: false
+                                    PreferencesUtil.userHeight = user.height
+                                    PreferencesUtil.userWeight = user.weight
+                                }
+                                startActivity(login)
+                                finish()
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(
+                                baseContext, "Password Wrong.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            loadingDialog?.dismissDialog()
+                        }
                 } else {
                     // If sign in fails, display a message to the user.
                     loadingDialog?.dismissDialog()
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
@@ -93,6 +115,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                         loadingDialog?.dismissDialog()
                         PreferencesUtil.idUser = phone
                         PreferencesUtil.passWord = password
+                        PreferencesUtil.userName = user.name
+                        PreferencesUtil.userBirthDay = user.birthDay
+                        PreferencesUtil.userGender = user.gender ?: false
+                        PreferencesUtil.userHeight = user.height
+                        PreferencesUtil.userWeight = user.weight
                         startActivity(login)
                         finish()
                     } else {
@@ -102,10 +129,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 }
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(baseContext, "Password Wrong.",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    baseContext, "Password Wrong.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 loadingDialog?.dismissDialog()
             }
     }
-
 }

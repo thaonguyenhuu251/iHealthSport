@@ -68,8 +68,6 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         }
         loadingDialog = LoadingDialog(this)
         auth = FirebaseAuth.getInstance()
-
-
     }
 
     public override fun onStart() {

@@ -10,10 +10,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
-import com.htnguyen.ihealth.inter.OnDialog
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityProfileEditBinding
-import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.inter.OnDialog
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.PreferencesUtil
@@ -53,19 +52,28 @@ class ProfileEditActivity :
     private fun initView() {
 
         binding.imgNext.setOnClickListener {
-            db.collection("user").document(intent.getStringExtra(Constant.USER_ID ?: "").toString()).update(mapOf(
-                "name" to viewModel.name.value.toString(),
-                "birthDay" to viewModel.birthDayLong.value,
-                "gender" to viewModel.gender.value,
-                "height" to viewModel.progressHeight.value?.toFloat(),
-                "weight" to viewModel.progressWeight.value?.toFloat()
-            )).addOnSuccessListener {
+            db.collection("user").document(intent.getStringExtra(Constant.USER_ID ?: "").toString())
+                .update(
+                    mapOf(
+                        "name" to viewModel.name.value.toString(),
+                        "birthDay" to viewModel.birthDayLong.value,
+                        "gender" to viewModel.gender.value,
+                        "height" to viewModel.progressHeight.value?.toFloat(),
+                        "weight" to viewModel.progressWeight.value?.toFloat()
+                    )
+                )
+                .addOnSuccessListener {
+                    PreferencesUtil.userName = viewModel.name.value.toString()
+                    PreferencesUtil.userBirthDay = viewModel.birthDayLong.value
+                    PreferencesUtil.userGender = viewModel.gender.value!!
+                    PreferencesUtil.userHeight = viewModel.progressHeight.value?.toFloat()
+                    PreferencesUtil.userWeight = viewModel.progressWeight.value?.toFloat()
                     loadingDialog?.dismissDialog()
                     val intent = Intent(this@ProfileEditActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
-                .addOnFailureListener{ e ->
+                .addOnFailureListener { e ->
                     loadingDialog?.dismissDialog()
                     startActivity(Intent(this@ProfileEditActivity, MainActivity::class.java))
                     finish()
@@ -90,8 +98,9 @@ class ProfileEditActivity :
     override fun onScrollChanged() {
         val view = binding.scrollviewProfile.getChildAt(binding.scrollviewProfile.childCount - 1)
         val topDetector = binding.scrollviewProfile.scrollY
-        val bottomDetector: Int = view.bottom - (binding.scrollviewProfile.height + binding.scrollviewProfile.scrollY)
-        if (bottomDetector == 0 ) {
+        val bottomDetector: Int =
+            view.bottom - (binding.scrollviewProfile.height + binding.scrollviewProfile.scrollY)
+        if (bottomDetector == 0) {
         } else {
         }
     }

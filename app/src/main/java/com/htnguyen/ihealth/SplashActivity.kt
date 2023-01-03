@@ -23,7 +23,6 @@ class SplashActivity : AppCompatActivity() {
     private var loadingDialog: LoadingDialog2? = null
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
-    private val viewModel by viewModels<ProfileViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -69,11 +68,11 @@ class SplashActivity : AppCompatActivity() {
                     val user = document.toObject(User::class.java)
                     if (user?.passWord == PreferencesUtil.passWord) {
                         if (user != null) {
-                            viewModel.name.value = user.name.toString()
-                            viewModel.birthDayLong.value = user.birthDay.toString().toLong()
-                            viewModel.gender.value = user.gender
-                            viewModel.progressHeight.value = user.height
-                            viewModel.progressWeight.value = user.weight
+                            PreferencesUtil.userName = user.name
+                            PreferencesUtil.userBirthDay = user.birthDay
+                            PreferencesUtil.userGender = user.gender ?: false
+                            PreferencesUtil.userHeight = user.height
+                            PreferencesUtil.userWeight = user.weight
                         }
                         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                         finish()
@@ -98,14 +97,11 @@ class SplashActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 val user = result.toObject(User::class.java)
                 if (user != null) {
-                    viewModel.name.value = user.name.toString()
-                    viewModel.birthDayLong.value = user.birthDay.toString().toLong()
-                    viewModel.gender.value = user.gender
-                    viewModel.progressHeight.value = user.height
-                    viewModel.progressWeight.value = user.weight
-                    viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
-                        .format(viewModel.birthDayLong.value)
-                        .toString()
+                    PreferencesUtil.userName = user.name
+                    PreferencesUtil.userBirthDay = user.birthDay
+                    PreferencesUtil.userGender = user.gender ?: false
+                    PreferencesUtil.userHeight = user.height
+                    PreferencesUtil.userWeight = user.weight
                 }
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finish()

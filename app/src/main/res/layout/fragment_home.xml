@@ -2,7 +2,14 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.home.HomeViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -14,7 +21,7 @@
             android:id="@+id/txtHelloUser"
             style="@style/text_wrap_large_plus"
             android:layout_margin="@dimen/_15sdp"
-            android:text="Hello Thao"
+            android:text="@{viewModel.name}"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

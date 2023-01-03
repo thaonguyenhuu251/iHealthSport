@@ -14,20 +14,5 @@ class SocialFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() 
     override val layout: Int
         get() = R.layout.fragment_social
 
-    override fun initView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        binding: FragmentProfileBinding
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentProfileBinding {
-        TODO("Not yet implemented")
-    }
-
 
 }

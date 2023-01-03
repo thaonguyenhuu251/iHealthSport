@@ -3,6 +3,7 @@ package com.htnguyen.ihealth.view.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         auth = FirebaseAuth.getInstance()
         setViewPager()
         setTabLayout()
@@ -112,8 +114,15 @@ class MainActivity : AppCompatActivity() {
                             )
                         )
 
+                        finish()
+
                         PreferencesUtil.idUser = null
                         PreferencesUtil.passWord = null
+                        PreferencesUtil.userName = null
+                        PreferencesUtil.userBirthDay = 978307200000L
+                        PreferencesUtil.userGender = false
+                        PreferencesUtil.userHeight = 180f
+                        PreferencesUtil.userWeight = 45f
                     }
             }
 

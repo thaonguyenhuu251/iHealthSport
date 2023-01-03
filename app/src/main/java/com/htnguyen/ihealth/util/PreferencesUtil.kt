@@ -23,6 +23,11 @@ object PreferencesUtil {
 
     const val PREF_USER_ID = "PREF_USER_ID"
     const val PREF_USER_PASSWORD = "PREF_USER_PASSWORD"
+    const val PREF_USER_NAME = "PREF_USER_NAME"
+    const val PREF_USER_BIRTHDAY = "PREF_USER_BIRTHDAY"
+    const val PREF_USER_GENDER = "PREF_USER_GENDER"
+    const val PREF_USER_HEIGHT = "PREF_USER_HEIGHT"
+    const val PREF_USER_WEIGHT = "PREF_USER_WEIGHT"
 
     fun deleteCache() {
         preferencesEdit.clear().commit()
@@ -96,4 +101,44 @@ object PreferencesUtil {
         set(value) {
             preferencesEdit.putString(PREF_USER_PASSWORD, value).apply()
         }
+
+    var userName: String?
+        get() {
+            return preferences.getString(PREF_USER_NAME, null)
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_NAME, value).apply()
+        }
+
+    var userBirthDay: Long?
+        get() {
+            return preferences.getLong(PREF_USER_BIRTHDAY, 978307200000L)
+        }
+        set(value) {
+            preferencesEdit.putLong(PREF_USER_BIRTHDAY, value ?: 978307200000L).apply()
+        }
+
+    var userHeight: Float?
+        get() {
+            return preferences.getFloat(PREF_USER_HEIGHT, 180f)
+        }
+        set(value) {
+            preferencesEdit.putFloat(PREF_USER_HEIGHT, value ?: 180f).apply()
+        }
+
+    var userWeight: Float?
+        get() {
+            return preferences.getFloat(PREF_USER_WEIGHT, 55f)
+        }
+        set(value) {
+            preferencesEdit.putFloat(PREF_USER_WEIGHT, value ?: 55f).apply()
+        }
+
+    var userGender: Boolean
+    get() {
+        return preferences.getBoolean(PREF_USER_GENDER, false)
+    }
+    set(value) {
+        preferencesEdit.putBoolean(PREF_USER_GENDER, value).apply()
+    }
 }
