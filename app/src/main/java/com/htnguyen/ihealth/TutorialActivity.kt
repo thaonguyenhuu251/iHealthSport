@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.htnguyen.ihealth.databinding.ActivityTutorialBinding
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.main.MainActivity
 
 class TutorialActivity : AppCompatActivity() {
@@ -48,6 +49,7 @@ class TutorialActivity : AppCompatActivity() {
                 binding.viewPager2.setCurrentItem(currentPage + 1, false)
                 binding.txtBack.visibility = View.VISIBLE
             } else {
+                PreferencesUtil.isAgreedTerms = true
                 startActivity(Intent(this@TutorialActivity, MainActivity::class.java))
                 finish()
             }
@@ -63,6 +65,7 @@ class TutorialActivity : AppCompatActivity() {
         }
 
         binding.txtSkip.setOnClickListener {
+            PreferencesUtil.isAgreedTerms = true
             startActivity(Intent(this@TutorialActivity, MainActivity::class.java))
             finish()
         }

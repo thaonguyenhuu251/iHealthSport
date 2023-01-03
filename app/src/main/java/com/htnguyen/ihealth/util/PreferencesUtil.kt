@@ -28,6 +28,7 @@ object PreferencesUtil {
     const val PREF_USER_GENDER = "PREF_USER_GENDER"
     const val PREF_USER_HEIGHT = "PREF_USER_HEIGHT"
     const val PREF_USER_WEIGHT = "PREF_USER_WEIGHT"
+    const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
 
     fun deleteCache() {
         preferencesEdit.clear().commit()
@@ -104,7 +105,7 @@ object PreferencesUtil {
 
     var userName: String?
         get() {
-            return preferences.getString(PREF_USER_NAME, null)
+            return preferences.getString(PREF_USER_NAME, "")
         }
         set(value) {
             preferencesEdit.putString(PREF_USER_NAME, value).apply()
@@ -112,26 +113,26 @@ object PreferencesUtil {
 
     var userBirthDay: Long?
         get() {
-            return preferences.getLong(PREF_USER_BIRTHDAY, 978307200000L)
+            return preferences.getLong(PREF_USER_BIRTHDAY, 0L)
         }
         set(value) {
-            preferencesEdit.putLong(PREF_USER_BIRTHDAY, value ?: 978307200000L).apply()
+            preferencesEdit.putLong(PREF_USER_BIRTHDAY, value ?: 0L).apply()
         }
 
     var userHeight: Float?
         get() {
-            return preferences.getFloat(PREF_USER_HEIGHT, 180f)
+            return preferences.getFloat(PREF_USER_HEIGHT, 0f)
         }
         set(value) {
-            preferencesEdit.putFloat(PREF_USER_HEIGHT, value ?: 180f).apply()
+            preferencesEdit.putFloat(PREF_USER_HEIGHT, value ?: 0f).apply()
         }
 
     var userWeight: Float?
         get() {
-            return preferences.getFloat(PREF_USER_WEIGHT, 55f)
+            return preferences.getFloat(PREF_USER_WEIGHT, 0f)
         }
         set(value) {
-            preferencesEdit.putFloat(PREF_USER_WEIGHT, value ?: 55f).apply()
+            preferencesEdit.putFloat(PREF_USER_WEIGHT, value ?: 0f).apply()
         }
 
     var userGender: Boolean
@@ -141,4 +142,12 @@ object PreferencesUtil {
     set(value) {
         preferencesEdit.putBoolean(PREF_USER_GENDER, value).apply()
     }
+
+    var userPhotoUrl: String?
+        get() {
+            return preferences.getString(PREF_USER_PHOTO, "")
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_PHOTO, value).apply()
+        }
 }

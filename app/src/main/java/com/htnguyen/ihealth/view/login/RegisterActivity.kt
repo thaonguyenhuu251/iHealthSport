@@ -16,6 +16,7 @@ import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityRegisterBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.component.OTPVerificationDialog
@@ -35,8 +36,6 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     override val viewModel: RegisterViewModel by viewModel()
 
-    private lateinit var auth: FirebaseAuth
-    val db = Firebase.firestore
     var storedVerificationId : String? = null
     private var loadingDialog: LoadingDialog? = null
 
@@ -67,18 +66,6 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
         loadingDialog = LoadingDialog(this)
-        auth = FirebaseAuth.getInstance()
-    }
-
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-
-        } else {
-
-        }
     }
 
     private fun registerWithEmail() {
@@ -92,7 +79,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 loadingDialog?.showDialog()
                 val email = viewModel.email.value.toString()
                 val password = viewModel.password.value.toString()
-                auth.createUserWithEmailAndPassword(email, password)
+                FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val userNew = User(
@@ -100,13 +87,14 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                                 passWord = viewModel.password.value.toString()
                             )
 
-                            db.collection("user").document(email).set(userNew)
+                            FirebaseUtils.db.collection("user").document(email).set(userNew)
                                 .addOnSuccessListener {
                                     loadingDialog?.dismissDialog()
-                                    val intent = Intent(this@RegisterActivity, ProfileEditActivity::class.java)
-                                    intent.putExtra(Constant.USER_ID, email)
                                     PreferencesUtil.idUser = email
                                     PreferencesUtil.passWord = password
+                                    val intent = Intent(this@RegisterActivity, ProfileEditActivity::class.java)
+                                    intent.putExtra(Constant.USER_ID, email)
+                                    intent.putExtra(Constant.TYPE_PROFILE, 0)
                                     startActivity(intent)
                                     finish()
                                 }
@@ -143,39 +131,22 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-            // This callback will be invoked in two situations:
-            // 1 - Instant verification. In some cases the phone number can be instantly
-            //     verified without needing to send or enter a verification code.
-            // 2 - Auto-retrieval. On some devices Google Play services can automatically
-            //     detect the incoming verification SMS and perform verification without
-            //     user action.
-            //Log.d(TAG, "onVerificationCompleted:$credential")
+
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
-            // This callback is invoked in an invalid request for verification is made,
-            // for instance if the the phone number format is not valid.
-            //Log.w(TAG, "onVerificationFailed", e)
             loadingDialog?.dismissDialog()
             if (e is FirebaseAuthInvalidCredentialsException) {
-                // Invalid request
-            } else if (e is FirebaseTooManyRequestsException) {
-                // The SMS quota for the project has been exceeded
-            }
 
-            // Show a message and update the UI
+            } else if (e is FirebaseTooManyRequestsException) {
+
+            }
         }
 
         override fun onCodeSent(
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            // The SMS verification code has been sent to the provided phone number, we
-            // now need to ask the user to enter the code and then construct a credential
-            // by combining the code with a verification ID.
-            //Log.d(TAG, "onCodeSent:$verificationId")
-
-            // Save verification ID and resending token so we can use them later
             storedVerificationId = verificationId
             loadingDialog?.dismissDialog()
             val dialog = OTPVerificationDialog().newInstance(
@@ -185,16 +156,15 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             )
             dialog.isCancelable = false
             dialog.show(supportFragmentManager, dialog.tag)
-            //resendToken = token
         }
     }
 
     private fun sendVerificationCode(number: String) {
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(number)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+        val options = PhoneAuthOptions.newBuilder(FirebaseUtils.firebaseAuth)
+            .setPhoneNumber(number)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }

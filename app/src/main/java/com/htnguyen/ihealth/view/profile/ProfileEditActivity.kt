@@ -6,20 +6,22 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver.OnScrollChangedListener
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import android.widget.RadioGroup
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityProfileEditBinding
 import com.htnguyen.ihealth.inter.OnDialog
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.DateDialog
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.roundToInt
 
 
 class ProfileEditActivity :
@@ -37,8 +39,6 @@ class ProfileEditActivity :
         return BR.viewModel
     }
 
-    val db = Firebase.firestore
-
     private var loadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,35 +50,38 @@ class ProfileEditActivity :
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initView() {
+        viewModel.name.value = PreferencesUtil.userName
+        viewModel.birthDayLong.value = PreferencesUtil.userBirthDay
+        viewModel.gender.value = PreferencesUtil.userGender
+        viewModel.progressHeight.value = PreferencesUtil.userHeight?.roundToInt()
+        viewModel.progressWeight.value = PreferencesUtil.userWeight?.roundToInt()
+        viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
+            .format(viewModel.birthDayLong.value)
+            .toString()
 
+        if (intent != null) {
+            if (intent.getIntExtra(Constant.TYPE_PROFILE, 1) == 0) {
+                binding.imgNext.visibility = View.VISIBLE
+                binding.imgBack.visibility = View.GONE
+                binding.txtSave.visibility = View.GONE
+            } else {
+                binding.imgNext.visibility = View.GONE
+                binding.imgBack.visibility = View.VISIBLE
+                binding.txtSave.visibility = View.VISIBLE
+            }
+        }
         binding.imgNext.setOnClickListener {
-            db.collection("user").document(intent.getStringExtra(Constant.USER_ID ?: "").toString())
-                .update(
-                    mapOf(
-                        "name" to viewModel.name.value.toString(),
-                        "birthDay" to viewModel.birthDayLong.value,
-                        "gender" to viewModel.gender.value,
-                        "height" to viewModel.progressHeight.value?.toFloat(),
-                        "weight" to viewModel.progressWeight.value?.toFloat()
-                    )
-                )
-                .addOnSuccessListener {
-                    PreferencesUtil.userName = viewModel.name.value.toString()
-                    PreferencesUtil.userBirthDay = viewModel.birthDayLong.value
-                    PreferencesUtil.userGender = viewModel.gender.value!!
-                    PreferencesUtil.userHeight = viewModel.progressHeight.value?.toFloat()
-                    PreferencesUtil.userWeight = viewModel.progressWeight.value?.toFloat()
-                    loadingDialog?.dismissDialog()
-                    val intent = Intent(this@ProfileEditActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                .addOnFailureListener { e ->
-                    loadingDialog?.dismissDialog()
-                    startActivity(Intent(this@ProfileEditActivity, MainActivity::class.java))
-                    finish()
-                }
+            updateProfileUser()
+        }
 
+        binding.imgBack.setOnClickListener {
+            val intent = Intent(this@ProfileEditActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.txtSave.setOnClickListener {
+            updateProfileUser()
         }
 
         binding.edtBirthDay.setOnClickListener {
@@ -86,8 +89,46 @@ class ProfileEditActivity :
             dialog.show(supportFragmentManager, dialog.tag)
         }
 
+        binding.rgGender.setOnCheckedChangeListener { group, checkedId ->
+            viewModel.gender.value = checkedId == R.id.rdMale
+        }
+
         binding.scrollviewProfile.setOnTouchListener(this)
         binding.scrollviewProfile.viewTreeObserver.addOnScrollChangedListener(this)
+    }
+
+    private fun updateProfileUser() {
+        FirebaseUtils.db.collection("user")
+            .document(intent.getStringExtra(Constant.USER_ID).toString())
+            .update(
+                mapOf(
+                    "name" to viewModel.name.value.toString(),
+                    "birthDay" to viewModel.birthDayLong.value,
+                    "gender" to viewModel.gender.value,
+                    "height" to viewModel.progressHeight.value?.toFloat(),
+                    "weight" to viewModel.progressWeight.value?.toFloat()
+                )
+            )
+            .addOnSuccessListener {
+                PreferencesUtil.userName = viewModel.name.value.toString()
+                PreferencesUtil.userBirthDay = viewModel.birthDayLong.value
+                PreferencesUtil.userGender = viewModel.gender.value!!
+                PreferencesUtil.userHeight = viewModel.progressHeight.value?.toFloat()
+                PreferencesUtil.userWeight = viewModel.progressWeight.value?.toFloat()
+                loadingDialog?.dismissDialog()
+                val intent = if (PreferencesUtil.isAgreedTerms) {
+                    Intent(this@ProfileEditActivity, MainActivity::class.java)
+                } else {
+                    Intent(this@ProfileEditActivity, TutorialActivity::class.java)
+                }
+
+                startActivity(intent)
+                finish()
+            }
+            .addOnFailureListener { e ->
+                loadingDialog?.dismissDialog()
+                finish()
+            }
     }
 
     @SuppressLint("ClickableViewAccessibility")
