@@ -8,26 +8,25 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.FirebaseUtils.db
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.chat.ChatFragment
+import com.htnguyen.ihealth.view.component.LoadingDialog2
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
+import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
-import com.htnguyen.ihealth.view.profile.ProfileViewModel
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
 
@@ -51,18 +50,20 @@ class MainActivity : AppCompatActivity() {
         R.string.main_profile
     )
 
+    private var loadingDialog: LoadingDialog2? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         auth = FirebaseAuth.getInstance()
+        loadingDialog = LoadingDialog2(this)
         setViewPager()
         setTabLayout()
         openDrawerSetting()
+        getProfileUser()
     }
-
-
 
     private fun setTabLayout() {
         for (index in imageResId.indices) {
@@ -72,9 +73,7 @@ class MainActivity : AppCompatActivity() {
                     .setText(stringResId[index])
             )
         }
-        /*TabLayoutMediator(binding.tabLayoutMain, binding.viewPagerMain) { tab, position ->
-            tab.setIcon(imageResId[position])
-        }.attach()*/
+
         binding.tabLayoutMain.addOnTabSelectedListener(object :
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -113,16 +112,14 @@ class MainActivity : AppCompatActivity() {
                                 LoginActivity::class.java
                             )
                         )
-
                         finish()
-
                         PreferencesUtil.idUser = null
                         PreferencesUtil.passWord = null
                         PreferencesUtil.userName = null
-                        PreferencesUtil.userBirthDay = 978307200000L
+                        PreferencesUtil.userBirthDay = 0L
                         PreferencesUtil.userGender = false
-                        PreferencesUtil.userHeight = 180f
-                        PreferencesUtil.userWeight = 45f
+                        PreferencesUtil.userHeight = 0f
+                        PreferencesUtil.userWeight = 0f
                     }
             }
 
@@ -157,5 +154,25 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount(): Int {
             return 5
         }
+    }
+
+    private fun getProfileUser() {
+        loadingDialog?.showDialog()
+        db.collection("user").document(PreferencesUtil.idUser!!).get()
+            .addOnSuccessListener { result ->
+                val user = result.toObject(User::class.java)
+                if (user != null) {
+                    PreferencesUtil.userName = user.name
+                    PreferencesUtil.userBirthDay = user.birthDay
+                    PreferencesUtil.userGender = user.gender ?: false
+                    PreferencesUtil.userHeight = user.height
+                    PreferencesUtil.userWeight = user.weight
+                    PreferencesUtil.userPhotoUrl = user.photoUrl
+                    loadingDialog?.dismissDialog()
+                }
+            }
+            .addOnFailureListener { exception ->
+                loadingDialog?.dismissDialog()
+            }
     }
 }

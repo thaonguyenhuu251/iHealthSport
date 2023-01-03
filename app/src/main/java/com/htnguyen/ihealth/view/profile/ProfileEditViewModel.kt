@@ -1,17 +1,21 @@
 package com.htnguyen.ihealth.view.profile
 
+import android.net.Uri
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.htnguyen.ihealth.base.BaseViewModel
+import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.support.Calendar
+import com.htnguyen.ihealth.util.FirebaseUtils
 
 class ProfileEditViewModel : BaseViewModel() {
     val name: MutableLiveData<String> = MutableLiveData(null)
     val birthDay: MutableLiveData<String> = MutableLiveData(null)
-    val birthDayLong: MutableLiveData<Long> = MutableLiveData(Calendar().timeInMillis)
-    val gender: MutableLiveData<Boolean> = MutableLiveData(false)
-    val progressWeight: MutableLiveData<Int> = MutableLiveData(60)
-    val progressHeight: MutableLiveData<Int> = MutableLiveData(180)
+    val birthDayLong: MutableLiveData<Long> = MutableLiveData(null)
+    val gender: MutableLiveData<Boolean> = MutableLiveData(null)
+    val progressWeight: MutableLiveData<Int> = MutableLiveData(null)
+    val progressHeight: MutableLiveData<Int> = MutableLiveData(null)
 
     val validationNameMsg: MutableLiveData<String> = MutableLiveData(null)
     val validationBirthDayMsg: MutableLiveData<String> = MutableLiveData(null)
@@ -23,4 +27,5 @@ class ProfileEditViewModel : BaseViewModel() {
     fun toString(value: Int): String = "$value"
 
     fun toInt(value: String): Int = value.toInt() ?: 0
+
 }

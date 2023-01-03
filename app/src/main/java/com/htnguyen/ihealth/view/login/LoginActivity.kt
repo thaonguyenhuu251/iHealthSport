@@ -9,12 +9,16 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityLoginBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog
 import com.htnguyen.ihealth.view.main.MainActivity
+import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -26,113 +30,58 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
-
-    private lateinit var auth: FirebaseAuth
     private var loadingDialog: LoadingDialog? = null
-    private lateinit var db: FirebaseFirestore
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindHideKeyboardListener(binding.root, binding.content)
-
-        auth = FirebaseAuth.getInstance()
         loadingDialog = LoadingDialog(this)
-        db = Firebase.firestore
         binding.lnNotAccount.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             finish()
         }
-
         actionMoveScreen()
     }
 
     private fun actionMoveScreen() {
         binding.tvSignIn.setOnClickListener {
             loadingDialog?.showDialog()
-            if (viewModel.idAccount.value.toString().contains("@")) {
-                loginWithEmail()
-            } else {
-                loginWithPhoneNumber()
-            }
+            loginWithAccountAndPassword()
         }
     }
 
-    private fun loginWithEmail() {
-        val email = viewModel.idAccount.value.toString()
+    private fun loginWithAccountAndPassword() {
+        val idAccount = viewModel.idAccount.value.toString()
         val password = viewModel.password.value.toString()
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    db.collection("user").document(email).get()
-                        .addOnSuccessListener { document ->
-                            if (document != null) {
-                                val user = document.toObject(User::class.java)
-                                val login = Intent(this@LoginActivity, MainActivity::class.java)
-                                loadingDialog?.dismissDialog()
-                                PreferencesUtil.idUser = email
-                                PreferencesUtil.passWord = password
-                                if (user != null) {
-                                    PreferencesUtil.userName = user.name
-                                    PreferencesUtil.userBirthDay = user.birthDay
-                                    PreferencesUtil.userGender = user.gender ?: false
-                                    PreferencesUtil.userHeight = user.height
-                                    PreferencesUtil.userWeight = user.weight
-                                }
-                                startActivity(login)
-                                finish()
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Toast.makeText(
-                                baseContext, "Password Wrong.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            loadingDialog?.dismissDialog()
-                        }
-                } else {
-                    // If sign in fails, display a message to the user.
-                    loadingDialog?.dismissDialog()
-                    Toast.makeText(
-                        baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-    }
-
-    private fun loginWithPhoneNumber() {
-        val phone = viewModel.idAccount.value.toString()
-        val password = viewModel.password.value.toString()
-
-        db.collection("user").document(phone).get()
+        FirebaseUtils.db.collection("user").document(idAccount).get()
             .addOnSuccessListener { document ->
+                PreferencesUtil.idUser = idAccount
+                PreferencesUtil.passWord = password
                 if (document != null) {
                     val user = document.toObject(User::class.java)
-                    if (user?.passWord == password) {
-                        val login = Intent(this@LoginActivity, MainActivity::class.java)
+                    if (user?.passWord == PreferencesUtil.passWord) {
                         loadingDialog?.dismissDialog()
-                        PreferencesUtil.idUser = phone
-                        PreferencesUtil.passWord = password
-                        PreferencesUtil.userName = user.name
-                        PreferencesUtil.userBirthDay = user.birthDay
-                        PreferencesUtil.userGender = user.gender ?: false
-                        PreferencesUtil.userHeight = user.height
-                        PreferencesUtil.userWeight = user.weight
-                        startActivity(login)
+                        val intent: Intent?
+                        if (user?.height == 0f && user.weight == 0f) {
+                            intent = Intent(this@LoginActivity, ProfileEditActivity::class.java)
+                            intent.putExtra(Constant.TYPE_PROFILE, 0)
+                            intent.putExtra(Constant.USER_ID, PreferencesUtil.idUser)
+                        } else if (PreferencesUtil.isAgreedTerms) {
+                            intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            loadingDialog?.dismissDialog()
+
+                        } else {
+                            intent = Intent(this@LoginActivity, TutorialActivity::class.java)
+                        }
+                        startActivity(intent)
                         finish()
                     } else {
-
                         loadingDialog?.dismissDialog()
+                        Toast.makeText(baseContext, "Password Wrong.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(
-                    baseContext, "Password Wrong.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(baseContext, "Login Fail", Toast.LENGTH_SHORT).show()
                 loadingDialog?.dismissDialog()
             }
     }

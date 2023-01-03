@@ -235,21 +235,16 @@ class OTPVerificationDialog : DialogFragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    //Log.d(TAG, "signInWithCredential:success")
-
                     val user = task.result?.user
                     loadingDialog?.dismissDialog()
                     addUser(numberPhone!!)
 
                 } else {
                     loadingDialog?.dismissDialog()
-                    // Sign in failed, display a message and update the UI
-                    //Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
+
                     }
-                    // Update UI
+
                 }
             }
     }
@@ -262,18 +257,20 @@ class OTPVerificationDialog : DialogFragment() {
         )
 
         db.collection("user").document(idAccount).set(userNew)
-            .addOnSuccessListener { // after the data addition is successful
-                // we are displaying a success toast message.
+            .addOnSuccessListener {
                 loadingDialog?.dismissDialog()
-                val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
+
                 PreferencesUtil.idUser = numberPhone
                 PreferencesUtil.passWord = passWord
+
+                val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
+                intent.putExtra(Constant.TYPE_PROFILE, 0)
                 intent.putExtra(Constant.USER_ID, numberPhone)
                 startActivity(intent)
                 requireActivity().finish()
             }
-            .addOnFailureListener{ e -> // this method is called when the data addition process is failed.
-                // displaying a toast message when data addition is failed.
+            .addOnFailureListener{ e ->
+
             }
     }
 

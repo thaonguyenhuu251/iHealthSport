@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/guidelineSplash"
         />
 
-    <TextView
+    <Button
         android:id="@+id/txtNext"
         style="@style/button_navigation"
         android:text="Next"
@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dots_indicator" />
 
-    <TextView
+    <Button
         android:id="@+id/txtBack"
         style="@style/button_navigation"
         android:text="Back"
