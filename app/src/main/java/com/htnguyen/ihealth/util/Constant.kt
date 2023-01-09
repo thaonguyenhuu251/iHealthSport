@@ -41,6 +41,8 @@ object Constant {
     const val TYPE_PROFILE = "type_profile"
     const val KEY_PATH_IMAGE = "key_path_image"
 
+    const val DATE_FORMAT = "yyyy_MM_dd"
+
     fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
         var cursor: Cursor? = null
         return try {

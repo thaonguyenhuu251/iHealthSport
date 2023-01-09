@@ -3,6 +3,7 @@ package com.htnguyen.ihealth.model
 import java.io.Serializable
 
 data class User(
+    var idUser: String? = null,
     var idAccount: String? = "",
     var name: String? = "",
     var birthDay: Long? = 0L,

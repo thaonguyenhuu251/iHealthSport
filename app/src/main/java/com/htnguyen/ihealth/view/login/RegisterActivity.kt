@@ -15,6 +15,7 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityRegisterBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
@@ -24,6 +25,7 @@ import com.htnguyen.ihealth.view.main.MainActivity
 import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>(){
@@ -83,6 +85,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val userNew = User(
+                                idUser = "user" + Calendar().timeInMillis.toString() + Random.nextInt(0, 999999999).toString(),
                                 idAccount = viewModel.email.value.toString(),
                                 passWord = viewModel.password.value.toString()
                             )

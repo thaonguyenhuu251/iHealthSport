@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/_5sdp"
-    android:background="@drawable/bg_white_four_corner_normal"
-    android:padding="@dimen/_10sdp"
-    android:gravity="center"
-    android:orientation="horizontal">
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.home.HomeViewModel" />
+    </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_white_four_corner_normal"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp">
 
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/text_wrap_normal"
-            android:text="Step"
-            app:drawableStartCompat="@drawable/ic_home_step" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/text_normal"
-            android:text="638/7000"
-            android:paddingVertical="@dimen/_5sdp"
-            android:textSize="@dimen/_16ssp"
-            android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/text_wrap_normal"
+                android:text="@string/common_step"
+                app:drawableStartCompat="@drawable/ic_home_step" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/text_normal"
+                android:paddingVertical="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/processBarStep"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_7sdp"
+            android:progressDrawable="@drawable/custom_progress_step" />
 
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/processBarStep"
-        android:layout_width="@dimen/_110sdp"
-        android:layout_height="@dimen/_19sdp"
-        android:layout_margin="@dimen/_5sdp"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:progressDrawable="@drawable/custom_progress_step"
-        android:padding="@dimen/_7sdp"
-        android:elevation="@dimen/_2sdp"/>
-
-</LinearLayout>
+</layout>
