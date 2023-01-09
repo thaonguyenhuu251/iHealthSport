@@ -1,9 +1,13 @@
 package com.htnguyen.ihealth.util
 
 import android.content.Context
+import com.google.android.gms.common.util.SharedPreferencesUtils
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.view.IHealthApplication
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashSet
 
 object PreferencesUtil {
     private val preferences = IHealthApplication.mInstance
@@ -22,6 +26,7 @@ object PreferencesUtil {
     const val PREF_NOTIFICATION_COUNT = "PREF_NOTIFICATION_COUNT"
 
     const val PREF_USER_ID = "PREF_USER_ID"
+    const val PREF_USER_ID_PRIVATE = "PREF_USER_ID_PRIVATE"
     const val PREF_USER_PASSWORD = "PREF_USER_PASSWORD"
     const val PREF_USER_NAME = "PREF_USER_NAME"
     const val PREF_USER_BIRTHDAY = "PREF_USER_BIRTHDAY"
@@ -29,6 +34,20 @@ object PreferencesUtil {
     const val PREF_USER_HEIGHT = "PREF_USER_HEIGHT"
     const val PREF_USER_WEIGHT = "PREF_USER_WEIGHT"
     const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
+
+    val keyToday: String
+        get() {
+            val calendar = Calendar.getInstance()
+            val simpleDateFormat = SimpleDateFormat(Constant.DATE_FORMAT)
+            return simpleDateFormat.format(calendar.time)
+        }
+    var stepNumber: Int
+        get()  {
+            return preferences.getInt(keyToday, 0)
+        }
+        set(value) {
+            preferencesEdit.putInt(keyToday, value).apply()
+        }
 
     fun deleteCache() {
         preferencesEdit.clear().commit()
@@ -93,6 +112,14 @@ object PreferencesUtil {
         }
         set(value) {
             preferencesEdit.putString(PREF_USER_ID, value).apply()
+        }
+
+    var idPrivate: String?
+        get() {
+            return preferences.getString(PREF_USER_ID_PRIVATE, null)
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_ID_PRIVATE, value).apply()
         }
 
     var passWord: String?

@@ -30,7 +30,7 @@
             android:id="@+id/txtHelloTile"
             style="@style/text_wrap_normal"
             android:layout_marginHorizontal="@dimen/_15sdp"
-            android:text="Good Morning"
+            android:text="@{viewModel.onTime}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtHelloUser" />
 
@@ -59,23 +59,32 @@
                 android:paddingTop="@dimen/_15sdp"
                 android:paddingBottom="@dimen/_25sdp">
 
-                <include layout="@layout/layout_home_daily_plan" />
+                <include
+                    layout="@layout/layout_home_daily_plan"
+                    app:viewModel="@{viewModel}"/>
 
                 <include
                     android:id="@+id/layoutDailyActivities"
-                    layout="@layout/layout_home_daily_activities" />
+                    layout="@layout/layout_home_daily_activities"
+                    app:viewModel="@{viewModel}"/>
 
                 <include
                     android:id="@+id/layoutStep"
-                    layout="@layout/layout_home_step" />
+                    layout="@layout/layout_home_step"
+                    app:viewModel="@{viewModel}"/>
 
                 <include layout="@layout/layout_home_exercise" />
 
                 <include layout="@layout/layout_home_foods" />
 
-                <include layout="@layout/layout_home_water" />
+                <include
+                    android:id="@+id/layoutHomeWater"
+                    layout="@layout/layout_home_water"
+                    app:viewModel="@{viewModel}"/>
 
-                <include layout="@layout/layout_home_heartbeat" />
+                <include
+                    android:id="@+id/layoutHomeHeartbeat"
+                    layout="@layout/layout_home_heartbeat" />
 
                 <include layout="@layout/layout_home_blood" />
 

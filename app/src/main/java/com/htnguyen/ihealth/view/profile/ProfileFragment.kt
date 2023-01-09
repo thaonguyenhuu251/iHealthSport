@@ -69,7 +69,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             intent.putExtra(Constant.TYPE_PROFILE, 1)
             intent.putExtra(Constant.USER_ID, PreferencesUtil.idUser)
             requireActivity().startActivity(intent)
-            requireActivity().finish()
         }
 
         binding.imgCamera.setOnClickListener {

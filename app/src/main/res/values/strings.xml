@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">iHealth</string>
 
     <!-- preferences -->
@@ -10,6 +10,7 @@
     <string name="common_forgot_password">Forgot Password</string>
     <string name="common_account_not_have">I don’t have an account?</string>
     <string name="common_format_date">dd/MM/yyyy</string>
+    <string name="common_format_date_standard">dd/MM/yyyy</string>
 
     <string name="sign_in">Sign In</string>
     <string name="sign_in_your_account">Sign In Your Account</string>
@@ -20,6 +21,9 @@
     <string name="sign_up_create_your_account">Create Your Account</string>
     <string name="open_ihealth">Open iHealth...</string>
     <string name="skip">Skip</string>
+    <string name="good_morning" >Good morning</string>
+    <string name="good_afternoon">Good afternoon</string>
+    <string name="good_evening">Good evening</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -56,5 +60,53 @@
     <string name="tutorial_choose_doctor_content">Connect with specialists right from the comfort of your home via video call, audio call or live chat</string>
     <string name="tutorial_healthy_way_content">Find a doctor, a specialist near your location using the Chatbot and book an appointment with just a click</string>
     <string name="tutorial_healthy_way_title">HealthWay \n Best way to reach your doctor</string>
+
+    <string name="output_header_template">Heart rate on %s</string>
+    <string name="output_detected_peaks_header">Detected Peaks:</string>
+    <string name="send_output_to">Send output to:</string>
+    <string name="separator">,</string>
+    <string name="row_separator">\n</string>
+    <string name="raw_values">Measurements (Timestamp, Value)</string>
+    <string name="cameraPermissionRequired">Camera permission is required for this application to work.</string>
+    <string name="noFlashWarning">Measurement without flash is less reliable.</string>
+    <string name="new_measurement">New Measurement</string>
+    <string name="export_result">Export Result</string>
+    <string name="export_details">Export Details</string>
+    <string name="dateFormat">yyyy-MM-dd\'T\'HH:mm:ssZZZZZ</string>
+    <string name="dateFormatGranular">yyyy-MM-dd\'T\'HH:mm:ss.SSSZZZZZ</string>
+    <string name="camera_not_found">Camera not available.</string>
+    <string name="common_step">Step</string>
+    <string name="water">Water</string>
+    <plurals name="measurement_output_template">
+        <item quantity="zero">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="one">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="other">Pulse: %2.1f (%d cycles in %2.1f seconds)</item>
+    </plurals>
+
+    <!--    Gps Training-->
+    <string name="title_activity_gps_map">GPS Training</string>
+    <string name="map_id">5618cd7b01db1e2e</string>
+    <string name="distance_title">KILOMETERS</string>
+    <string name="duration_title">TIME</string>
+    <string name="calorie_title">CALORIE</string>
+    <string name="option_get_place">Get place</string>
+    <string name="pick_place">Choose a place</string>
+    <string name="stop_button">STOP</string>
+    <string name="start_button">START</string>
+    <string name="pause_button">PAUSE</string>
+    <string name="continue_button">CONTINUE</string>
+    <string name="duration">%d:%d:%d</string>
+
+    <!-- User Goal -->
+    <string name="user_setup_activity_title">Set Goal</string>
+    <string name="hint_target_step_per_day">Target steps per day</string>
+    <string name="steps_unit">steps</string>
+    <string name="or">or</string>
+    <string name="hint_target_calories_per_day">Target calories per day</string>
+    <string name="calories_unit">calories</string>
+    <string name="go">Go</string>
+    <string name="content">Content</string>
+    <string name="title">Title</string>
+
 
 </resources>

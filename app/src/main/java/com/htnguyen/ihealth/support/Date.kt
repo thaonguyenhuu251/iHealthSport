@@ -5,6 +5,6 @@ import java.util.*
 
 fun SimpleDateFormat(
     pattern: String,
-    locale: Locale = Locale.JAPAN,
+    locale: Locale = Locale.getDefault(),
     timezone: TimeZone = TimeZone()
 ) = SimpleDateFormat(pattern, locale).apply { timeZone = timezone }

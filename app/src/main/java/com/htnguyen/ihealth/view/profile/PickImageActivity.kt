@@ -74,7 +74,6 @@ class PickImageActivity : AppCompatActivity() {
         loadPictures(pageSize)
     }
 
-
     private fun loadPictures(pageSize: Int) {
         galleryViewModel.getImagesFromGallery(this, pageSize) {
             if (it.isNotEmpty()) {

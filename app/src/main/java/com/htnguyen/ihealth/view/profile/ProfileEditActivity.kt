@@ -75,8 +75,6 @@ class ProfileEditActivity :
         }
 
         binding.imgBack.setOnClickListener {
-            val intent = Intent(this@ProfileEditActivity, MainActivity::class.java)
-            startActivity(intent)
             finish()
         }
 
