@@ -53,6 +53,7 @@ class StepDetectorService : Service(), SensorEventListener {
 
     }
 
+
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
 
     }
