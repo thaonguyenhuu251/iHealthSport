@@ -9,6 +9,8 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.fragment.app.viewModels
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,16 +19,18 @@ import com.google.firebase.database.ktx.getValue
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
-import com.htnguyen.ihealth.model.ActivityDaily
+import com.htnguyen.ihealth.helper.PrefsHelper
 import com.htnguyen.ihealth.model.EatAndDrink
+import com.htnguyen.ihealth.model.HealthDaily
 import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.support.dateInMillis
 import com.htnguyen.ihealth.support.gps.GpsMap
-import com.htnguyen.ihealth.support.hour
+import com.htnguyen.ihealth.util.CommonUtils
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
 import kotlin.math.roundToInt
+
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorEventListener {
 
@@ -46,10 +50,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         getEatAndDrink()
+        getHealthDaily()
+
         optionDailyActivities()
         optionStep()
         optionHeartBeat()
         optionEatAndDrink()
+        optionFellingToday()
+        optionWeight()
+
+    }
+
+    private fun optionWeight() {
+        binding.layoutHomeWeight.textView4.text = Html.fromHtml("<big><b>" + viewModel.progressWeight.value + "</b></big> kG", Html.FROM_HTML_MODE_COMPACT)
     }
 
     private fun optionEatAndDrink() {
@@ -95,36 +108,55 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     private fun optionStep() {
+        binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
         binding.layoutStep.processBarStep.progress = viewModel.step.value.toString().toInt()
         binding.layoutStep.processBarStep.max = viewModel.followStep.value.toString().toInt()
-    }
-
-    private fun updateActivityDaily() {
-        binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
-        val activityDaily = ActivityDaily(
-            step = viewModel.step.value,
-            followStep = 6000,
-            timeActive = 0f,
-            calo = 0f
-        )
-
         binding.layoutDailyActivities.circularProgressBar3.apply {
             setProgressWithAnimation((viewModel.step.value ?: 0).toFloat(), 1000)
             progressMax = (viewModel.followStep.value ?: 0).toFloat()
 
         }
+    }
 
-        FirebaseUtils.activityDaily
-            .child("record_history")
-            .child(PreferencesUtil.idPrivate.toString())
-            .child("activity_daily")
-            .child("date" + Calendar().dateInMillis.toString())
-            .setValue(activityDaily)
-            .addOnSuccessListener {
+    private fun optionHeartBeat() {
+        binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml("<big><b>" + viewModel.heartBeat.value + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
+        binding.layoutHomeHeartbeat.txtMeasure.setOnClickListener {
+            requireActivity().startActivity(Intent(requireActivity(), MeasureHeartBeatActivity::class.java))
+        }
+    }
 
-            }.addOnFailureListener { e ->
-
+    private fun optionFellingToday() {
+        binding.layoutHomeYouFell.rgFelling.setOnCheckedChangeListener { group, checkedId ->
+            val checkedRadioButton = group.findViewById<View>(checkedId) as RadioButton
+            val isChecked = checkedRadioButton.isChecked
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.rdGood -> {
+                        CommonUtils.updateFelling(1)
+                        viewModel.fellingToday.value = 1
+                    }
+                    R.id.rdDis -> {
+                        CommonUtils.updateFelling(0)
+                        viewModel.fellingToday.value = 0
+                    }
+                    else -> {
+                        CommonUtils.updateFelling(-1)
+                        viewModel.fellingToday.value = -1
+                    }
+                }
             }
+            setFellingToday()
+        }
+
+
+    }
+
+    private fun setFellingToday() {
+        when (viewModel.fellingToday.value) {
+            1 -> binding.layoutHomeYouFell.rdGood.isChecked = true
+            0 -> binding.layoutHomeYouFell.rdDis.isChecked = true
+            else -> binding.layoutHomeYouFell.rdBad.isChecked = true
+        }
     }
 
     private fun updateEatAndDrink() {
@@ -151,7 +183,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     private fun getEatAndDrink() {
-        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
@@ -159,7 +190,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     val eatAndDrink = postSnapshot.getValue<EatAndDrink>()
                     if (eatAndDrink != null) {
                         viewModel.water.value = eatAndDrink.water
-
+                        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
                     }
                 }
             }
@@ -174,6 +205,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             .child("eat_and_drink").addValueEventListener(postListener)
     }
 
+    private fun getHealthDaily() {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                for (postSnapshot in dataSnapshot.children) {
+                    val healthDaily = postSnapshot.getValue<HealthDaily>()
+                    if (healthDaily != null) {
+                        viewModel.heartBeat.value = healthDaily.heartBeat
+                        viewModel.fellingToday.value = healthDaily.fellingToday
+                        setFellingToday()
+                        binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml("<big><b>" + viewModel.heartBeat.value + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+            }
+        }
+        FirebaseUtils.activityDaily
+            .child("record_history")
+            .child(PreferencesUtil.idPrivate.toString())
+            .child("health_daily").addValueEventListener(postListener)
+
+
+    }
 
     override fun onResume() {
         super.onResume()
@@ -188,21 +245,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     override fun onSensorChanged(event: SensorEvent?) {
         val totalStepSinceReboot: Int = event?.values?.get(0)?.roundToInt() ?: 0
-        viewModel.step.value = totalStepSinceReboot
-        updateActivityDaily()
+        viewModel.step.value = totalStepSinceReboot - PrefsHelper.getInt("Steps")
+        viewModel.calories.value = CommonUtils.getCaloriesInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
         optionStep()
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         // We do not have to write anything in this function for this app
     }
-
-    private fun optionHeartBeat() {
-        binding.layoutHomeHeartbeat.txtMeasure.setOnClickListener {
-            requireActivity().startActivity(Intent(requireActivity(), MeasureHeartBeatActivity::class.java))
-        }
-    }
-
-
-
 }

@@ -8,8 +8,7 @@ import android.view.TextureView;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-class ChartDrawer
-{
+class ChartDrawer {
     private  final TextureView chartTextureView;
     private final Paint paint = new Paint();
     private final Paint fillWhite = new Paint();

@@ -46,7 +46,7 @@ public class CameraService {
             Log.e("camera", "No access to camera", e);
             handler.sendMessage(Message.obtain(
                 handler,
-                    MeasureHeartBeatActivity.MESSAGE_CAMERA_NOT_AVAILABLE,
+                MeasureHeartBeatActivity.MESSAGE_CAMERA_NOT_AVAILABLE,
                 "No access to camera...."));
         }
 

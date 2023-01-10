@@ -84,15 +84,20 @@
 
                 <include
                     android:id="@+id/layoutHomeHeartbeat"
-                    layout="@layout/layout_home_heartbeat" />
+                    layout="@layout/layout_home_heartbeat"
+                    app:viewModel="@{viewModel}"/>
 
                 <include layout="@layout/layout_home_blood" />
 
-                <include layout="@layout/layout_home_weight" />
+                <include
+                    android:id="@+id/layoutHomeWeight"
+                    layout="@layout/layout_home_weight" />
 
                 <include layout="@layout/layout_home_stress" />
 
-                <include layout="@layout/layout_home_you_feel" />
+                <include
+                    android:id="@+id/layoutHomeYouFell"
+                    layout="@layout/layout_home_you_feel" />
 
             </LinearLayout>
 

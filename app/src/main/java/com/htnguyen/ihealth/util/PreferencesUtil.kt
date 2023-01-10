@@ -24,6 +24,7 @@ object PreferencesUtil {
     const val PREF_REFRESH_TOKEN = "PREF_REFRESH_TOKEN"
     const val PREF_NOTIFICATION = "PREF_NOTIFICATION"
     const val PREF_NOTIFICATION_COUNT = "PREF_NOTIFICATION_COUNT"
+    const val PREF_DARK_MODE = "PREF_DARK_MODE"
 
     const val PREF_USER_ID = "PREF_USER_ID"
     const val PREF_USER_ID_PRIVATE = "PREF_USER_ID_PRIVATE"
@@ -34,6 +35,8 @@ object PreferencesUtil {
     const val PREF_USER_HEIGHT = "PREF_USER_HEIGHT"
     const val PREF_USER_WEIGHT = "PREF_USER_WEIGHT"
     const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
+
+    const val PREF_FLOW_STEP = "PREF_FLOW_STEP"
 
     val keyToday: String
         get() {
@@ -47,6 +50,14 @@ object PreferencesUtil {
         }
         set(value) {
             preferencesEdit.putInt(keyToday, value).apply()
+        }
+
+    var followStep: Int
+        get()  {
+            return preferences.getInt(PREF_FLOW_STEP, 0)
+        }
+        set(value) {
+            preferencesEdit.putInt(PREF_FLOW_STEP, value).apply()
         }
 
     fun deleteCache() {
@@ -104,6 +115,14 @@ object PreferencesUtil {
         }
         set(value) {
             preferencesEdit.putBoolean(PREF_NOTIFICATION_COUNT, value).apply()
+        }
+
+    var isDarkMode: Boolean
+        get() {
+            return preferences.getBoolean(PREF_DARK_MODE, false)
+        }
+        set(value) {
+            preferencesEdit.putBoolean(PREF_DARK_MODE, value).apply()
         }
 
     var idUser: String?

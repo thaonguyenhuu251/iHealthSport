@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver.OnScrollChangedListener
-import android.widget.RadioGroup
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.TutorialActivity

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,23 +30,24 @@
         <TextureView
             android:id="@+id/graphTextureView"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="@dimen/_120sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextureView
             android:id="@+id/textureView2"
-            android:layout_width="@dimen/camera_view_width"
-            android:layout_height="@dimen/camera_view_height"
-            app:layout_constraintTop_toBottomOf="@id/graphTextureView"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/graphTextureView" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/camera_view_height"
+            android:layout_marginStart="@dimen/_60sdp"
             android:gravity="center_vertical"
             android:textAlignment="gravity"
             android:ellipsize="marquee"
@@ -89,12 +91,9 @@
             android:contentDescription="@string/new_measurement"
             android:focusable="true"
             android:onClick="onClickNewMeasurement"
-            android:src="@drawable/ic_profile_add_friend"
-            android:visibility="invisible"
+            app:backgroundTint="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:visibility="visible" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

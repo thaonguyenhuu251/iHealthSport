@@ -8,6 +8,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.util.CommonUtils.getCalories
+import com.htnguyen.ihealth.util.CommonUtils.getDistanceCovered
 import com.htnguyen.ihealth.view.main.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -34,32 +36,18 @@ class GeneralHelper {
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setStyle(NotificationCompat.BigTextStyle().bigText("Step Counter"))
-                .setStyle(NotificationCompat.BigTextStyle().bigText(step.toString()))
+                .setStyle(NotificationCompat.BigTextStyle().bigText(step.toString() + "Steps / " + getCalories(step) + getDistanceCovered(step)))
                 .setSmallIcon(R.mipmap.ic_notification)
                 .setColor(R.color.color_blue_general)
                 .setContentIntent(pendingIntent)
                 .setProgress(500, step, false)
-                //.setVisibility(NotificationCompat.VISIBILITY_SECRET)
-                //.setPriority(NotificationCompat.PRIORITY_MIN)
+                .setVisibility(NotificationCompat.VISIBILITY_SECRET)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
                 .build()
-
 
             service.startForeground(NOTIFICATION_ID, notification)
             notiManager.notify(NOTIFICATION_ID, notification)
 
-        }
-
-        fun getCalories(steps: Int): String? {
-            val Cal = (steps * 0.045).toInt()
-            return "$Cal calories"
-        }
-
-
-        fun getDistanceCovered(steps: Int): String? {
-            val feet = (steps * 2.5).toInt()
-            val distance = feet/3.281
-            val finalDistance:Double = String.format("%.2f", distance).toDouble()
-            return "$finalDistance meter"
         }
     }
 }

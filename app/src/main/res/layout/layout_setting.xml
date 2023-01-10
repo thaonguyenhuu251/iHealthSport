@@ -56,10 +56,35 @@
                 android:text="Notification"
                 app:drawableStartCompat="@drawable/ic_setting_notification" />
 
-            <TextView
-                style="@style/text_match_setting"
-                android:text="Display Mode"
-                app:drawableStartCompat="@drawable/ic_setting_display" />
+
+
+            <LinearLayout
+                android:id="@+id/lnDarkMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/text_wrap_normal"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:text="Dark Mode"
+                    android:layout_gravity="center"
+                    app:drawableStartCompat="@drawable/ic_setting_display" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:drawableTint="?colorAccent"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"/>
+
+            </LinearLayout>
 
             <TextView
                 style="@style/text_match_setting"
