@@ -107,6 +107,10 @@
     <string name="go">Go</string>
     <string name="content">Content</string>
     <string name="title">Title</string>
+    <string name="common_heart_beat">Heartbeat</string>
+    <string name="common_measure">Measure</string>
+    <string name="common_body_weight">Body Weight</string>
+    <string name="common_data">Data</string>
 
 
 </resources>

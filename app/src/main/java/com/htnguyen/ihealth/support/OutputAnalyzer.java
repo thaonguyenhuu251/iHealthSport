@@ -7,6 +7,7 @@ import android.os.Message;
 import android.view.TextureView;
 
 import com.htnguyen.ihealth.R;
+import com.htnguyen.ihealth.util.CommonUtils;
 import com.htnguyen.ihealth.view.home.MeasureHeartBeatActivity;
 
 import java.text.SimpleDateFormat;
@@ -106,6 +107,10 @@ public class OutputAnalyzer {
                                 1f * (measurementLength - millisUntilFinished - clipLength) / 1000f);
 
                         sendMessage(MeasureHeartBeatActivity.MESSAGE_UPDATE_REALTIME, currentValue);
+                        CommonUtils.INSTANCE.updateHeartBeat((valleys.size() == 1)
+                                ? (60f * (detectedValleys) / (Math.max(1, (measurementLength - millisUntilFinished - clipLength) / 1000f)))
+                                : (60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f)))
+                        );
                     }
 
                     // draw the chart on a separate thread.
@@ -139,6 +144,11 @@ public class OutputAnalyzer {
                         1f * (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f);
 
                 sendMessage(MeasureHeartBeatActivity.MESSAGE_UPDATE_REALTIME, currentValue);
+                CommonUtils.INSTANCE.updateHeartBeat(
+                    60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f))
+                );
+
+
 
                 StringBuilder returnValueSb = new StringBuilder();
                 returnValueSb.append(currentValue);

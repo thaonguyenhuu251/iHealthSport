@@ -12,7 +12,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/rgFelling"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -21,23 +22,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <TextView
+        <RadioButton
+            android:id="@+id/rdGood"
             style="@style/text_wrap_feel"
             android:layout_height="match_parent"
             android:text="Feeling Good"
+            android:drawableBottom="@drawable/selector_radio"
+            android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_good" />
 
-        <TextView
+        <RadioButton
+            android:id="@+id/rdDis"
             style="@style/text_wrap_feel"
             android:text="Feeling Disappointed"
+            android:drawableBottom="@drawable/selector_radio"
+            android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_dis" />
 
-        <TextView
+        <RadioButton
+            android:id="@+id/rdBad"
             style="@style/text_wrap_feel"
             android:layout_height="match_parent"
             android:text="Feeling Bad"
+            android:drawableBottom="@drawable/selector_radio"
+            android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_bad" />
 
-    </LinearLayout>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

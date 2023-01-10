@@ -10,6 +10,7 @@
 
     <color name="color_blue_general">#1648CE</color>
     <color name="color_white_background">#FAFAFE</color>
+    <color name="background_grey">#F6F6F6</color>
     <color name="color_background_grey">#F6F6F6</color>
     <color name="color_black">#011813</color>
     <color name="color_grey">#999999</color>

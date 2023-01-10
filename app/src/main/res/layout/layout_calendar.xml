@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background_grey"
+    android:gravity="center"
+    android:orientation="vertical">
+    <com.htnguyen.ihealth.view.component.Calendar.CalendarViewScrollable
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:showWeekNumber="false" />
+</LinearLayout>

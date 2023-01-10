@@ -1,34 +1,26 @@
 package com.htnguyen.ihealth.view.main
 
-import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
-import android.content.ServiceConnection
 import android.os.Bundle
-import android.os.IBinder
 import android.view.View
 import android.view.WindowManager
-import android.widget.ExpandableListAdapter
-import android.widget.ExpandableListView
-import android.widget.ExpandableListView.*
+import android.widget.CompoundButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
+import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
-import com.htnguyen.ihealth.adapter.CustomExpandableListAdapter
+import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
-import com.htnguyen.ihealth.inter.UpdateUiCallBack
-import com.htnguyen.ihealth.inter.stepsCallback
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.service.StepDetectorService
-import com.htnguyen.ihealth.service.StepService
-import com.htnguyen.ihealth.support.ExpandableListDataPump.data
+import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.FirebaseUtils.db
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.chat.ChatFragment
@@ -38,15 +30,18 @@ import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
-import android.view.ViewGroup
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
+    override val layout: Int get() = R.layout.activity_main
+    override val viewModel: MainViewModel by viewModel()
 
+    override fun getBindingVariable(): Int {
+        return BR.viewModel
+    }
 
-class MainActivity : AppCompatActivity(), stepsCallback {
-    lateinit var binding: ActivityMainBinding
-    private lateinit var auth: FirebaseAuth
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
         R.drawable.ic_main_social,
@@ -65,18 +60,10 @@ class MainActivity : AppCompatActivity(), stepsCallback {
 
     private var loadingDialog: LoadingDialog2? = null
 
-    lateinit var expandableListAdapter: ExpandableListAdapter
-    lateinit var expandableListTitle: List<String>
-    lateinit var expandableListDetail: HashMap<String, List<String>>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
-        auth = FirebaseAuth.getInstance()
         loadingDialog = LoadingDialog2(this)
-        initData()
         setViewPager()
         setTabLayout()
         openDrawerSetting()
@@ -84,8 +71,6 @@ class MainActivity : AppCompatActivity(), stepsCallback {
 
         val intent = Intent(this, StepDetectorService::class.java)
         startService(intent)
-
-        StepDetectorService.subscribe.register(this)
     }
 
     private fun setTabLayout() {
@@ -119,33 +104,6 @@ class MainActivity : AppCompatActivity(), stepsCallback {
     }
 
     private fun openDrawerSetting() {
-        /*val item_size = 50 // 50px
-        val sub_item_size = 40 // 40px
-        expandableListDetail = data
-        expandableListTitle = ArrayList(expandableListDetail.keys)
-        expandableListAdapter = CustomExpandableListAdapter(
-            this, expandableListTitle,
-            expandableListDetail
-        )
-        binding.navMain.findViewById<ExpandableListView>(R.id.expandableListView).setAdapter(expandableListAdapter)
-        binding.navMain.findViewById<ExpandableListView>(R.id.expandableListView).setOnGroupExpandListener { groupPosition ->
-
-        }
-
-        binding.navMain.findViewById<ExpandableListView>(R.id.expandableListView).setOnGroupCollapseListener { groupPosition ->
-
-        }
-
-        binding.navMain.findViewById<ExpandableListView>(R.id.expandableListView).setOnGroupClickListener { expandableListView, view, i, l ->
-            setListViewHeight(expandableListView, i)
-            false
-        }
-
-        binding.navMain.findViewById<ExpandableListView>(R.id.expandableListView).setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-
-            false
-        }*/
-
         binding.drawerMain.addDrawerListener(object :
             DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
@@ -153,9 +111,19 @@ class MainActivity : AppCompatActivity(), stepsCallback {
             }
 
             override fun onDrawerOpened(drawerView: View) {
+
+                binding.navMain.findViewById<SwitchCompat>(R.id.swDarkMode).setOnCheckedChangeListener { buttonView, isChecked ->
+                    PreferencesUtil.isDarkMode = isChecked
+                    if (!PreferencesUtil.isDarkMode) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                }
+
                 binding.navMain.findViewById<TextView>(R.id.txtLogout)
                     .setOnClickListener {
-                        auth.signOut()
+                        FirebaseUtils.firebaseAuth.signOut()
                         startActivity(
                             Intent(
                                 this@MainActivity,
@@ -226,86 +194,5 @@ class MainActivity : AppCompatActivity(), stepsCallback {
             .addOnFailureListener { exception ->
                 loadingDialog?.dismissDialog()
             }
-    }
-
-
-    private var mIsBind = false
-    private val mServiceConnection: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(componentName: ComponentName, service: IBinder) {
-            val stepService: StepService = (service as StepService.StepBinder).service
-            showStepCount(
-                PreferencesUtil.stepNumber,
-                stepService.stepCount
-            )
-            stepService.registerCallback(object : UpdateUiCallBack {
-                override fun updateUi(stepCount: Int) {
-                    showStepCount(PreferencesUtil.stepNumber, stepCount)
-                }
-            })
-        }
-
-        override fun onServiceDisconnected(componentName: ComponentName) {}
-    }
-
-    fun showStepCount(totalStepNum: Int, currentCounts: Int) {
-        var currentCounts = currentCounts
-        if (currentCounts < totalStepNum) {
-            currentCounts = totalStepNum
-        }
-        //viewModel.step.value = currentCounts
-    }
-
-    private fun initData() {
-        showStepCount(PreferencesUtil.stepNumber, 0)
-        setupService()
-    }
-
-    private fun setupService() {
-        val intent = Intent(this@MainActivity, StepService::class.java)
-        mIsBind = bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE)
-        startService(intent)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (mIsBind) {
-            unbindService(mServiceConnection)
-        }
-    }
-
-    override fun subscribeSteps(steps: Int) {
-        //TV_STEPS.setText(steps.toString())
-        //TV_CALORIES.setText(GeneralHelper.getCalories(steps))
-    }
-
-    private fun setListViewHeight(listView: ExpandableListView, groupPosition: Int) {
-        val listAdapter = listView.expandableListAdapter as ExpandableListAdapter
-        var totalHeight = 0
-        val desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.width, View.MeasureSpec.EXACTLY)
-        for (i in 0 until listAdapter.groupCount) {
-            val groupItem = listAdapter.getGroupView(i, false, null, listView)
-            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
-            totalHeight += groupItem.measuredHeight
-
-            if (listView.isGroupExpanded(i) && i != groupPosition
-                || !listView.isGroupExpanded(i) && i == groupPosition
-            ) {
-                for (j in 0 until listAdapter.getChildrenCount(i)) {
-                    val listItem: View = listAdapter.getChildView(
-                        i, j, false, null,
-                        listView
-                    )
-                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
-                    totalHeight += listItem.measuredHeight
-                }
-            }
-        }
-        val params = listView.layoutParams
-        var height = (totalHeight
-                + listView.dividerHeight * (listAdapter.groupCount - 1))
-        if (height < 10) height = 200
-        params.height = height
-        listView.layoutParams = params
-        listView.requestLayout()
     }
 }

@@ -1,6 +1,5 @@
 package com.htnguyen.ihealth.service
 
-import android.app.Activity
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -9,19 +8,13 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.IBinder
-import android.util.Log
 import android.widget.Toast
 import com.htnguyen.ihealth.helper.GeneralHelper
 import com.htnguyen.ihealth.helper.PrefsHelper
-import com.htnguyen.ihealth.inter.stepsCallback
+import com.htnguyen.ihealth.util.CommonUtils
 import kotlin.math.roundToInt
 
 class StepDetectorService : Service(), SensorEventListener {
-
-    companion object {
-        lateinit var callback: stepsCallback
-    }
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         val sensorManager: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -30,9 +23,7 @@ class StepDetectorService : Service(), SensorEventListener {
         if(countSensor != null){
             Toast.makeText(this, "Step Detecting Start", Toast.LENGTH_SHORT).show()
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_NORMAL)
-
             GeneralHelper.updateNotification(this, this, PrefsHelper.getInt("FSteps"))
-            callback.subscribeSteps(PrefsHelper.getInt("FSteps"))
 
         }else{
             Toast.makeText(this, "Sensor Not Detected", Toast.LENGTH_SHORT).show()
@@ -55,21 +46,14 @@ class StepDetectorService : Service(), SensorEventListener {
             val finalSteps = sensorSteps - storeSteps
             if (finalSteps > 0) {
                 PrefsHelper.putInt("FSteps", finalSteps)
+                CommonUtils.updateActivityDaily(finalSteps)
                 GeneralHelper.updateNotification(this, this, finalSteps)
-                callback.subscribeSteps(finalSteps)
             }
         }
 
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        Log.d("SERVICE", p0.toString())
-    }
 
-    object subscribe {
-        fun register(activity: Activity) {
-            callback = activity as stepsCallback
-        }
     }
-
 }

@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:text="@{viewModel.name.toString()}"
+            android:text="@{viewModel.name}"
             android:textSize="@dimen/_20ssp" />
 
         <TextView
