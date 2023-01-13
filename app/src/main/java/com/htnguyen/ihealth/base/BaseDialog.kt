@@ -52,14 +52,8 @@ sealed class BaseDialog : DialogFragment() {
 
     abstract class Scaffold<T : ViewDataBinding> : BaseDialog() {
 
-        /**
-         * layout id
-         **/
         protected abstract val layout: Int
 
-        /**
-         * ViewDataBinding
-         */
         protected lateinit var binding: T
 
         protected open val positionX = 0
@@ -109,9 +103,6 @@ sealed class BaseDialog : DialogFragment() {
             onTrackingView()
         }
 
-        /**
-         * Firebase Analytics screen-view tracking
-         */
         protected open fun onTrackingView() {
             //Analytics.trackScreen(this)
         }
