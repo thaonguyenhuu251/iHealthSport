@@ -58,6 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         optionEatAndDrink()
         optionFellingToday()
         optionWeight()
+        optionOxyInBlood()
 
     }
 
@@ -125,6 +126,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         }
     }
 
+    private fun optionOxyInBlood() {
+        binding.layoutHomeBlood.content.setOnClickListener {
+            requireActivity().startActivity(Intent(requireActivity(), MeasureOxyBloodActivity::class.java))
+        }
+    }
+
     private fun optionFellingToday() {
         binding.layoutHomeYouFell.rgFelling.setOnCheckedChangeListener { group, checkedId ->
             val checkedRadioButton = group.findViewById<View>(checkedId) as RadioButton
@@ -134,18 +141,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     R.id.rdGood -> {
                         CommonUtils.updateFelling(1)
                         viewModel.fellingToday.value = 1
+                        binding.layoutHomeYouFell.rdGood.isChecked = true
                     }
                     R.id.rdDis -> {
                         CommonUtils.updateFelling(0)
                         viewModel.fellingToday.value = 0
+                        binding.layoutHomeYouFell.rdDis.isChecked = true
                     }
                     else -> {
                         CommonUtils.updateFelling(-1)
                         viewModel.fellingToday.value = -1
+                        binding.layoutHomeYouFell.rdBad.isChecked = true
                     }
                 }
             }
-            setFellingToday()
         }
 
 
@@ -214,10 +223,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     if (healthDaily != null) {
                         viewModel.heartBeat.value = healthDaily.heartBeat
                         viewModel.fellingToday.value = healthDaily.fellingToday
-                        setFellingToday()
                         binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml("<big><b>" + viewModel.heartBeat.value + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
                     }
                 }
+
+                setFellingToday()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -228,8 +238,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             .child("record_history")
             .child(PreferencesUtil.idPrivate.toString())
             .child("health_daily").addValueEventListener(postListener)
-
-
     }
 
     override fun onResume() {

@@ -18,9 +18,6 @@ abstract class BaseListAdapter<T, V : ViewDataBinding> : RecyclerView.Adapter<Ba
 
         abstract fun onBindViewHolder(holder: BindingHolder<V>, item: T)
 
-        /**
-         * Submit
-         */
         fun submit(item: T) = submit(listOf(item))
 
         fun submit(items: List<T> = ArrayList()) {
@@ -43,9 +40,6 @@ abstract class BaseListAdapter<T, V : ViewDataBinding> : RecyclerView.Adapter<Ba
 
     }
 
-    /**
-     * Layout ID
-     */
     abstract fun getLayoutId(position: Int): Int
 
     abstract fun areItemsTheSame(old: T, new: T): Boolean

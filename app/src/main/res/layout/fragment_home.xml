@@ -87,7 +87,9 @@
                     layout="@layout/layout_home_heartbeat"
                     app:viewModel="@{viewModel}"/>
 
-                <include layout="@layout/layout_home_blood" />
+                <include
+                    android:id="@+id/layoutHomeBlood"
+                    layout="@layout/layout_home_blood" />
 
                 <include
                     android:id="@+id/layoutHomeWeight"

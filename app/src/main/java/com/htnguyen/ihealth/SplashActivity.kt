@@ -16,7 +16,6 @@ import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.main.MainActivity
 import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 
-@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private var loadingDialog: LoadingDialog2? = null
