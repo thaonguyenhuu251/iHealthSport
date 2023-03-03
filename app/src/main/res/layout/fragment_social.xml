@@ -3,28 +3,76 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_background_grey"
-        android:paddingBottom="@dimen/_20sdp"
-        tools:context=".view.social.SocialFragment">
+        tools:context=".view.social.SocialFragment"
+        xmlns:tools="http://schemas.android.com/tools">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/_15sdp">
+            android:background="@color/color_background_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingBottom="@dimen/_20sdp">
 
-            <include layout="@layout/layout_social_search" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/_15sdp">
 
-            <include
-                layout="@layout/layout_search_list"
-                android:visibility="gone" />
+                <include layout="@layout/layout_social_search" />
 
-        </LinearLayout>
+                <include
+                    layout="@layout/layout_search_list"
+                    android:visibility="gone" />
 
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu_colorNormal="@color/silver"
+            app:menu_colorPressed="@color/silver"
+            app:menu_colorRipple="@color/black">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fab_music"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/ic_menu"
+                app:fab_label="Music"
+                app:fab_size="mini"
+                app:fab_colorNormal="#FDA085"
+                app:fab_colorPressed="#F6D365"
+                app:fab_colorRipple="@color/black"
+                />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"
+                app:fab_label="News"
+                app:fab_size="mini"
+                app:fab_colorNormal="#FDA085"
+                app:fab_colorPressed="#F6D365"
+                app:fab_colorRipple="@color/black"
+
+                />
+        </com.github.clans.fab.FloatingActionMenu>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

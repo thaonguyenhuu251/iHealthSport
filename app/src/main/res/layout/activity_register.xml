@@ -223,15 +223,6 @@
                 android:text="@{viewModel.validationMatchPasswordMsg}"
                 android:visibility="@{viewModel.validationMatchPasswordMsg != null ? View.VISIBLE : View.GONE}" />
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/text_small"
-                android:layout_gravity="end"
-                android:layout_margin="30dp"
-                android:text="@string/common_forgot_password"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
             <Button
                 android:id="@+id/tvRegister"
                 style="@style/button_navigation"

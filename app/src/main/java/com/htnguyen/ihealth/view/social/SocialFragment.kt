@@ -1,18 +1,23 @@
 package com.htnguyen.ihealth.view.social
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseFragment
-import com.htnguyen.ihealth.databinding.FragmentProfileBinding
-import com.htnguyen.ihealth.view.profile.ProfileViewModel
+import com.htnguyen.ihealth.databinding.FragmentSocialBinding
 
-class SocialFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
-    override val layout: Int
-        get() = R.layout.fragment_social
+class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
+    override val layout: Int get() = R.layout.fragment_social
+    private val viewModel by viewModels<SocialViewModel>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView()
+    }
+
+    private fun initView() {
+       binding.fab.visibility = View.VISIBLE
+    }
 
 
 }

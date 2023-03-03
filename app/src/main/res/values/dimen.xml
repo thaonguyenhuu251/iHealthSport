@@ -15,4 +15,7 @@
 
     <dimen name="camera_view_width">32dp</dimen>
     <dimen name="camera_view_height">32dp</dimen>
+
+    <dimen name="circle_menu_button_size">56dp</dimen>
+    <dimen name="circle_menu_distance">100dp</dimen>
 </resources>
