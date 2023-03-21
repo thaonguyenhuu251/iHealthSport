@@ -36,6 +36,20 @@
         android:theme="@style/Theme.IHealth"
         tools:targetApi="31">
         <activity
+            android:name=".view.social.CreateChallengeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.social.ChooseChallengeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.home.MeasureOxyBloodActivity"
             android:exported="false">
             <meta-data

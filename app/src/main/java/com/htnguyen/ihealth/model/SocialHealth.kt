@@ -7,6 +7,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class SocialHealth(
     var idSocial: Long?,
     var typeSocial: Int?,
+    var createBy: String? = null,
     var listMember: String? = "6000",
     var nameSocial: String? = null,
     var firstDate: Long? = null,
@@ -18,6 +19,7 @@ data class SocialHealth(
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "idSocial" to idSocial,
+            "createBy" to createBy,
             "typeSocial" to typeSocial,
             "listMember" to listMember,
             "nameSocial" to nameSocial,

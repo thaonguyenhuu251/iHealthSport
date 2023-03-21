@@ -1,12 +1,11 @@
 package com.htnguyen.ihealth.view.social
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -22,7 +21,16 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
     var recordAdapter =  RecordAdapter()
     private var listSocialHealth = mutableListOf<SocialHealth>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recordAdapter = RecordAdapter()
+        binding.list.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.recyclerview.setHasFixedSize(true)
+        binding.list.recyclerview.isNestedScrollingEnabled = false
+        binding.list.recyclerview.adapter = recordAdapter
         observeRecord()
+
+        binding.fabChallenge.setOnClickListener {
+            startActivity(Intent(requireActivity(), ChooseChallengeActivity::class.java))
+        }
     }
 
     override fun onResume() {
@@ -31,25 +39,22 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
     }
 
     private fun observeRecord() {
-        listSocialHealth.add(SocialHealth(0,1))
-        listSocialHealth.add(SocialHealth(0,1))
-        listSocialHealth.add(SocialHealth(0,1))
-        listSocialHealth.add(SocialHealth(0,1))
-        listSocialHealth.add(SocialHealth(0,1))
-        /*listSocialHealth.add(SocialHealth(0, 1))
-        listSocialHealth.add(SocialHealth(0, 3))
-        listSocialHealth.add(SocialHealth(0, 5))
-        listSocialHealth.add(SocialHealth(0, 2))
-        listSocialHealth.add(SocialHealth(0, 6))
-        listSocialHealth.add(SocialHealth(0, 1))
-        listSocialHealth.add(SocialHealth(0, 0))
-        listSocialHealth.add(SocialHealth(0, 2))
-        listSocialHealth.add(SocialHealth(0, 1))*/
-        recordAdapter = RecordAdapter()
+        listSocialHealth.add(0, SocialHealth(0, 1))
+        listSocialHealth.add(1, SocialHealth(0, 1))
+        listSocialHealth.add(2, SocialHealth(0, 1))
+        listSocialHealth.add(3, SocialHealth(0, 1))
+        listSocialHealth.add(4, SocialHealth(0, 1))
+        listSocialHealth.add(5, SocialHealth(0, 1))
+        listSocialHealth.add(6, SocialHealth(0, 3))
+        listSocialHealth.add(7, SocialHealth(0, 5))
+        listSocialHealth.add(8, SocialHealth(0, 2))
+        listSocialHealth.add(9, SocialHealth(0, 6))
+        listSocialHealth.add(10, SocialHealth(0, 1))
+        listSocialHealth.add(11, SocialHealth(0, 0))
+        listSocialHealth.add(12, SocialHealth(0, 2))
+        listSocialHealth.add(13, SocialHealth(0, 3))
+
         recordAdapter.submitList(listSocialHealth)
-        binding.list.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        binding.list.recyclerview.setHasFixedSize(true)
-        binding.list.recyclerview.adapter = recordAdapter
 
     }
 
@@ -151,10 +156,10 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
     enum class ViewType(val type: Int) {
         TYPE_ONE(0),
         TYPE_TWO(1),
-        TYPE_THREE(3),
-        TYPE_FOUR(4),
-        TYPE_FILE(5),
-        TYPE_SIX(6),
+        TYPE_THREE(2),
+        TYPE_FOUR(3),
+        TYPE_FILE(4),
+        TYPE_SIX(5),
     }
 
 

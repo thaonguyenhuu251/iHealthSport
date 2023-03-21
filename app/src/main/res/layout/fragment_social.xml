@@ -16,16 +16,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:padding="@dimen/_10sdp">
+            app:layout_constraintStart_toStartOf="parent">
 
             <include layout="@layout/layout_social_search" />
 
             <include
                 android:id="@+id/list"
+                android:layout_margin="@dimen/_10sdp"
                 layout="@layout/layout_search_list"
-                android:visibility="visible"
-                android:paddingBottom="@dimen/_20sdp"/>
+                android:paddingBottom="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -45,21 +46,21 @@
             <com.github.clans.fab.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fab_music"
+                android:id="@+id/fabChallenge"
                 android:layout_gravity="bottom|end"
                 android:src="@drawable/ic_menu"
-                app:fab_label="Music"
+                app:fab_label="Challenge"
                 app:fab_size="mini"
                 app:fab_colorNormal="#FDA085"
                 app:fab_colorPressed="#F6D365"
                 app:fab_colorRipple="@color/black"
                 />
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab_news"
+                android:id="@+id/fabPosts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_menu"
-                app:fab_label="News"
+                app:fab_label="Posts"
                 app:fab_size="mini"
                 app:fab_colorNormal="#FDA085"
                 app:fab_colorPressed="#F6D365"
