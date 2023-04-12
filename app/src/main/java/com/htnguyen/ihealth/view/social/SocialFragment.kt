@@ -30,6 +30,12 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
 
         binding.fabChallenge.setOnClickListener {
             startActivity(Intent(requireActivity(), ChooseChallengeActivity::class.java))
+            binding.fab.close(true)
+        }
+
+        binding.fabPosts.setOnClickListener {
+            startActivity(Intent(requireActivity(), CreatePostActivity::class.java))
+            binding.fab.close(true)
         }
     }
 

@@ -6,6 +6,7 @@ import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityChooseChallengeBinding
+import com.htnguyen.ihealth.util.Constant
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChooseChallengeActivity : BaseActivity<ActivityChooseChallengeBinding, ChooseChallengeViewModel>() {
@@ -22,8 +23,26 @@ class ChooseChallengeActivity : BaseActivity<ActivityChooseChallengeBinding, Cho
         }
 
         binding.txtFirstPerson.setOnClickListener {
-            startActivity(Intent(this, CreateChallengeActivity::class.java))
+            moveCreateChallenge(Constant.CHALLENGE_FIRST_PERSON)
         }
+
+        binding.txtFirstTeam.setOnClickListener {
+            moveCreateChallenge(Constant.CHALLENGE_FIRST_TEAM)
+        }
+
+        binding.txtGoPerson.setOnClickListener {
+            moveCreateChallenge(Constant.CHALLENGE_FARTHEST_PERSON)
+        }
+
+        binding.txtGoTeam.setOnClickListener {
+            moveCreateChallenge(Constant.CHALLENGE_FARTHEST_TEAM)
+        }
+    }
+
+    private fun moveCreateChallenge(putExtra: String) {
+        val intent = Intent(this, CreateChallengeActivity::class.java)
+        intent.putExtra(Constant.CHALLENGE_POST, putExtra)
+        startActivity(intent)
     }
 
 }

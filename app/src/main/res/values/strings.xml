@@ -121,5 +121,7 @@
     <string name="common_body_weight">Body Weight</string>
     <string name="common_data">Data</string>
 
+    <string name="post">POST</string>
+
 
 </resources>

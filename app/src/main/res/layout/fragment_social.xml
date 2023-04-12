@@ -22,9 +22,8 @@
 
             <include
                 android:id="@+id/list"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 layout="@layout/layout_search_list"
-                android:paddingBottom="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -35,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
