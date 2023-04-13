@@ -28,7 +28,8 @@ class GeneralHelper {
             var notiBuilder: Notification.Builder = Notification.Builder(context)
             var notiManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val intent = Intent(context, MainActivity::class.java)
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
             var notification = NotificationCompat.Builder(context, "CHANNEL_ID")
                 .setContentTitle("Step Counter")
                 .setContentText(step.toString())
