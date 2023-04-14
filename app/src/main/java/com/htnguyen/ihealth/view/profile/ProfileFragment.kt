@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.TutorialActivity
+import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentProfileBinding
 import com.htnguyen.ihealth.support.SimpleDateFormat
@@ -72,6 +73,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }
 
         binding.imgCamera.setOnClickListener {
+            (activity as BaseActivity<*, *>).goToGallery()
             startForResult.launch(Intent(requireActivity(), PickImageActivity::class.java))
         }
 

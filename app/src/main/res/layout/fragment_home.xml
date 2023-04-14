@@ -81,6 +81,11 @@
 
                 <include layout="@layout/layout_home_exercise" />
 
+                <include
+                    android:id="@+id/layoutChart"
+                    layout="@layout/layout_home_chart"
+                    app:viewModel="@{viewModel}" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

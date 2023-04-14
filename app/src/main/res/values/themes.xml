@@ -10,7 +10,9 @@
         <item name="colorSecondaryVariant">@color/color_blue_general</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#CB19191B</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#EFEFEF</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -76,7 +78,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingBottom">@dimen/dimen_normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">@dimen/dimen_small_super</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
         <item name="android:drawablePadding">@dimen/dimen_normal</item>
         <item name="android:background">@drawable/bg_white_four_corner_normal</item>
     </style>

@@ -1,6 +1,7 @@
 package com.htnguyen.ihealth.view.main
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -44,10 +45,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
-        R.drawable.ic_main_social,
-        R.drawable.ic_main_chat,
-        R.drawable.ic_main_search,
-        R.drawable.ic_main_profile
+        R.drawable.ic_home_group,
+        R.drawable.ic_home_chat,
+        R.drawable.ic_home_search,
+        R.drawable.ic_home_profile
     )
 
     private val stringResId = intArrayOf(
@@ -63,6 +64,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !PreferencesUtil.isNotification) {
+            checkNotification()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            checkNotification()
+            dispatchTakePictureIntent()
+            checkRecognition()
+            checkPermissionCamera()
+        }
+
+
         loadingDialog = LoadingDialog2(this)
         setViewPager()
         setTabLayout()

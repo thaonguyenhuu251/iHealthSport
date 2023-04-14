@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.adapter.NewsAdapter
+import com.htnguyen.ihealth.adapter.TextItemAdapter
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
 import com.htnguyen.ihealth.helper.PrefsHelper
@@ -29,9 +30,9 @@ import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.support.dateInMillis
 import com.htnguyen.ihealth.support.gps.GpsMap
-import com.htnguyen.ihealth.util.CommonUtils
-import com.htnguyen.ihealth.util.FirebaseUtils
-import com.htnguyen.ihealth.util.PreferencesUtil
+import com.htnguyen.ihealth.util.*
+import com.htnguyen.ihealth.util.Database
+import com.htnguyen.ihealth.util.Util
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -46,8 +47,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     private var sensorManager: SensorManager? = null
     var modelClassArrayList = ArrayList<ModelClass>()
     var currentPage = 0
-    val DELAY_MS: Long = 300
-    val PERIOD_MS: Long = 2000
+    val DELAY_MS: Long = 3000
+    val PERIOD_MS: Long = 10000
+
+    private var mSelectedWeek: Int = 0
+    private var mCurrentSteps: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,13 +64,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         getEatAndDrink()
         getHealthDaily()
 
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
-
+        modelClassArrayList.add(ModelClass("", "", "","", "https://cdn.brvn.vn/topics/1280px/2021/318721_318721cover_1625227070.jpg", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "https://storage.googleapis.com/leep_app_website/2021/01/Tap-the-duc-theo-nhom1.png", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "https://suckhoedoisong.qltns.mediacdn.vn/Images/duylinh/2016/09/08/1_.jpg", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "https://file1.hutech.edu.vn/file/editor/homepage1/779253-nganh-quan-ly-the-duc-the-thao-hutech3.jpg", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "https://www.cleanipedia.com/images/5iwkm8ckyw6v/9d6d615751ed57a974c1956b1a3aa90d/ccf894cfa45de82f073ae97161933470/aHR0cHNfX193d3cuY2xlYW5pcGVkaWEuY29tX2NvbnRlbnRfZGFtX3VuaWxldmVyX2xpcHRvbl9pbnRlcm5hdGlvbmFsX3NhdWRpX2FyYWJpYV9vbmxpbmVfY29tbXNfXzFfbGlwdG9uXy1fd2VsbGJlaW5nXy1fYmFubi5qcGc/990w-660h/5-sai-lầm-trong-việc-giữ-vệ-sinh-sau-khi-tập-luyện-mà-bạn-hay-mắc-phải.jpg", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "https://acc.vn/wp-content/uploads/2023/01/bai-tap-the-duc-cho-phu-nu-sau-sinh.png", "", ""))
+        setDataForWeek(Util.calendar)
         setPageView()
         optionDailyActivities()
         optionStep()
@@ -89,9 +93,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }
             viewPager.setCurrentItem(currentPage++, true)
         }
-        val timer = Timer() // This will create a new Thread
+        val timer = Timer()
         timer.schedule(object : TimerTask() {
-            // task to be scheduled
             override fun run() {
                 handler.post(Update)
             }
@@ -286,6 +289,41 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         }
     }
 
+    private fun setDataForWeek(selected: Calendar) {
+        mSelectedWeek = selected.get(Calendar.WEEK_OF_YEAR)
+
+        val min = Calendar.getInstance()
+        min.timeInMillis = selected.timeInMillis
+
+        // Jump to the first day of the week
+        min.set(Calendar.DAY_OF_WEEK, Calendar.getInstance().firstDayOfWeek)
+
+        val max = Calendar.getInstance()
+        max.timeInMillis = min.timeInMillis
+
+        // Jump to the last day of the week
+        max.add(Calendar.DAY_OF_YEAR, 6)
+
+        binding.layoutChart.chart.clearDiagram()
+
+        // Get the records of the selected week between the min and max timestamps
+        val entries = Database.getInstance(requireContext()).getEntries(min.timeInMillis, max.timeInMillis)
+
+        for (entry in entries) {
+            binding.layoutChart.chart.setDiagramEntry(entry)
+
+            val cal = Calendar.getInstance()
+            cal.timeInMillis = entry.timestamp
+
+            // Update the description text with the selected date
+        }
+
+        // If selected week is the current week, update the diagram with today's steps
+        if (mSelectedWeek == Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)) {
+            binding.layoutChart.chart.setCurrentSteps(mCurrentSteps)
+        }
+        binding.layoutChart.chart.update()
+    }
 
     override fun onSensorChanged(event: SensorEvent?) {
         val totalStepSinceReboot: Int = event?.values?.get(0)?.roundToInt() ?: 0

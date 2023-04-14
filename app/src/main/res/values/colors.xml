@@ -13,9 +13,9 @@
     <color name="circle_menu_button_icon_color">#ffffff</color>
 
     <color name="color_blue_general">#57BF9C</color>
-    <color name="color_white_background">#FFFFFF</color>
-    <color name="background_grey">#DCE1DF</color>
-    <color name="color_background_grey">#F5F6F6</color>
+    <color name="color_white_background">#EFEFEF</color>
+    <color name="background_grey">#EFEFEF</color>
+    <color name="color_background_grey">#EFEFEF</color>
     <color name="color_black">#011813</color>
     <color name="color_grey">#999999</color>
     <color name="color_green">#09BF91</color>

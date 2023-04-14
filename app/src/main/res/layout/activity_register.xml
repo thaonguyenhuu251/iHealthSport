@@ -92,7 +92,7 @@
                 android:imeOptions="actionNone"
                 android:lines="1"
                 android:maxLines="1"
-                android:text="@={viewModel.email}"/>
+                android:text="@={viewModel.email}" />
 
             <LinearLayout
                 android:id="@+id/lnPhoneNumber"
@@ -128,7 +128,7 @@
                     android:lines="1"
                     android:maxLength="9"
                     android:maxLines="1"
-                    android:text="@={viewModel.phone}"/>
+                    android:text="@={viewModel.phone}" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView

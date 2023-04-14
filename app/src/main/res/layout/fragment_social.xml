@@ -25,7 +25,7 @@
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 layout="@layout/layout_search_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -34,12 +34,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu_colorNormal="@color/silver"
-            app:menu_colorPressed="@color/silver"
+            app:menu_colorNormal="@color/color_tomato"
+            app:menu_colorPressed="@color/color_tomato"
             app:menu_colorRipple="@color/black">
 
             <com.github.clans.fab.FloatingActionButton
@@ -50,8 +50,8 @@
                 android:src="@drawable/ic_menu"
                 app:fab_label="Challenge"
                 app:fab_size="mini"
-                app:fab_colorNormal="#FDA085"
-                app:fab_colorPressed="#F6D365"
+                app:fab_colorNormal="@color/color_light_salmon"
+                app:fab_colorPressed="@color/color_light_salmon"
                 app:fab_colorRipple="@color/black"
                 />
             <com.github.clans.fab.FloatingActionButton
@@ -61,8 +61,8 @@
                 android:src="@drawable/ic_menu"
                 app:fab_label="Posts"
                 app:fab_size="mini"
-                app:fab_colorNormal="#FDA085"
-                app:fab_colorPressed="#F6D365"
+                app:fab_colorNormal="@color/color_orange"
+                app:fab_colorPressed="@color/color_orange"
                 app:fab_colorRipple="@color/black"
 
                 />

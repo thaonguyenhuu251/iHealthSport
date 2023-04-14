@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
 import com.htnguyen.ihealth.R;
 import com.htnguyen.ihealth.model.ModelClass;
 
@@ -30,8 +33,8 @@ public class NewsAdapter extends PagerAdapter {
 
         LayoutInflater inflater = ((FragmentActivity) context).getLayoutInflater();
         View itemView = inflater.inflate(R.layout.layout_item_news, container, false);
-
-        //Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).into(imageView);
+        ImageView imageView = itemView.findViewById(R.id.imageview);
+        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).into(imageView);
         ((ViewPager) container).addView(itemView);
 
         itemView.setOnClickListener(view -> {

@@ -24,7 +24,7 @@
             style="@style/text_wrap_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
+            android:text="19.294 \n Steps"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
         <View
@@ -50,7 +50,7 @@
             style="@style/text_wrap_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Time"
+            android:text="18.000 \n Hours"
             app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>
