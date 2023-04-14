@@ -38,6 +38,12 @@ object Constant {
 
     const val USER_BIRTHDAY = "user_birthday"
 
+    const val CHALLENGE_POST = "challenge_post"
+    const val CHALLENGE_FIRST_PERSON = "challenge_first_person"
+    const val CHALLENGE_FIRST_TEAM = "challenge_first_team"
+    const val CHALLENGE_FARTHEST_PERSON = "challenge_farthest_person"
+    const val CHALLENGE_FARTHEST_TEAM = "challenge_farthest_team"
+
     const val TYPE_PROFILE = "type_profile"
     const val KEY_PATH_IMAGE = "key_path_image"
 

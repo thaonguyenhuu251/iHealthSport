@@ -7,21 +7,24 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.view.View
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.viewModels
+import androidx.viewpager.widget.ViewPager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.adapter.NewsAdapter
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
 import com.htnguyen.ihealth.helper.PrefsHelper
 import com.htnguyen.ihealth.model.EatAndDrink
 import com.htnguyen.ihealth.model.HealthDaily
+import com.htnguyen.ihealth.model.ModelClass
 import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.support.dateInMillis
@@ -29,6 +32,7 @@ import com.htnguyen.ihealth.support.gps.GpsMap
 import com.htnguyen.ihealth.util.CommonUtils
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
+import java.util.*
 import kotlin.math.roundToInt
 
 
@@ -40,6 +44,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     private val viewModel by viewModels<HomeViewModel>()
 
     private var sensorManager: SensorManager? = null
+    var modelClassArrayList = ArrayList<ModelClass>()
+    var currentPage = 0
+    val DELAY_MS: Long = 300
+    val PERIOD_MS: Long = 2000
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,6 +60,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         getEatAndDrink()
         getHealthDaily()
 
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+        modelClassArrayList.add(ModelClass("", "", "","", "", "", ""))
+
+        setPageView()
         optionDailyActivities()
         optionStep()
         optionHeartBeat()
@@ -60,6 +76,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         optionWeight()
         optionOxyInBlood()
 
+    }
+
+    private fun setPageView() {
+        val viewPager: ViewPager = binding.layoutHomeDailyPlan.viewPagerMain
+        val adapter = NewsAdapter(context, modelClassArrayList)
+        viewPager.adapter = adapter
+        val handler = Handler()
+        val Update = Runnable {
+            if (currentPage == modelClassArrayList.size - 1) {
+                currentPage = 0
+            }
+            viewPager.setCurrentItem(currentPage++, true)
+        }
+        val timer = Timer() // This will create a new Thread
+        timer.schedule(object : TimerTask() {
+            // task to be scheduled
+            override fun run() {
+                handler.post(Update)
+            }
+        }, DELAY_MS, PERIOD_MS)
     }
 
     private fun optionWeight() {

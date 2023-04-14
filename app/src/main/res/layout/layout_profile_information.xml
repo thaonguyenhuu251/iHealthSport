@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="@dimen/_1sdp"
         android:background="@drawable/bg_white_four_corner_normal"
         android:orientation="vertical">
 
