@@ -47,25 +47,23 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/fabChallenge"
                 android:layout_gravity="bottom|end"
-                android:src="@drawable/ic_menu"
+                android:src="@drawable/ic_social_challenge"
                 app:fab_label="Challenge"
                 app:fab_size="mini"
-                app:fab_colorNormal="@color/color_light_salmon"
-                app:fab_colorPressed="@color/color_light_salmon"
-                app:fab_colorRipple="@color/black"
-                />
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                app:fab_colorRipple="@color/black" />
+
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fabPosts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu"
+                android:src="@drawable/ic_social_post"
                 app:fab_label="Posts"
                 app:fab_size="mini"
-                app:fab_colorNormal="@color/color_orange"
-                app:fab_colorPressed="@color/color_orange"
-                app:fab_colorRipple="@color/black"
-
-                />
+                app:fab_colorNormal="#FFCD54"
+                app:fab_colorPressed="#FFCD54"
+                app:fab_colorRipple="@color/black" />
         </com.github.clans.fab.FloatingActionMenu>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

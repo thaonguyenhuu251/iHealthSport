@@ -15,7 +15,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/app_name" />
+            android:background="@color/red"
+            app:navigationIcon="@drawable/ic_general_back"
+            app:title="HeartBeat" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,7 +32,7 @@
         <TextureView
             android:id="@+id/graphTextureView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_120sdp"
+            android:layout_height="@dimen/_50sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,58 +45,81 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/graphTextureView" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textureView2"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/animate_heart" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/heartbeat" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_60sdp"
             android:gravity="center_vertical"
             android:textAlignment="gravity"
-            android:ellipsize="marquee"
-            android:textSize="24sp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/graphTextureView"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/scrollview_direction"
-            app:layout_constraintStart_toEndOf="@+id/textureView2" />
+            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollview_direction"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/camera_view_height"
-            android:layout_marginEnd="@dimen/camera_view_height"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:fillViewport="true"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView"
-            android:fillViewport="true">
+            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintStart_toStartOf="parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:focusable="false"
                     android:importantForAutofill="no"
-                    android:inputType="none"/>
+                    android:inputType="none" />
             </LinearLayout>
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
-            android:layout_width="56dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
             android:contentDescription="@string/new_measurement"
             android:focusable="true"
             android:onClick="onClickNewMeasurement"
-            app:backgroundTint="@color/ic_launcher_background"
+            android:src="@drawable/fab_add"
+            app:backgroundTint="@color/color_red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

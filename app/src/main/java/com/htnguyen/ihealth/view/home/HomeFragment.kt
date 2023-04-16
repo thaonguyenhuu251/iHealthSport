@@ -33,6 +33,8 @@ import com.htnguyen.ihealth.support.gps.GpsMap
 import com.htnguyen.ihealth.util.*
 import com.htnguyen.ihealth.util.Database
 import com.htnguyen.ihealth.util.Util
+import com.htnguyen.ihealth.view.dialog.FollowerStepDialog
+import com.htnguyen.ihealth.view.dialog.FollowerWaterDialog
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -60,6 +62,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             .format(viewModel.today.value)
             .toString()
 
+        binding.imgNotification.setOnClickListener {
+            Event.eventOpenNotification()
+        }
+
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         getEatAndDrink()
         getHealthDaily()
@@ -79,6 +85,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         optionFellingToday()
         optionWeight()
         optionOxyInBlood()
+        optionSettingStep()
+        optionSettingWater()
 
     }
 
@@ -103,6 +111,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     private fun optionWeight() {
         binding.layoutHomeWeight.textView4.text = Html.fromHtml("<big><b>" + viewModel.progressWeight.value + "</b></big> kG", Html.FROM_HTML_MODE_COMPACT)
+    }
+
+    private fun optionSettingStep() {
+        binding.layoutStep.root.setOnClickListener {
+            FollowerStepDialog().show(requireActivity(), "BKAV")
+        }
+    }
+
+    private fun optionSettingWater() {
+        binding.layoutHomeWater.root.setOnClickListener {
+            FollowerWaterDialog().show(requireActivity(), "BKAV")
+        }
     }
 
     private fun optionEatAndDrink() {

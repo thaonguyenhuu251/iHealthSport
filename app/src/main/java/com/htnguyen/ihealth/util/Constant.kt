@@ -45,6 +45,7 @@ object Constant {
     const val CHALLENGE_FARTHEST_TEAM = "challenge_farthest_team"
 
     const val TYPE_PROFILE = "type_profile"
+    const val TYPE_CALENDAR = "type_calendar"
     const val KEY_PATH_IMAGE = "key_path_image"
 
     const val DATE_FORMAT = "yyyy_MM_dd"

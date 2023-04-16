@@ -12,160 +12,165 @@
             type="com.htnguyen.ihealth.view.social.ChooseChallengeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_10sdp"
-        android:background="@color/color_background_grey"
-        tools:context=".view.social.ChooseChallengeActivity">
-
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/ic_general_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView5"
-            style="@style/text_normal"
-            android:layout_gravity="center"
-            android:text="Choose Challenge"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgBack" />
-
-        <TextView
-            android:id="@+id/textView6"
-            style="@style/text_wrap_normal"
-            android:text="Compete 1 or more people in individual challenge or create a group challenge"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_15sdp"
-            android:background="@drawable/bg_white_four_corner_normal"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/_20sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6">
-
-            <TextView
-                android:id="@+id/txtFinishFirstTitle"
-                style="@style/text_normal"
-                android:layout_gravity="center"
-                android:text="finish first"
-                android:textSize="@dimen/_20ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txtFinishFirstContent"
-                style="@style/text_wrap_normal"
-                android:text="set a goal step count. Whoever reaches the goal first wins"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtFinishFirstTitle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtFinishFirstContent">
-
-                <TextView
-                    android:id="@+id/txtFirstPerson"
-                    style="@style/text_wrap_normal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Person"
-                    android:padding="@dimen/_10sdp"
-                    app:drawableTopCompat="@drawable/ic_challenge_person" />
-
-                <TextView
-                    android:id="@+id/txtFirstTeam"
-                    style="@style/text_wrap_normal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Team"
-                    android:padding="@dimen/_10sdp"
-                    app:drawableTopCompat="@drawable/ic_challenge_team" />
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/color_background_grey">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_15sdp"
-            android:background="@drawable/bg_white_four_corner_normal"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/_20sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+            android:background="@color/color_background_grey"
+            android:padding="@dimen/_10sdp"
+            tools:context=".view.social.ChooseChallengeActivity">
 
-            <TextView
-                android:id="@+id/txtGoFarthestTitle"
-                style="@style/text_normal"
-                android:layout_gravity="center"
-                android:text="go farthest"
-                android:textSize="@dimen/_20ssp"
-                app:layout_constraintEnd_toEndOf="parent"
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_general_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtGoFarthestContent"
+                android:id="@+id/textView5"
+                style="@style/text_normal"
+                android:layout_gravity="center"
+                android:text="Choose Challenge"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+            <TextView
+                android:id="@+id/textView6"
                 style="@style/text_wrap_normal"
-                android:text="See who can get the most steps during the challenge"
+                android:text="Compete 1 or more people in individual challenge or create a group challenge"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtGoFarthestTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:background="@drawable/bg_white_four_corner_normal"
+                android:gravity="center"
                 android:orientation="horizontal"
+                android:padding="@dimen/_20sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtGoFarthestContent">
+                app:layout_constraintTop_toBottomOf="@+id/textView6">
 
                 <TextView
-                    android:id="@+id/txtGoPerson"
-                    style="@style/text_wrap_normal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Person"
-                    android:padding="@dimen/_10sdp"
-                    app:drawableTopCompat="@drawable/ic_challenge_person" />
+                    android:id="@+id/txtFinishFirstTitle"
+                    style="@style/text_normal"
+                    android:layout_gravity="center"
+                    android:text="finish first"
+                    android:textSize="@dimen/_20ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtGoTeam"
+                    android:id="@+id/txtFinishFirstContent"
                     style="@style/text_wrap_normal"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Team"
-                    android:padding="@dimen/_10sdp"
-                    app:drawableTopCompat="@drawable/ic_challenge_team" />
-            </LinearLayout>
+                    android:text="set a goal step count. Whoever reaches the goal first wins"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFinishFirstTitle" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFinishFirstContent">
+
+                    <TextView
+                        android:id="@+id/txtFirstPerson"
+                        style="@style/text_wrap_normal"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Person"
+                        app:drawableTopCompat="@drawable/ic_challenge_person" />
+
+                    <TextView
+                        android:id="@+id/txtFirstTeam"
+                        style="@style/text_wrap_normal"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Team"
+                        app:drawableTopCompat="@drawable/ic_challenge_team" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_15sdp"
+                android:background="@drawable/bg_white_four_corner_normal"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                <TextView
+                    android:id="@+id/txtGoFarthestTitle"
+                    style="@style/text_normal"
+                    android:layout_gravity="center"
+                    android:text="go farthest"
+                    android:textSize="@dimen/_20ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtGoFarthestContent"
+                    style="@style/text_wrap_normal"
+                    android:text="See who can get the most steps during the challenge"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtGoFarthestTitle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtGoFarthestContent">
+
+                    <TextView
+                        android:id="@+id/txtGoPerson"
+                        style="@style/text_wrap_normal"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Person"
+                        app:drawableTopCompat="@drawable/ic_challenge_person" />
+
+                    <TextView
+                        android:id="@+id/txtGoTeam"
+                        style="@style/text_wrap_normal"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Team"
+                        app:drawableTopCompat="@drawable/ic_challenge_team" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

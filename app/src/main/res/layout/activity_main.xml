@@ -83,7 +83,7 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true">
 
-            <include layout="@layout/layout_setting" />
+            <include layout="@layout/layout_notification" />
 
         </com.google.android.material.navigation.NavigationView>
 

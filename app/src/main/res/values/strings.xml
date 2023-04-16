@@ -122,6 +122,12 @@
     <string name="common_data">Data</string>
 
     <string name="post">POST</string>
+    <string name="social_challenge_person">Challenge Person</string>
+    <string name="social_challenge_team">Challenge Team</string>
+    <string name="social_create_challenge">Create Challenge</string>
+    <string name="social_go_farthest">go farthest</string>
+    <string name="social_see_who_cmost_steps">See who can get the most steps during the challenge</string>
+    <string name="social_title_challenge">Title challenge</string>
 
 
 </resources>

@@ -17,6 +17,15 @@
         android:layout_height="match_parent"
         tools:context=".view.social.CreatePostActivity">
 
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_general_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/postInput"
             android:layout_width="0dp"
@@ -28,7 +37,7 @@
             android:padding="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imgBack" />
 
         <Button
             android:id="@+id/postButton"

@@ -27,6 +27,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imgSetting"
+            style="@style/image_wrap_normal"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_15sdp"
+            android:src="@drawable/ic_profile_setting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ScrollView
             android:layout_width="match_parent"

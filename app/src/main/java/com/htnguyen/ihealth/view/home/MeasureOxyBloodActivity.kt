@@ -51,6 +51,10 @@ class MeasureOxyBloodActivity : AppCompatActivity() {
 
         val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "NOTDIMSCREEN")
+
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

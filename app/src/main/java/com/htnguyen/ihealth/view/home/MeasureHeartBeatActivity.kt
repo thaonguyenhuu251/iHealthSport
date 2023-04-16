@@ -21,6 +21,7 @@ import android.text.Html
 import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.Toolbar
+import com.htnguyen.ihealth.databinding.ActivityMeasureHeartBeatBinding
 import com.htnguyen.ihealth.model.EatAndDrink
 import com.htnguyen.ihealth.model.HealthDaily
 import com.htnguyen.ihealth.support.Calendar
@@ -31,6 +32,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MeasureHeartBeatActivity : AppCompatActivity(), OnRequestPermissionsResultCallback {
+    lateinit var binding: ActivityMeasureHeartBeatBinding
     private var analyzer: OutputAnalyzer? = null
     private val REQUEST_CODE_CAMERA = 0
 
@@ -101,11 +103,17 @@ class MeasureHeartBeatActivity : AppCompatActivity(), OnRequestPermissionsResult
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_measure_heart_beat)
+        binding = ActivityMeasureHeartBeatBinding.inflate(layoutInflater,)
+        setContentView(binding.root)
         ActivityCompat.requestPermissions(
             this, arrayOf(Manifest.permission.CAMERA),
             REQUEST_CODE_CAMERA
         )
+
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
     }
 
     override fun onRequestPermissionsResult(

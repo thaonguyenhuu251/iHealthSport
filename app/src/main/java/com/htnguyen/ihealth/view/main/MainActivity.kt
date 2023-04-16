@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -21,16 +22,20 @@ import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.service.StepDetectorService
+import com.htnguyen.ihealth.util.Event
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.FirebaseUtils.db
 import com.htnguyen.ihealth.util.PreferencesUtil
+import com.htnguyen.ihealth.view.IHealthApplication
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.component.LoadingDialog2
+import com.htnguyen.ihealth.view.dialog.CalendarDialog
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
+import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -38,6 +43,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val layout: Int get() = R.layout.activity_main
     override val viewModel: MainViewModel by viewModel()
+    private var disposable: Disposable? = null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -85,6 +91,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         val intent = Intent(this, StepDetectorService::class.java)
         startService(intent)
+
+        binding.drawerMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+        disposable = IHealthApplication.eventBus.subscribe {
+            it[Event.EVENT_OPEN_NOTIFICATION]?.let {
+                binding.drawerMain.openDrawer(GravityCompat.START)
+            }
+
+            it[Event.EVENT_OPEN_SETTING]?.let {
+                binding.drawerMain.openDrawer(GravityCompat.END)
+            }
+
+        }
+
+
     }
 
     private fun setTabLayout() {
@@ -100,16 +121,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.position.let { binding.viewPagerMain.setCurrentItem(it, false) }
-
-                if (tab.position == 4) {
-                    binding.imgSetting.visibility = View.VISIBLE
-
-                    binding.imgSetting.setOnClickListener {
-                        binding.drawerMain.openDrawer(GravityCompat.END)
-                    }
-                } else {
-                    binding.imgSetting.visibility = View.GONE
-                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}

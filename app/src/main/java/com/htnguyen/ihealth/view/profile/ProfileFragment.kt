@@ -21,6 +21,7 @@ import com.htnguyen.ihealth.databinding.FragmentProfileBinding
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.Constant.getRealPathFromUri
+import com.htnguyen.ihealth.util.Event
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog2
@@ -75,6 +76,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         binding.imgCamera.setOnClickListener {
             (activity as BaseActivity<*, *>).goToGallery()
             startForResult.launch(Intent(requireActivity(), PickImageActivity::class.java))
+        }
+
+        binding.imgSetting.setOnClickListener {
+            Event.eventOpenSetting()
         }
 
         binding.viewModel = viewModel

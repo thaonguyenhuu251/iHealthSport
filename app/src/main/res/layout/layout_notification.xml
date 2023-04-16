@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                style="@style/text_heading_normal"
+                android:layout_width="match_parent"
+                android:gravity="start"
+                android:textSize="@dimen/text_normal_plus"
+                android:text="Notifications" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
