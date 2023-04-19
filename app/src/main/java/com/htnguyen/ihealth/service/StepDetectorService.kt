@@ -11,7 +11,10 @@ import android.os.IBinder
 import android.widget.Toast
 import com.htnguyen.ihealth.helper.GeneralHelper
 import com.htnguyen.ihealth.helper.PrefsHelper
+import com.htnguyen.ihealth.support.Calendar
+import com.htnguyen.ihealth.support.dateInMillis
 import com.htnguyen.ihealth.util.CommonUtils
+import com.htnguyen.ihealth.util.Database
 import kotlin.math.roundToInt
 
 class StepDetectorService : Service(), SensorEventListener {
@@ -48,6 +51,7 @@ class StepDetectorService : Service(), SensorEventListener {
                 PrefsHelper.putInt("FSteps", finalSteps)
                 CommonUtils.updateActivityDaily(finalSteps)
                 GeneralHelper.updateNotification(this, this, finalSteps)
+                Database.getInstance(this).addEntry(Calendar().dateInMillis, finalSteps)
             }
         }
 

@@ -19,10 +19,16 @@ object CommonUtils {
 
     fun getDistanceCovered(steps: Int): String {
         val feet = (steps * 2.5).toInt()
-        val distance = feet/3.281
+        val distance = (feet/3.281).toInt()
         //val finalDistance: Float = String.format("%.2f", distance).toFloat()
         return "$distance meter"
     }
+    fun getDistanceInt(steps: Int): Int {
+        val feet = (steps * 2.5).toInt()
+        val distance = (feet/3.281).toInt()
+        return distance
+    }
+
 
     fun updateActivityDaily(steps: Int) {
         val activityDaily = ActivityDaily(

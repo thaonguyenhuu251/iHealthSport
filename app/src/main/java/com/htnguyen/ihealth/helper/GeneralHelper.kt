@@ -19,7 +19,7 @@ class GeneralHelper {
     companion object{
         fun getToadyDate(): String{
             val date: Date = Calendar.getInstance().time
-            val df: DateFormat = SimpleDateFormat("dd MMM yyyy")
+            val df: DateFormat = SimpleDateFormat("dd MM yyyy")
             return df.format(date)
         }
 
@@ -37,11 +37,11 @@ class GeneralHelper {
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setStyle(NotificationCompat.BigTextStyle().bigText("Step Counter"))
-                .setStyle(NotificationCompat.BigTextStyle().bigText(step.toString() + "Steps / " + getCalories(step) + getDistanceCovered(step)))
+                .setStyle(NotificationCompat.BigTextStyle().bigText(step.toString() + " Steps / " + getCalories(step) + getDistanceCovered(step)))
                 .setSmallIcon(R.mipmap.ic_notification)
-                .setColor(R.color.color_blue_general)
+                .setColor(context.getColor(R.color.color_blue_general))
                 .setContentIntent(pendingIntent)
-                .setProgress(500, step, false)
+                .setProgress(6000, step, false)
                 .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .build()

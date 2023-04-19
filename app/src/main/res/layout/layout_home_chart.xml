@@ -24,7 +24,7 @@
         <com.htnguyen.ihealth.view.custom.Chart
             android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="@dimen/_200sdp" />
 
     </LinearLayout>
 

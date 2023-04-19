@@ -10,7 +10,7 @@ import android.util.Log
 import java.util.*
 
 
-internal class Database private constructor(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class Database private constructor(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     private fun query(columns: Array<String>, selection: String? = null, selectionArgs: Array<String>? = null): Number {
         val cursor = readableDatabase.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null)
@@ -75,7 +75,7 @@ internal class Database private constructor(context: Context) : SQLiteOpenHelper
         // no-op
     }
 
-    internal inner class Entry internal constructor(val timestamp: Long, val steps: Int)
+    class Entry constructor(val timestamp: Long, val steps: Int)
 
     companion object {
 

@@ -19,7 +19,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.adapter.NewsAdapter
-import com.htnguyen.ihealth.adapter.TextItemAdapter
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
 import com.htnguyen.ihealth.helper.PrefsHelper
@@ -32,10 +31,12 @@ import com.htnguyen.ihealth.support.dateInMillis
 import com.htnguyen.ihealth.support.gps.GpsMap
 import com.htnguyen.ihealth.util.*
 import com.htnguyen.ihealth.util.Database
+import com.htnguyen.ihealth.util.Database.Entry
 import com.htnguyen.ihealth.util.Util
 import com.htnguyen.ihealth.view.dialog.FollowerStepDialog
 import com.htnguyen.ihealth.view.dialog.FollowerWaterDialog
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -145,9 +146,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         }
 
         binding.layoutDailyActivities.circularProgressBar.apply {
-            progress = 105f
-            setProgressWithAnimation(progress, 1000)
-            progressMax = 200f
+            setProgressWithAnimation(CommonUtils.getCaloriesInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            progressMax = CommonUtils.getCaloriesInt(viewModel.followStep.value ?: 0).toFloat()
         }
 
         binding.layoutDailyActivities.circularProgressBar.onProgressChangeListener = { progress ->
@@ -159,9 +159,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         }
 
         binding.layoutDailyActivities.circularProgressBar2.apply {
-            progress = 65f
-            setProgressWithAnimation(65f, 1000) // =1s
-            progressMax = 200f
+            setProgressWithAnimation(CommonUtils.getDistanceInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            progressMax = CommonUtils.getDistanceInt(viewModel.followStep.value ?: 0).toFloat()
 
         }
 
@@ -311,31 +310,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     private fun setDataForWeek(selected: Calendar) {
         mSelectedWeek = selected.get(Calendar.WEEK_OF_YEAR)
-
         val min = Calendar.getInstance()
         min.timeInMillis = selected.timeInMillis
-
-        // Jump to the first day of the week
         min.set(Calendar.DAY_OF_WEEK, Calendar.getInstance().firstDayOfWeek)
-
         val max = Calendar.getInstance()
         max.timeInMillis = min.timeInMillis
-
-        // Jump to the last day of the week
         max.add(Calendar.DAY_OF_YEAR, 6)
-
         binding.layoutChart.chart.clearDiagram()
 
-        // Get the records of the selected week between the min and max timestamps
-        val entries = Database.getInstance(requireContext()).getEntries(min.timeInMillis, max.timeInMillis)
+        val entries = ArrayList<Entry>()
+        entries.add(0, Entry(1681664400000, 20000))
+        entries.add(0, Entry(1681750800000, 10000))
+        entries.add(0, Entry(1681837200000, 10000))
 
         for (entry in entries) {
             binding.layoutChart.chart.setDiagramEntry(entry)
-
             val cal = Calendar.getInstance()
             cal.timeInMillis = entry.timestamp
 
-            // Update the description text with the selected date
         }
 
         // If selected week is the current week, update the diagram with today's steps
@@ -349,6 +341,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         val totalStepSinceReboot: Int = event?.values?.get(0)?.roundToInt() ?: 0
         viewModel.step.value = totalStepSinceReboot - PrefsHelper.getInt("Steps")
         viewModel.calories.value = CommonUtils.getCaloriesInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
+        viewModel.meter.value = CommonUtils.getDistanceInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
         optionStep()
     }
 

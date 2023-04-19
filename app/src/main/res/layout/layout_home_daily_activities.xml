@@ -53,7 +53,7 @@
                     style="@style/text_normal"
                     android:layout_marginHorizontal="@dimen/dimen_normal"
                     android:paddingVertical="@dimen/_5sdp"
-                    android:text="@{viewModel.calories.toString()}"
+                    android:text="@{viewModel.meter.toString()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
                     app:drawableTopCompat="@drawable/ic_home_active_timer" />
