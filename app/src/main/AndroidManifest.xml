@@ -124,6 +124,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".view.search.Fullscreen"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".support.gps.GpsMap"
             android:exported="false">

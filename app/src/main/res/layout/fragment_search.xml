@@ -20,6 +20,7 @@
             <include layout="@layout/layout_search_first" />
 
             <include
+                android:id="@+id/layoutSearch"
                 layout="@layout/layout_search_list"
                 android:visibility="gone" />
 

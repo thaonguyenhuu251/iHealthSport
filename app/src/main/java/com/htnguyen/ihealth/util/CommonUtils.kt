@@ -1,8 +1,6 @@
 package com.htnguyen.ihealth.util
 
-import android.text.Html
 import com.htnguyen.ihealth.model.ActivityDaily
-import com.htnguyen.ihealth.model.HealthDaily
 import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.dateInMillis
 
@@ -40,7 +38,7 @@ object CommonUtils {
             .setValue(activityDaily)
             .addOnSuccessListener {
 
-            }.addOnFailureListener { e ->
+            }.addOnFailureListener {
 
             }
     }
@@ -54,7 +52,7 @@ object CommonUtils {
             .setValue(ActivityDaily())
             .addOnSuccessListener {
 
-            }.addOnFailureListener { e ->
+            }.addOnFailureListener {
 
             }
     }
@@ -69,7 +67,7 @@ object CommonUtils {
             .setValue(heartBeat)
             .addOnSuccessListener {
 
-            }.addOnFailureListener { e ->
+            }.addOnFailureListener {
 
             }
     }
@@ -84,7 +82,7 @@ object CommonUtils {
             .setValue(fellingToday)
             .addOnSuccessListener {
 
-            }.addOnFailureListener { e ->
+            }.addOnFailureListener {
 
             }
     }

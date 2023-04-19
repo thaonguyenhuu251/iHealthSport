@@ -38,7 +38,6 @@ import com.htnguyen.ihealth.view.social.SocialFragment
 import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val layout: Int get() = R.layout.activity_main
