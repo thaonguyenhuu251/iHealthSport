@@ -15,7 +15,8 @@
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvList"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_120sdp"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

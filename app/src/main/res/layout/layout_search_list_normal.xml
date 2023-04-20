@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginVertical="@dimen/_5sdp"
     android:orientation="vertical">
 
@@ -12,7 +13,10 @@
         android:text="Recent"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvList"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"/>
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_video"
+        android:orientation="vertical"/>
 
 </LinearLayout>
