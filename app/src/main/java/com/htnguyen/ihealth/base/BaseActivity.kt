@@ -78,9 +78,10 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
             .onSuccess {
-
+                requestLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
             }
             .onDenied {
+                checkPermissionCamera()
             }
             .onNeverAskAgain {
             }
@@ -92,9 +93,10 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
             .onSuccess {
-
+                requestLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
             }
             .onDenied {
+                dispatchTakePictureIntent()
             }
             .onNeverAskAgain {
             }
@@ -106,9 +108,10 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
             .onSuccess {
+                requestLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
             }
             .onDenied {
-
+                goToGallery()
             }
             .onNeverAskAgain {
 
@@ -120,9 +123,10 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         permissionHelper.withActivity(this)
             .check(Manifest.permission.ACTIVITY_RECOGNITION)
             .onSuccess {
+                requestLauncher.launch(Manifest.permission.ACTIVITY_RECOGNITION)
             }
             .onDenied {
-
+                checkRecognition()
             }
             .onNeverAskAgain {
 

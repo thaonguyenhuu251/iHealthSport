@@ -37,6 +37,43 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         binding.layoutRecent.txtTitle.setText(R.string.search_recent)
         binding.layoutRecent.rcvList.setHasFixedSize(true)
         binding.layoutRecent.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        var optionsRecent : FirebaseRecyclerOptions<VideoModel> =
+            FirebaseRecyclerOptions.Builder<VideoModel>()
+                .setQuery(FirebaseUtils.video.child("video").child("recent"), VideoModel::class.java)
+                .build()
+
+        val adapterRecent = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(optionsRecent){
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+
+                return VideoViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_video, parent, false)
+                )
+            }
+
+            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
+                holder.setOnClicklistener(object : Clicklistener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val name = getItem(position).name
+                        val url = getItem(position).videourl
+                        val intent = Intent(requireActivity(), Fullscreen::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("url", url)
+                        startActivity(intent)
+                    }
+
+                    override fun onItemLongClick(view: View?, position: Int) {
+
+                    }
+                })
+            }
+        }
+
+        adapterRecent.startListening()
+        binding.layoutRecent.rcvList.adapter = adapterRecent
     }
 
     private fun listNew() {
@@ -55,24 +92,169 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
         binding.layoutActivities.txtTitle.setText(R.string.search_activity)
         binding.layoutActivities.rcvList.setHasFixedSize(true)
         binding.layoutActivities.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        var options : FirebaseRecyclerOptions<VideoModel> =
+            FirebaseRecyclerOptions.Builder<VideoModel>()
+                .setQuery(FirebaseUtils.video.child("video").child("activity"), VideoModel::class.java)
+                .build()
+
+        val adapter = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(options){
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+
+                return VideoViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_video, parent, false)
+                )
+            }
+
+            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
+                holder.setOnClicklistener(object : Clicklistener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val name = getItem(position).name
+                        val url = getItem(position).videourl
+                        val intent = Intent(requireActivity(), Fullscreen::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("url", url)
+                        startActivity(intent)
+                    }
+
+                    override fun onItemLongClick(view: View?, position: Int) {
+
+                    }
+                })
+            }
+        }
+
+        adapter.startListening()
+        binding.layoutActivities.rcvList.adapter = adapter
+
     }
 
     private fun listShred() {
         binding.layoutShredChallenges.txtTitle.setText(R.string.search_shred)
         binding.layoutShredChallenges.rcvList.setHasFixedSize(true)
         binding.layoutShredChallenges.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        var options : FirebaseRecyclerOptions<VideoModel> =
+            FirebaseRecyclerOptions.Builder<VideoModel>()
+                .setQuery(FirebaseUtils.video.child("video").child("shred"), VideoModel::class.java)
+                .build()
+
+        val adapter = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(options){
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+
+                return VideoViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_video, parent, false)
+                )
+            }
+
+            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
+                holder.setOnClicklistener(object : Clicklistener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val name = getItem(position).name
+                        val url = getItem(position).videourl
+                        val intent = Intent(requireActivity(), Fullscreen::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("url", url)
+                        startActivity(intent)
+                    }
+
+                    override fun onItemLongClick(view: View?, position: Int) {
+
+                    }
+                })
+            }
+        }
+
+        adapter.startListening()
+        binding.layoutShredChallenges.rcvList.adapter = adapter
     }
 
     private fun listWorkout() {
         binding.layoutWorkout.txtTitle.setText(R.string.search_workouts)
         binding.layoutWorkout.rcvList.setHasFixedSize(true)
         binding.layoutWorkout.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        var options : FirebaseRecyclerOptions<VideoModel> =
+            FirebaseRecyclerOptions.Builder<VideoModel>()
+                .setQuery(FirebaseUtils.video.child("video").child("workout"), VideoModel::class.java)
+                .build()
+
+        val adapter = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(options){
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+
+                return VideoViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_video, parent, false)
+                )
+            }
+
+            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
+                holder.setOnClicklistener(object : Clicklistener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val name = getItem(position).name
+                        val url = getItem(position).videourl
+                        val intent = Intent(requireActivity(), Fullscreen::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("url", url)
+                        startActivity(intent)
+                    }
+
+                    override fun onItemLongClick(view: View?, position: Int) {
+
+                    }
+                })
+            }
+        }
+
+        adapter.startListening()
+        binding.layoutWorkout.rcvList.adapter = adapter
     }
 
     private fun listYoga() {
         binding.layoutYoga.txtTitle.setText(R.string.search_yoga)
         binding.layoutYoga.rcvList.setHasFixedSize(true)
         binding.layoutYoga.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        var optionsYoga : FirebaseRecyclerOptions<VideoModel> =
+            FirebaseRecyclerOptions.Builder<VideoModel>()
+                .setQuery(FirebaseUtils.video.child("video").child("yoga"), VideoModel::class.java)
+                .build()
+
+        val adapterYoga = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(optionsYoga){
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+
+                return VideoViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_video, parent, false)
+                )
+            }
+
+            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
+                holder.setOnClicklistener(object : Clicklistener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val name = getItem(position).name
+                        val url = getItem(position).videourl
+                        val intent = Intent(requireActivity(), Fullscreen::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("url", url)
+                        startActivity(intent)
+                    }
+
+                    override fun onItemLongClick(view: View?, position: Int) {
+
+                    }
+                })
+            }
+        }
+
+        adapterYoga.startListening()
+        binding.layoutYoga.rcvList.adapter = adapterYoga
     }
 
     private fun firebaseSearch(searchtext: String) {
@@ -102,8 +284,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
                         }
 
                         override fun onItemLongClick(view: View?, position: Int) {
-                            //name = getItem(position).getName()
-                            //showDeleteDialog(name)
+
                         }
                     })
                 }
@@ -120,49 +301,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
 
     override fun onStart() {
         super.onStart()
-        var options : FirebaseRecyclerOptions<VideoModel> =
-            FirebaseRecyclerOptions.Builder<VideoModel>()
-                .setQuery(FirebaseUtils.video.child("video"), VideoModel::class.java)
-                .build()
+        listRecent()
+        listNew()
+        listTrending()
+        listActivities()
+        listShred()
+        listWorkout()
+        listYoga()
 
-        val adapter = object : FirebaseRecyclerAdapter<VideoModel, VideoViewHolder>(options){
-
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-
-                return VideoViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.item_video, parent, false)
-                )
-            }
-
-            override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
-                holder.setExoplayer(requireActivity().application, model.name, model.videourl)
-                holder.setOnClicklistener(object : Clicklistener {
-                    override fun onItemClick(view: View?, position: Int) {
-                        val name = getItem(position).name
-                        val url = getItem(position).videourl
-                        val intent = Intent(requireActivity(), Fullscreen::class.java)
-                        intent.putExtra("name", name)
-                        intent.putExtra("url", url)
-                        startActivity(intent)
-                    }
-
-                    override fun onItemLongClick(view: View?, position: Int) {
-                        //name = getItem(position).getName()
-                        //showDeleteDialog(name)
-                    }
-                })
-            }
-
-        }
-
-        adapter.startListening()
-        binding.layoutRecent.rcvList.adapter = adapter
-        binding.layoutNew.rcvList.adapter = adapter
-        binding.layoutActivities.rcvList.adapter = adapter
-        binding.layoutShredChallenges.rcvList.adapter = adapter
-        binding.layoutWorkout.rcvList.adapter = adapter
-        binding.layoutYoga.rcvList.adapter = adapter
     }
 
 }

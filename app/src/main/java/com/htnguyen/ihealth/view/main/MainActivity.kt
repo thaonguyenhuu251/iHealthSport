@@ -75,12 +75,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            checkNotification()
             dispatchTakePictureIntent()
-            checkRecognition()
             checkPermissionCamera()
         }
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            checkRecognition()
+        }
 
         loadingDialog = LoadingDialog2(this)
         setViewPager()

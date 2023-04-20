@@ -51,7 +51,6 @@ class StepDetectorService : Service(), SensorEventListener {
                 PrefsHelper.putInt("FSteps", finalSteps)
                 CommonUtils.updateActivityDaily(finalSteps)
                 GeneralHelper.updateNotification(this, this, finalSteps)
-                Database.getInstance(this).addEntry(Calendar().dateInMillis, finalSteps)
             }
         }
 

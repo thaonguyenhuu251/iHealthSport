@@ -8,7 +8,6 @@ import com.htnguyen.ihealth.view.profile.ProfileViewModel
 import com.htnguyen.ihealth.view.search.FullScreenViewModel
 import com.htnguyen.ihealth.view.social.ChooseChallengeViewModel
 import com.htnguyen.ihealth.view.social.CreateChallengeViewModel
-import okhttp3.Challenge
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

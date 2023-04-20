@@ -15,6 +15,7 @@ import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
@@ -32,7 +33,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
     private var currentWindow = 0
     private var playbackposition: Long = 0
 
-    override val layout: Int = R.id.exoplayer_fullscreen
+    override val layout: Int = R.layout.activity_fullscreen
     override val viewModel: FullScreenViewModel by viewModels()
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -40,7 +41,11 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent: Intent = intent
+
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         url = intent.extras?.getString("url")
 
         val title: String? = intent.extras?.getString("name")
@@ -62,7 +67,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
                 val params: LinearLayout.LayoutParams =
                     binding.exoplayerFullscreen.layoutParams as LinearLayout.LayoutParams
                 params.width = ViewGroup.LayoutParams.MATCH_PARENT
-                params.height = (200 * applicationContext.resources.displayMetrics.density).toInt()
+                params.height = (230 * applicationContext.resources.displayMetrics.density).toInt()
                 binding.exoplayerFullscreen.layoutParams = params
                 fullscreen = false
             } else {
@@ -115,7 +120,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
     override fun onResume() {
         super.onResume()
         if (Util.SDK_INT >= 26 || player == null) {
-            initializeplayer();
+            initializeplayer()
         }
     }
 
