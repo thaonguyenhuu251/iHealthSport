@@ -4,7 +4,6 @@ import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import com.htnguyen.ihealth.support.OutputAnalyzer
-import android.annotation.SuppressLint
 import android.os.Looper
 import com.htnguyen.ihealth.R
 import android.widget.TextView
@@ -17,17 +16,10 @@ import androidx.core.app.ActivityCompat
 import android.content.Intent
 import android.os.Handler
 import android.os.Message
-import android.text.Html
 import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.Toolbar
 import com.htnguyen.ihealth.databinding.ActivityMeasureHeartBeatBinding
-import com.htnguyen.ihealth.model.EatAndDrink
-import com.htnguyen.ihealth.model.HealthDaily
-import com.htnguyen.ihealth.support.Calendar
-import com.htnguyen.ihealth.support.dateInMillis
-import com.htnguyen.ihealth.util.FirebaseUtils
-import com.htnguyen.ihealth.util.PreferencesUtil
 import java.text.SimpleDateFormat
 import java.util.*
 

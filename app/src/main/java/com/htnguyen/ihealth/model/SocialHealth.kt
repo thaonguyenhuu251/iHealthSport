@@ -5,8 +5,8 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class SocialHealth(
-    var idSocial: Long?,
-    var typeSocial: Int?,
+    var idSocial: Long? = null,
+    var typeSocial: Int? = null,
     var createBy: String? = null,
     var listMember: String? = "6000",
     var nameSocial: String? = null,

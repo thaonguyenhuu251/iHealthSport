@@ -9,6 +9,4 @@ open class BaseViewModel : ViewModel() {
     open val step: MutableLiveData<Int> = MutableLiveData(0)
     open val calories: MutableLiveData<Int> = MutableLiveData(0)
     open val meter: MutableLiveData<Int> = MutableLiveData(0)
-
-    open val followStep: MutableLiveData<Int> = MutableLiveData(6000)
 }

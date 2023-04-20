@@ -10,6 +10,7 @@ import androidx.core.app.NotificationCompat
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.util.CommonUtils.getCalories
 import com.htnguyen.ihealth.util.CommonUtils.getDistanceCovered
+import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.main.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -41,7 +42,7 @@ class GeneralHelper {
                 .setSmallIcon(R.mipmap.ic_notification)
                 .setColor(context.getColor(R.color.color_blue_general))
                 .setContentIntent(pendingIntent)
-                .setProgress(6000, step, false)
+                .setProgress(PreferencesUtil.followStep, step, false)
                 .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .build()

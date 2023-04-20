@@ -28,11 +28,11 @@ object CommonUtils {
     }
 
 
-    fun updateActivityDaily(steps: Int) {
+    fun updateActivityDaily(steps: Int, followStep: Int) {
         val activityDaily = ActivityDaily(
             step = steps,
-            followStep = 6000,
-            timeActive = 0f,
+            followStep = followStep,
+            timeActive = getDistanceInt(steps).toFloat(),
             calo = getCaloriesInt(steps).toFloat()
         )
 

@@ -37,6 +37,11 @@ object PreferencesUtil {
     const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
 
     const val PREF_FLOW_STEP = "PREF_FLOW_STEP"
+    const val PREF_STEP = "PREF_STEP"
+
+    const val PREF_FOLLOW_WATER = "PREF_FOLLOW_WATER"
+    const val PREF_WATER = "PREF_WATER"
+
 
     val keyToday: String
         get() {

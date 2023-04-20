@@ -1,5 +1,6 @@
 package com.htnguyen.ihealth.view.social
 
+import android.os.Bundle
 import androidx.activity.viewModels
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
@@ -10,5 +11,12 @@ class CreatePostActivity : BaseActivity<ActivityCreatePostBinding, CreatePostVie
     override val layout: Int get() = R.layout.activity_create_post
     override val viewModel: CreatePostViewModel by viewModels()
     override fun getBindingVariable(): Int = BR.viewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding.imgBack.setOnClickListener {
+            finish()
+        }
+    }
+
 
 }

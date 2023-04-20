@@ -6,6 +6,10 @@ import android.view.WindowManager
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseDialog
 import com.htnguyen.ihealth.databinding.DialogFollowerStepBinding
+import com.htnguyen.ihealth.util.CommonUtils
+import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.util.Event
+import com.htnguyen.ihealth.util.PreferencesUtil
 
 class FollowerStepDialog : BaseDialog.Scaffold<DialogFollowerStepBinding>() {
     override val layout: Int = R.layout.dialog_follower_step
@@ -21,7 +25,21 @@ class FollowerStepDialog : BaseDialog.Scaffold<DialogFollowerStepBinding>() {
         binding.numberpicker.displayedValues = values
         binding.numberpicker.minValue = 0
         binding.numberpicker.maxValue = values.size - 1
-        binding.numberpicker.value = 4
+        binding.numberpicker.value = values.indexOf(arguments?.getInt(PreferencesUtil.PREF_FLOW_STEP).toString())
 
+        binding.tvConfirm.setOnClickListener {
+            Event.eventChangeFollowStep(values[binding.numberpicker.value].toInt())
+            PreferencesUtil.followStep = values[binding.numberpicker.value].toInt()
+            dismiss()
+        }
+
+    }
+
+    fun newInstance(followStep: Int): FollowerStepDialog {
+        val dialog = FollowerStepDialog()
+        val args = Bundle()
+        args.putInt(PreferencesUtil.PREF_FLOW_STEP, followStep)
+        dialog.arguments = args
+        return dialog
     }
 }

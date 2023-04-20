@@ -41,7 +41,7 @@
                 android:layout_gravity="center"/>
 
             <Button
-                android:id="@+id/tvSignIn"
+                android:id="@+id/tvConfirm"
                 style="@style/button_navigation"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:text="Confirm"/>

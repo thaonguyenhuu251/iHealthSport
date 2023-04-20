@@ -15,6 +15,7 @@ import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.dateInMillis
 import com.htnguyen.ihealth.util.CommonUtils
 import com.htnguyen.ihealth.util.Database
+import com.htnguyen.ihealth.util.PreferencesUtil
 import kotlin.math.roundToInt
 
 class StepDetectorService : Service(), SensorEventListener {
@@ -49,7 +50,7 @@ class StepDetectorService : Service(), SensorEventListener {
             val finalSteps = sensorSteps - storeSteps
             if (finalSteps > 0) {
                 PrefsHelper.putInt("FSteps", finalSteps)
-                CommonUtils.updateActivityDaily(finalSteps)
+                CommonUtils.updateActivityDaily(finalSteps, PreferencesUtil.followStep)
                 GeneralHelper.updateNotification(this, this, finalSteps)
             }
         }

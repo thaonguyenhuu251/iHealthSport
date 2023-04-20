@@ -11,6 +11,7 @@ import android.os.Handler
 import android.text.Html
 import android.view.View
 import android.widget.RadioButton
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager.widget.ViewPager
 import com.google.firebase.database.DataSnapshot
@@ -22,6 +23,7 @@ import com.htnguyen.ihealth.adapter.NewsAdapter
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentHomeBinding
 import com.htnguyen.ihealth.helper.PrefsHelper
+import com.htnguyen.ihealth.model.ActivityDaily
 import com.htnguyen.ihealth.model.EatAndDrink
 import com.htnguyen.ihealth.model.HealthDaily
 import com.htnguyen.ihealth.model.ModelClass
@@ -33,8 +35,10 @@ import com.htnguyen.ihealth.util.*
 import com.htnguyen.ihealth.util.Database
 import com.htnguyen.ihealth.util.Database.Entry
 import com.htnguyen.ihealth.util.Util
+import com.htnguyen.ihealth.view.IHealthApplication
 import com.htnguyen.ihealth.view.dialog.FollowerStepDialog
 import com.htnguyen.ihealth.view.dialog.FollowerWaterDialog
+import io.reactivex.rxjava3.disposables.Disposable
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
@@ -55,6 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     private var mSelectedWeek: Int = 0
     private var mCurrentSteps: Int = 0
+    private var disposable: Disposable? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,10 +72,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             Event.eventOpenNotification()
         }
 
+        disposable = IHealthApplication.eventBus.subscribe {
+            it[Event.EVENT_CHANGE_FOLLOW_STEP]?.let {
+                viewModel.followStep.value = it.toString().toInt()
+                updateActivityDaily()
+            }
+            it[Event.EVENT_CHANGE_FOLLOW_WATER]?.let {
+                viewModel.followWater.value = it.toString().toInt()
+                updateEatAndDrink()
+            }
+
+        }
+
         sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         getEatAndDrink()
         getHealthDaily()
-
+        getStep()
         modelClassArrayList.add(ModelClass("", "", "","", "https://cdn.brvn.vn/topics/1280px/2021/318721_318721cover_1625227070.jpg", "", ""))
         modelClassArrayList.add(ModelClass("", "", "","", "https://storage.googleapis.com/leep_app_website/2021/01/Tap-the-duc-theo-nhom1.png", "", ""))
         modelClassArrayList.add(ModelClass("", "", "","", "https://suckhoedoisong.qltns.mediacdn.vn/Images/duylinh/2016/09/08/1_.jpg", "", ""))
@@ -116,13 +133,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     private fun optionSettingStep() {
         binding.layoutStep.root.setOnClickListener {
-            FollowerStepDialog().show(requireActivity(), "BKAV")
+            FollowerStepDialog().newInstance(viewModel.followStep.value!!).show(requireActivity(), "BKAV")
         }
     }
 
     private fun optionSettingWater() {
         binding.layoutHomeWater.root.setOnClickListener {
-            FollowerWaterDialog().show(requireActivity(), "BKAV")
+            FollowerWaterDialog().newInstance(viewModel.followWater.value!!).show(requireActivity(), "BKAV")
         }
     }
 
@@ -175,6 +192,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             progressMax = (viewModel.followStep.value ?: 0).toFloat()
 
         }
+
     }
 
     private fun optionHeartBeat() {
@@ -226,6 +244,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         }
     }
 
+    fun updateActivityDaily() {
+        binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
+        val activityDaily = ActivityDaily(
+            step = viewModel.step.value,
+            followStep = viewModel.followStep.value,
+            timeActive = CommonUtils.getDistanceInt(viewModel.step.value!!).toFloat(),
+            calo = CommonUtils.getCaloriesInt(viewModel.step.value!!).toFloat()
+        )
+
+        FirebaseUtils.activityDaily
+            .child("record_history")
+            .child(PreferencesUtil.idPrivate.toString())
+            .child("activity_daily")
+            .child("date" + Calendar().dateInMillis.toString())
+            .setValue(activityDaily)
+            .addOnSuccessListener {
+
+            }.addOnFailureListener {
+
+            }
+    }
+
     private fun updateEatAndDrink() {
         binding.layoutHomeWater.txtMinus.isClickable = viewModel.water.value!! > 0
         binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
@@ -247,6 +287,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }.addOnFailureListener { e ->
 
             }
+    }
+
+
+    private fun getStep() {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    val activityDaily = postSnapshot.getValue<ActivityDaily>()
+                    if (activityDaily != null) {
+                        viewModel.followStep.value = activityDaily.followStep
+                        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        }
+        FirebaseUtils.activityDaily
+            .child("record_history")
+            .child(PreferencesUtil.idPrivate.toString())
+            .child("activity_daily").addValueEventListener(postListener)
     }
 
     private fun getEatAndDrink() {
