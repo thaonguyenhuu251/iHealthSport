@@ -66,7 +66,6 @@ internal class Chart : BarChart {
         val cal = Calendar.getInstance()
         cal.timeInMillis = entry.timestamp
 
-        // update the day the entry belongs to
         for (j in yVals.indices) {
             val barEntry = yVals[j]
             if (barEntry.x.toInt() == (cal.get(Calendar.DAY_OF_WEEK) - cal.firstDayOfWeek + 7) % 7) {

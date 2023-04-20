@@ -42,6 +42,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/imgSocial"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
         android:layout_margin="@dimen/_5sdp"

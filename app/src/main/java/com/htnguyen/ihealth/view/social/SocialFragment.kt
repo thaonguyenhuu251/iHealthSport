@@ -6,9 +6,11 @@ import android.os.FileUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.htnguyen.ihealth.R
@@ -16,6 +18,7 @@ import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentSocialBinding
 import com.htnguyen.ihealth.model.SocialHealth
 import com.htnguyen.ihealth.util.FirebaseUtils
+import com.htnguyen.ihealth.util.PreferencesUtil
 
 
 class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
@@ -110,32 +113,50 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
 
             inner class TypeOneViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
 
             }
 
             inner class TypeTwoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
             }
 
             inner class TypeThreeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
             }
 
             inner class TypeFourViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
             }
 
             inner class TypeFileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
             }
 
             inner class TypeSexViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 fun bind(position: Int) {
+                    Glide.with(requireContext()).load(getItem(position).imageUrl)
+                        .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
+                        .into(itemView.findViewById(R.id.imgSocial))
                 }
             }
 

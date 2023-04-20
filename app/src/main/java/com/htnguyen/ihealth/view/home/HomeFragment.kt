@@ -9,6 +9,7 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.text.Html
+import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import androidx.core.view.GravityCompat
@@ -56,9 +57,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     var currentPage = 0
     val DELAY_MS: Long = 3000
     val PERIOD_MS: Long = 10000
+    private val entries = ArrayList<Entry>()
 
     private var mSelectedWeek: Int = 0
-    private var mCurrentSteps: Int = 0
     private var disposable: Disposable? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -312,6 +313,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             .child("activity_daily").addValueEventListener(postListener)
     }
 
+    private fun getStepDay(day: Long) {
+        FirebaseUtils.activityDaily
+            .child("record_history")
+            .child(PreferencesUtil.idPrivate.toString())
+            .child("activity_daily")
+            .child("date$day")
+            .get().addOnSuccessListener { data ->
+                val activityDaily = data.getValue<ActivityDaily>()
+                if (activityDaily != null) {
+                    binding.layoutChart.chart.setDiagramEntry(Entry(day, activityDaily.step ?: 0))
+                    entries.add(0, Entry(day, activityDaily.step ?: 0))
+                }
+            }.addOnCompleteListener {
+                binding.layoutChart.chart.update()
+            }
+    }
+
     private fun getEatAndDrink() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -338,7 +356,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     private fun getHealthDaily() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
                 for (postSnapshot in dataSnapshot.children) {
                     val healthDaily = postSnapshot.getValue<HealthDaily>()
                     if (healthDaily != null) {
@@ -352,7 +369,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
+
             }
         }
         FirebaseUtils.activityDaily
@@ -381,23 +398,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         max.add(Calendar.DAY_OF_YEAR, 6)
         binding.layoutChart.chart.clearDiagram()
 
-        val entries = ArrayList<Entry>()
-        entries.add(0, Entry(1681664400000, 20000))
-        entries.add(0, Entry(1681750800000, 10000))
-        entries.add(0, Entry(1681837200000, 10000))
-
-        for (entry in entries) {
-            binding.layoutChart.chart.setDiagramEntry(entry)
-            val cal = Calendar.getInstance()
-            cal.timeInMillis = entry.timestamp
-
+        for (i in min.timeInMillis .. max.timeInMillis step 86400000) {
+            getStepDay(i)
         }
 
-        // If selected week is the current week, update the diagram with today's steps
-        if (mSelectedWeek == Calendar.getInstance().get(Calendar.WEEK_OF_YEAR)) {
-            binding.layoutChart.chart.setCurrentSteps(mCurrentSteps)
-        }
-        binding.layoutChart.chart.update()
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
@@ -409,6 +413,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        // We do not have to write anything in this function for this app
+
     }
 }
