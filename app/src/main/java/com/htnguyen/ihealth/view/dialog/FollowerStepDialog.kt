@@ -28,8 +28,9 @@ class FollowerStepDialog : BaseDialog.Scaffold<DialogFollowerStepBinding>() {
         binding.numberpicker.value = values.indexOf(arguments?.getInt(PreferencesUtil.PREF_FLOW_STEP).toString())
 
         binding.tvConfirm.setOnClickListener {
-            Event.eventChangeFollowStep(values[binding.numberpicker.value].toInt())
             PreferencesUtil.followStep = values[binding.numberpicker.value].toInt()
+            Event.eventChangeFollowStep(values[binding.numberpicker.value].toInt())
+
             dismiss()
         }
 

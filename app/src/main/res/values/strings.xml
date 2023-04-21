@@ -35,7 +35,11 @@
     </plurals>
     <string name="common_format_date" translatable="false">dd/MM/yyyy</string>
     <string name="common_format_date_standard" translatable="false">dd/MM/yyyy</string>
-
+    <string name="profile_home" translatable="false">Home</string>
+    <string name="profile_social" translatable="false">Social</string>
+    <string name="profile_chat" translatable="false">Chat</string>
+    <string name="profile_search" translatable="false">Search</string>
+    <string name="profile_profile" translatable="false">Profile</string>
     <!--    Gps Training-->
     <string name="title_activity_gps_map" translatable="false">GPS Training</string>
     <string name="map_id" translatable="false">5618cd7b01db1e2e</string>
@@ -133,7 +137,8 @@
     <string name="social_title_challenge">Title challenge</string>
     <string name="social_first_date">Date start: %s</string>
     <string name="social_end_date">Date end: %s</string>
-    <string name="social_follow_step">%d Steps</string>
+    <string name="social_follow_step">Request Steps %d</string>
+    <string name="social_your_step">Your Steps %d</string>
     <string name="social_choose_challenge">Choose Challenge</string>
     <string name="social_compete_create_a_group_challenge">Compete 1 or more people in individual challenge or create a group challenge</string>
     <string name="social_finish_first">Finish first</string>
@@ -154,11 +159,6 @@
     <string name="setting_title">Setting</string>
     <string name="search_propose">Propose</string>
 
-    <string name="profile_home">Home</string>
-    <string name="profile_social">Social</string>
-    <string name="profile_chat">Chat</string>
-    <string name="profile_search">Search</string>
-    <string name="profile_profile">Profile</string>
     <string name="profile_gender_male">Male</string>
     <string name="profile_gender_female">FeMale</string>
     <string name="profile_achieve_step">%d Steps</string>

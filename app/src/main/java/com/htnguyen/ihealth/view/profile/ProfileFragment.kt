@@ -109,7 +109,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
                     totalStep += activityDaily.step ?: 0
                 }
             }.addOnCompleteListener {
-                viewModel.achieveStep.value = getString(R.string.social_follow_step, totalStep)
+                viewModel.achieveStep.value = getString(R.string.profile_achieve_step, totalStep)
                 viewModel.achieveCalo.value = getString(R.string.profile_achieve_calo, getCaloriesInt(totalStep))
                 viewModel.achieveDistance.value = getString(R.string.profile_achieve_distance, getDistanceInt(totalStep))
                 viewModel.achieveMoutain.value = getString(R.string.profile_achieve_mountain, getCaloriesInt(totalStep))

@@ -26,7 +26,6 @@ class FollowerWaterDialog : BaseDialog.Scaffold<DialogFollowerWatersBinding>() {
 
         binding.tvConfirm.setOnClickListener {
             Event.eventChangeFollowWater(binding.numberpicker.value)
-            PreferencesUtil.followStep = binding.numberpicker.value
             dismiss()
         }
 

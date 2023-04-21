@@ -162,35 +162,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         binding.layoutDailyActivities.content.setOnClickListener {
             requireActivity().startActivity(Intent(requireActivity(), GpsMap::class.java))
         }
-
-        binding.layoutDailyActivities.circularProgressBar.apply {
-            setProgressWithAnimation(CommonUtils.getCaloriesInt(viewModel.step.value ?: 0).toFloat(), 1000)
-            progressMax = CommonUtils.getCaloriesInt(viewModel.followStep.value ?: 0).toFloat()
-        }
-
-        binding.layoutDailyActivities.circularProgressBar.onProgressChangeListener = { progress ->
-
-        }
-
-        binding.layoutDailyActivities.circularProgressBar.onIndeterminateModeChangeListener = { isEnable ->
-
-        }
-
-        binding.layoutDailyActivities.circularProgressBar2.apply {
-            setProgressWithAnimation(CommonUtils.getDistanceInt(viewModel.step.value ?: 0).toFloat(), 1000)
-            progressMax = CommonUtils.getDistanceInt(viewModel.followStep.value ?: 0).toFloat()
-
-        }
-
     }
 
     private fun optionStep() {
         binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
         binding.layoutStep.processBarStep.progress = viewModel.step.value.toString().toInt()
         binding.layoutStep.processBarStep.max = viewModel.followStep.value.toString().toInt()
+
         binding.layoutDailyActivities.circularProgressBar3.apply {
             setProgressWithAnimation((viewModel.step.value ?: 0).toFloat(), 1000)
             progressMax = (viewModel.followStep.value ?: 0).toFloat()
+
+        }
+        binding.layoutDailyActivities.circularProgressBar.apply {
+            setProgressWithAnimation(CommonUtils.getCaloriesInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            progressMax = CommonUtils.getCaloriesInt(viewModel.followStep.value ?: 0).toFloat()
+        }
+
+        binding.layoutDailyActivities.circularProgressBar2.apply {
+            setProgressWithAnimation(CommonUtils.getDistanceInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            progressMax = CommonUtils.getDistanceInt(viewModel.followStep.value ?: 0).toFloat()
 
         }
 
@@ -338,6 +329,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     val eatAndDrink = postSnapshot.getValue<EatAndDrink>()
                     if (eatAndDrink != null) {
                         viewModel.water.value = eatAndDrink.water
+                        viewModel.followWater.value = eatAndDrink.followWater
                         binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
                     }
                 }

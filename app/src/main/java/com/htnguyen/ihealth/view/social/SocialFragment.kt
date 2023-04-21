@@ -51,7 +51,7 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
     }
 
     private fun observeRecord() {
-        for (i in Calendar().firstYear .. Calendar().endYear step 86400000) {
+        for (i in Calendar().firstYear..Calendar().endYear step 86400000) {
             getStepDay(i)
         }
         addCustomerReservationsEventListener()
@@ -144,7 +144,6 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
 
                 inner class TypeOneViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     fun bind(position: Int) {
-                        var followStep = getItem(position).followStep
                         Glide.with(requireContext()).load(getItem(position).imageUrl)
                             .error(
                                 AppCompatResources.getDrawable(
@@ -172,13 +171,17 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
                             )
 
                         itemView.findViewById<TextView>(R.id.txtSocialFollowStep).text =
-                            resources.getString(R.string.social_follow_step, getItem(position).followStep)
+                            resources.getString(
+                                R.string.social_follow_step,
+                                getItem(position).followStep
+                            )
 
                         itemView.findViewById<TextView>(R.id.txtSocialYourStep).text =
-                            resources.getString(R.string.social_follow_step, totalStep)
+                            resources.getString(R.string.social_your_step, totalStep)
 
                         if (getItem(position).followStep != null) {
-                            itemView.findViewById<LinearProgressIndicator>(R.id.progressCircleDeterminate).progress = ((totalStep.toFloat()/getItem(position).followStep!!) * 100).toInt()
+                            itemView.findViewById<LinearProgressIndicator>(R.id.progressCircleDeterminate).progress =
+                                ((totalStep.toFloat() / getItem(position).followStep!!) * 100).toInt()
                         }
                     }
 
