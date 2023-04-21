@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            style="@style/text_wrap_normal"
+            style="@style/text_wrap_header"
             android:text="@string/common_body_weight"
             app:drawableStartCompat="@drawable/ic_home_weight" />
 
@@ -38,7 +38,7 @@
 
     <TextView
         style="@style/text_normal"
-        android:text="@string/common_data"
+        android:text="@string/home_measure"
         android:layout_margin="@dimen/_5sdp"
         android:paddingHorizontal="@dimen/_20sdp"
         android:paddingVertical="@dimen/_5sdp"

@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/textView3"
-                style="@style/text_wrap_normal"
+                style="@style/text_wrap_header"
                 android:text="@string/common_heart_beat"
                 app:drawableStartCompat="@drawable/ic_home_heartbeat" />
 

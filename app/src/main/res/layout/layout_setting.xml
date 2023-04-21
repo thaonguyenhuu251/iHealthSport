@@ -60,17 +60,19 @@
                 android:id="@+id/lnDarkMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    style="@style/text_wrap_normal"
+                    style="@style/text_match_setting"
                     android:layout_weight="1"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:text="@string/setting_dark_mode"
                     android:layout_gravity="center"
-                    app:drawableStartCompat="@drawable/ic_setting_display" />
+                    app:drawableStartCompat="@drawable/ic_setting_display"
+                    app:drawableEndCompat="@null" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/swDarkMode"

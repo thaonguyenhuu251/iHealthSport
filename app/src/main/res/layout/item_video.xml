@@ -35,11 +35,13 @@
 
     <TextView
         android:id="@+id/tv_item_name"
+        style="@style/text_heading_large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:maxLines="1"
+        android:layout_margin="@dimen/_5sdp"
         android:ellipsize="end"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold" />

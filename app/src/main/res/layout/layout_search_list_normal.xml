@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/txtTitle"
-        style="@style/text_wrap_normal"
+        style="@style/text_wrap_header"
         android:textStyle="bold"
         android:text="@string/search_recent"/>
 

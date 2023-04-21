@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            style="@style/text_wrap_normal"
+            style="@style/text_wrap_header"
             android:text="@string/home_stress"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 

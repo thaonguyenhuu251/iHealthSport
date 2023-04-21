@@ -23,7 +23,10 @@
             android:layout_gravity="end"
             android:layout_margin="@dimen/_10sdp"
             android:text="@string/profile_edit"
-            android:textSize="@dimen/_8ssp" />
+            android:gravity="center"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_8ssp"
+            app:drawableEndCompat="@drawable/ic_edit" />
 
         <TextView
             android:id="@+id/txtName"

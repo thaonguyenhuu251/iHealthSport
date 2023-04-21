@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/txtProfileTitle"
-            style="@style/text_wrap_normal"
+            style="@style/text_wrap_header"
             android:layout_margin="@dimen/_22sdp"
             android:text="@string/profile_your_profile"
             android:textStyle="bold"

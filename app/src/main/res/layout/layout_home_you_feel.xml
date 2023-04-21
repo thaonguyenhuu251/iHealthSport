@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        style="@style/text_wrap_normal"
+        style="@style/text_wrap_header"
         android:text="@string/how_are_you_feeling_today"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
