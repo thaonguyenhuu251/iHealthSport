@@ -50,7 +50,7 @@
     <Button
         android:id="@+id/txtNext"
         style="@style/button_navigation"
-        android:text="Next"
+        android:text="@string/common_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
     <Button
         android:id="@+id/txtBack"
         style="@style/button_navigation"
-        android:text="Back"
+        android:text="@string/common_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

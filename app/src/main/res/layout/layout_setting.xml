@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:gravity="start"
                 android:textSize="@dimen/text_normal_plus"
-                android:text="Setting" />
+                android:text="@string/setting_title" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -39,24 +39,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="Version 1.0"/>
+                android:text="@string/version"/>
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Change Password"
+                android:text="@string/setting_change_password"
                 app:drawableStartCompat="@drawable/ic_setting_change_password" />
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Language"
+                android:text="@string/setting_language"
                 app:drawableStartCompat="@drawable/ic_setting_language" />
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Notification"
+                android:text="@string/setting_notification"
                 app:drawableStartCompat="@drawable/ic_setting_notification" />
-
-
 
             <LinearLayout
                 android:id="@+id/lnDarkMode"
@@ -70,7 +68,7 @@
                     style="@style/text_wrap_normal"
                     android:layout_weight="1"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:text="Dark Mode"
+                    android:text="@string/setting_dark_mode"
                     android:layout_gravity="center"
                     app:drawableStartCompat="@drawable/ic_setting_display" />
 
@@ -88,17 +86,17 @@
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Contact Us"
+                android:text="@string/setting_contact_us"
                 app:drawableStartCompat="@drawable/ic_setting_connect" />
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Help"
+                android:text="@string/setting_help"
                 app:drawableStartCompat="@drawable/ic_setting_help" />
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="About"
+                android:text="@string/setting_about"
                 app:drawableStartCompat="@drawable/ic_setting_about" />
 
             <View
@@ -111,7 +109,7 @@
                 style="@style/button_navigation"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="bottom"
-                android:text="Log Out"/>
+                android:text="@string/setting_log_out"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

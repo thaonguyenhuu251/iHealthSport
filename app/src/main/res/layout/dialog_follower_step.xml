@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/_16ssp"
-                android:text="Choose your target step count"/>
+                android:text="@string/home_choose_your_target_step_count"/>
 
             <NumberPicker
                 android:id="@+id/numberpicker"
@@ -44,7 +44,7 @@
                 android:id="@+id/tvConfirm"
                 style="@style/button_navigation"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:text="Confirm"/>
+                android:text="@string/common_confirm"/>
 
         </LinearLayout>
 

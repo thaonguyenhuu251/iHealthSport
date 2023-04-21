@@ -18,24 +18,20 @@
 
         <TextView
             style="@style/text_wrap_normal"
-            android:text="Stress"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 
         <TextView
             style="@style/text_wrap_normal"
-            android:text="Stress"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 
         <TextView
             style="@style/text_wrap_normal"
-            android:text="Stress"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 
         <TextView
             android:id="@+id/textView4"
             style="@style/text_normal"
             android:paddingVertical="@dimen/_5sdp"
-            android:text="96bpm"
             android:textColor="@color/black"
             android:textSize="@dimen/_16ssp" />
 

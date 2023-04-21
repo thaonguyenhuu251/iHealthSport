@@ -11,7 +11,7 @@
 
     <TextView
         style="@style/text_wrap_normal"
-        android:text="Medal"
+        android:text="@string/profile_medal"
         app:drawableStartCompat="@drawable/ic_profile_sports_medal" />
 
     <LinearLayout
@@ -24,7 +24,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -32,7 +31,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -54,7 +52,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -62,7 +59,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -70,7 +66,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Time"
             app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>
@@ -85,7 +80,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -93,7 +87,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="19.294 \n Step"
             app:drawableTopCompat="@drawable/ic_profile_person_walking" />
 
 
@@ -101,7 +94,6 @@
             style="@style/text_normal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Time"
             app:drawableTopCompat="@drawable/ic_profile_timer_clock" />
 
     </LinearLayout>

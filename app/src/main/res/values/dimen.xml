@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_small_super">@dimen/_10ssp</dimen>
-    <dimen name="text_small">@dimen/_10ssp</dimen>
+    <dimen name="text_small">@dimen/_12ssp</dimen>
     <dimen name="text_normal">@dimen/_14ssp</dimen>
     <dimen name="text_normal_plus">@dimen/_16ssp</dimen>
     <dimen name="text_large">@dimen/_18ssp</dimen>

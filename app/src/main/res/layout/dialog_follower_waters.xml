@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/_16ssp"
-                android:text="Choose a target number of cups of water you drink per day (350ml/cup)"/>
+                android:text="@string/common_choose_a_target"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:id="@+id/tvConfirm"
                 style="@style/button_navigation"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:text="Confirm"/>
+                android:text="@string/common_confirm"/>
 
         </LinearLayout>
 

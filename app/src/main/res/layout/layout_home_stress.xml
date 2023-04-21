@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/textView3"
             style="@style/text_wrap_normal"
-            android:text="Stress"
+            android:text="@string/home_stress"
             app:drawableStartCompat="@drawable/ic_home_stress" />
 
         <LinearLayout
@@ -30,7 +30,6 @@
                 android:id="@+id/textView4"
                 style="@style/text_normal"
                 android:paddingVertical="@dimen/_5sdp"
-                android:text="96bpm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp" />
         </LinearLayout>

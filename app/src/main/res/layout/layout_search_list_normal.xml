@@ -10,7 +10,7 @@
         android:id="@+id/txtTitle"
         style="@style/text_wrap_normal"
         android:textStyle="bold"
-        android:text="Recent"/>
+        android:text="@string/search_recent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvList"

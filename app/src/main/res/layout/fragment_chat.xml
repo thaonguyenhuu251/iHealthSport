@@ -18,7 +18,7 @@
 
         <TextView
             style="@style/text_heading_normal"
-            android:text="The feature is under development, we will try to bring this experience to you as soon as possible, thanks you" />
+            android:text="@string/thank_you" />
     </LinearLayout>
 
 </layout>

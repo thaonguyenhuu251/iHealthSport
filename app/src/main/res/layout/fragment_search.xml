@@ -38,7 +38,7 @@
 
             <TextView
                 style="@style/text_wrap_normal"
-                android:text="Propose"
+                android:text="@string/search_propose"
                 android:textStyle="bold" />
 
             <include

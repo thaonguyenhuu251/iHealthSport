@@ -29,8 +29,8 @@
 
             <TextView
                 android:id="@+id/textView3"
-                style="@style/text_wrap_normal"
-                android:text="Daily Activities"
+                style="@style/text_wrap_header"
+                android:text="@string/home_daily_activities"
                 app:drawableStartCompat="@drawable/ic_home_plan" />
 
             <LinearLayout

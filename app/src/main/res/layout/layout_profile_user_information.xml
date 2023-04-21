@@ -22,7 +22,7 @@
 
         <TextView
             style="@style/text_wrap_normal"
-            android:text="Your Information Detail"
+            android:text="@string/profile_your_information_detail"
             app:drawableStartCompat="@drawable/ic_profile_user_card" />
 
         <LinearLayout

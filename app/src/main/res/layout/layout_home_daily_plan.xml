@@ -17,8 +17,8 @@
 
         <TextView
             android:id="@+id/txtTodayPlan"
-            style="@style/text_wrap_normal"
-            android:text="Today's Plan"
+            style="@style/text_wrap_header"
+            android:text="@string/home_today_plan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

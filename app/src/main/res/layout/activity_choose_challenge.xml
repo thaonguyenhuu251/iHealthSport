@@ -36,7 +36,7 @@
                 android:id="@+id/textView5"
                 style="@style/text_normal"
                 android:layout_gravity="center"
-                android:text="Choose Challenge"
+                android:text="@string/social_choose_challenge"
                 android:textSize="@dimen/_20ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/textView6"
                 style="@style/text_wrap_normal"
-                android:text="Compete 1 or more people in individual challenge or create a group challenge"
+                android:text="@string/social_compete_create_a_group_challenge"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
                     android:id="@+id/txtFinishFirstTitle"
                     style="@style/text_normal"
                     android:layout_gravity="center"
-                    android:text="finish first"
+                    android:text="@string/social_finish_first"
                     android:textSize="@dimen/_20ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +77,7 @@
                 <TextView
                     android:id="@+id/txtFinishFirstContent"
                     style="@style/text_wrap_normal"
-                    android:text="set a goal step count. Whoever reaches the goal first wins"
+                    android:text="@string/social_set_a_goal_step"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
-                        android:text="Person"
+                        android:text="@string/social_person"
                         app:drawableTopCompat="@drawable/ic_challenge_person" />
 
                     <TextView
@@ -106,7 +106,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
-                        android:text="Team"
+                        android:text="@string/social_team"
                         app:drawableTopCompat="@drawable/ic_challenge_team" />
                 </LinearLayout>
 
@@ -128,7 +128,7 @@
                     android:id="@+id/txtGoFarthestTitle"
                     style="@style/text_normal"
                     android:layout_gravity="center"
-                    android:text="go farthest"
+                    android:text="@string/social_header_go_farthest"
                     android:textSize="@dimen/_20ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +137,7 @@
                 <TextView
                     android:id="@+id/txtGoFarthestContent"
                     style="@style/text_wrap_normal"
-                    android:text="See who can get the most steps during the challenge"
+                    android:text="@string/social_see_who_can_get"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
-                        android:text="Person"
+                        android:text="@string/social_person"
                         app:drawableTopCompat="@drawable/ic_challenge_person" />
 
                     <TextView
@@ -166,7 +166,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
-                        android:text="Team"
+                        android:text="@string/social_team"
                         app:drawableTopCompat="@drawable/ic_challenge_team" />
                 </LinearLayout>
 

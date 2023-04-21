@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:text="Give us some basic information" />
+                android:text="@string/profile_give_us_some_basic_information" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/ic_profile_user_card"
                 android:drawablePadding="@dimen/_10sdp"
-                android:hint="What your name ?"
+                android:hint="@string/profile_what_your_name"
                 android:inputType="text"
                 android:lines="1"
                 android:text="@={viewModel.name}" />
@@ -70,7 +70,7 @@
                 android:drawableStart="@drawable/ic_profile_birthday"
                 android:drawablePadding="@dimen/_10sdp"
                 android:focusable="false"
-                android:hint="Your Birthday"
+                android:hint="@string/progile_your_birthday"
                 android:inputType="text"
                 android:lines="1"
                 android:text="@{viewModel.birthDay}" />
@@ -101,7 +101,7 @@
                     android:drawableTop="@drawable/ic_profile_male"
                     android:drawableBottom="@drawable/selector_radio"
                     android:gravity="center"
-                    android:text="Male" />
+                    android:text="@string/profile_male" />
 
                 <RadioButton
                     android:id="@+id/rdFeMale"
@@ -113,7 +113,7 @@
                     android:drawableTop="@drawable/ic_profile_female"
                     android:drawableBottom="@drawable/selector_radio"
                     android:gravity="center"
-                    android:text="Female" />
+                    android:text="@string/profile_female" />
 
             </RadioGroup>
 
@@ -128,7 +128,7 @@
             <TextView
                 style="@style/text_wrap_normal"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:text="Height"
+                android:text="@string/profile_height"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -158,7 +158,7 @@
                     android:layout_centerVertical="true"
                     android:max="250"
                     android:maxHeight="@dimen/_10sdp"
-                    android:min="50"
+                    android:min="100"
                     android:progress="@={viewModel.progressHeight}"
                     android:progressDrawable="@drawable/seekbar_progress_style"
                     android:thumb="@drawable/seekbar_thumb"
@@ -189,23 +189,29 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/seekbarHeight"
                     android:layout_alignParentStart="true"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:text="50cm" />
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/profile_100cm" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/seekbarHeight"
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:text="250cm" />
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/profile__250cm" />
 
             </RelativeLayout>
 
             <TextView
                 style="@style/text_wrap_normal"
                 android:layout_marginVertical="@dimen/_10sdp"
-                android:text="weight"
+                android:text="@string/profile_weight"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -235,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:max="300"
+                    android:max="100"
                     android:maxHeight="@dimen/_10sdp"
                     android:min="20"
                     android:padding="0dp"
@@ -273,7 +279,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:text="20Kg" />
+                    android:text="@string/profile_20kg" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -281,7 +287,7 @@
                     android:layout_below="@+id/seekbarWeight"
                     android:layout_alignParentEnd="true"
                     android:layout_margin="@dimen/_10sdp"
-                    android:text="300Kg" />
+                    android:text="@string/profile_100kg" />
 
             </RelativeLayout>
 
@@ -300,7 +306,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="Save"
+                android:text="@string/common_save"
                 android:visibility="gone"
                 app:drawableStartCompat="@drawable/ic_save" />
         </LinearLayout>

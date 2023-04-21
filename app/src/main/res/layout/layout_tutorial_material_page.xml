@@ -27,14 +27,12 @@
         <TextView
             android:id="@+id/txtTitle"
             style="@style/text_heading_normal"
-            android:text="Faster Internet  Connection"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/txtContent"
             style="@style/text_normal"
             android:gravity="center"
-            android:text="Safe, fast internet, and your privacy is protected"
             android:textColor="@color/black" />
 
     </LinearLayout>

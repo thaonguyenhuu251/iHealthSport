@@ -22,7 +22,7 @@
             android:id="@+id/txtProfileTitle"
             style="@style/text_wrap_normal"
             android:layout_margin="@dimen/_22sdp"
-            android:text="Your Profile"
+            android:text="@string/profile_your_profile"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +108,8 @@
                         layout="@layout/layout_profile_user_information"
                         app:viewModel="@{viewModel}" />
 
-                    <include layout="@layout/layout_profile_best_achievement" />
+                    <include layout="@layout/layout_profile_best_achievement"
+                        app:viewModel="@{viewModel}"/>
 
                     <include layout="@layout/layout_profile_medal" />
 
