@@ -1,6 +1,7 @@
 package com.htnguyen.ihealth.view.main
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -30,6 +31,8 @@ import com.htnguyen.ihealth.view.IHealthApplication
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.component.LoadingDialog2
 import com.htnguyen.ihealth.view.dialog.CalendarDialog
+import com.htnguyen.ihealth.view.dialog.ChangePasswordDialog
+import com.htnguyen.ihealth.view.dialog.LanguageDialog
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
@@ -102,8 +105,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 binding.drawerMain.openDrawer(GravityCompat.END)
             }
 
-        }
+            it[Event.EVENT_CHANGE_LANGUAGE]?.let {
+                recreate()
+            }
 
+        }
 
     }
 
@@ -164,6 +170,34 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                         PreferencesUtil.userHeight = 0f
                         PreferencesUtil.userWeight = 0f
                     }
+
+                binding.navMain.findViewById<TextView>(R.id.txtChangePassWord).setOnClickListener {
+                    val changePasswordDialog = ChangePasswordDialog()
+                    changePasswordDialog.show(this@MainActivity)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtContact).setOnClickListener {
+                    val tel = "0562638838"
+                    val intent1 = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", tel, null))
+                    startActivity(intent1)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtHelp).setOnClickListener {
+                    val mail = "nguyenhuuthao2001@gmail.com"
+                    val intent2 = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", mail, null))
+                    startActivity(intent2)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtAbout).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, WebViewActivity::class.java))
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtLanguage).setOnClickListener {
+                    val languageDialog = LanguageDialog()
+                    languageDialog.show(this@MainActivity)
+                }
+
+
             }
 
             override fun onDrawerClosed(drawerView: View) {

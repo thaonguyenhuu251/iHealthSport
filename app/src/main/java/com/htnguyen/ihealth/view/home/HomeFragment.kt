@@ -65,7 +65,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.todayString.value = SimpleDateFormat(getString(R.string.common_format_date_standard))
+        viewModel.todayString.value = SimpleDateFormat("dd/MM/yyyy")
             .format(viewModel.today.value)
             .toString()
 

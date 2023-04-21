@@ -42,6 +42,15 @@ object PreferencesUtil {
     const val PREF_FOLLOW_WATER = "PREF_FOLLOW_WATER"
     const val PREF_WATER = "PREF_WATER"
 
+    const val LANGUAGE = "LANGUAGE"
+
+    var language: String?
+        get() {
+            return preferences.getString(LANGUAGE, Constant.LG_VIETNAMESE)
+        }
+        set(value) {
+            preferencesEdit.putString(LANGUAGE, value).apply()
+        }
 
     val keyToday: String
         get() {

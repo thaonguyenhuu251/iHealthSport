@@ -3,6 +3,7 @@ package com.htnguyen.ihealth.di
 import com.htnguyen.ihealth.view.login.LoginViewModel
 import com.htnguyen.ihealth.view.login.RegisterViewModel
 import com.htnguyen.ihealth.view.main.MainViewModel
+import com.htnguyen.ihealth.view.profile.ChangePasswordViewModel
 import com.htnguyen.ihealth.view.profile.ProfileEditViewModel
 import com.htnguyen.ihealth.view.profile.ProfileViewModel
 import com.htnguyen.ihealth.view.search.FullScreenViewModel
@@ -20,4 +21,5 @@ val viewModelModule = module {
     viewModel { ChooseChallengeViewModel() }
     viewModel { CreateChallengeViewModel() }
     viewModel { FullScreenViewModel() }
+    viewModel { ChangePasswordViewModel() }
 }

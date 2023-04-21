@@ -95,7 +95,7 @@ class MeasureHeartBeatActivity : AppCompatActivity(), OnRequestPermissionsResult
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMeasureHeartBeatBinding.inflate(layoutInflater,)
+        binding = ActivityMeasureHeartBeatBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ActivityCompat.requestPermissions(
             this, arrayOf(Manifest.permission.CAMERA),

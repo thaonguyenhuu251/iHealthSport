@@ -26,6 +26,33 @@ object Constant {
 
     const val DATE_FORMAT = "yyyy_MM_dd"
 
+    const val LG_VIETNAMESE = "vietnamese"
+    const val LG_ENGLISH = "english"
+    const val LG_RUSSIAN = "russia"
+    const val LG_LAOS = "lao"
+    const val LG_THAI = "thai"
+    const val LG_MYANMAR = "myanmar"
+    const val LG_KOREAN = "korean"
+    const val LG_CHINESE = "chinese"
+    const val LG_JAPANESE = "japanese"
+    const val LG_FILIPINO = "filipino"
+    const val LG_INDONESIAN = "indonesian"
+    const val LG_SPANISH = "spanish"
+    const val LG_FRENCH = "french"
+    const val LG_INDIAN = "indian"
+    const val LG_GERMAN = "german"
+    const val LG_ITALIAN = "italian"
+
+    const val COLOR_BLUE = "color_blue"
+    const val COLOR_RED = "color_red"
+    const val COLOR_PINK = "color_pink"
+    const val COLOR_DARKPINK = "color_darkpink"
+    const val COLOR_VIOLET = "color_violet"
+    const val COLOR_SKYBLUE = "color_skyblue"
+    const val COLOR_GREEN = "color_green"
+    const val COLOR_GREY = "color_grey"
+    const val COLOR_BROWN = "color_brown"
+
     fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
         var cursor: Cursor? = null
         return try {

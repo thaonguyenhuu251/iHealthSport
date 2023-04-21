@@ -243,12 +243,12 @@
 
                 <TextView
                     style="@style/text_small"
-                    android:text="@string/common_account_not_have"
+                    android:text="@string/common_account_have"
                     android:textColor="@color/color_black_little" />
 
                 <TextView
                     style="@style/text_small"
-                    android:text="@string/sign_up_small" />
+                    android:text="@string/sign_in" />
 
             </LinearLayout>
         </LinearLayout>

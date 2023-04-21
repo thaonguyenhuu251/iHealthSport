@@ -58,6 +58,8 @@ class SplashActivity : AppCompatActivity() {
                     } else {
                         loadingDialog?.dismissDialog()
                         Toast.makeText(baseContext, "Password Wrong", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                        finish()
                     }
                 }
             }

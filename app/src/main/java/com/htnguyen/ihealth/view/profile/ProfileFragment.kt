@@ -73,7 +73,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }
     }
 
-
     private fun actionMoveScreen() {
         binding.layoutProfileInformation.txtEdit.setOnClickListener {
             val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
@@ -93,7 +92,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
         binding.viewModel = viewModel
 
-        viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
+        viewModel.birthDay.value = SimpleDateFormat("dd/MM/yyyy")
             .format(PreferencesUtil.userBirthDay)
             .toString()
     }

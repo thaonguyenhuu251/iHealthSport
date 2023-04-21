@@ -31,7 +31,7 @@
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/image" />
+                    android:src="@drawable/images" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -42,11 +42,13 @@
                 android:text="@string/version"/>
 
             <TextView
+                android:id="@+id/txtChangePassWord"
                 style="@style/text_match_setting"
                 android:text="@string/setting_change_password"
                 app:drawableStartCompat="@drawable/ic_setting_change_password" />
 
             <TextView
+                android:id="@+id/txtLanguage"
                 style="@style/text_match_setting"
                 android:text="@string/setting_language"
                 app:drawableStartCompat="@drawable/ic_setting_language" />
@@ -87,16 +89,19 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtContact"
                 style="@style/text_match_setting"
                 android:text="@string/setting_contact_us"
                 app:drawableStartCompat="@drawable/ic_setting_connect" />
 
             <TextView
+                android:id="@+id/txtHelp"
                 style="@style/text_match_setting"
                 android:text="@string/setting_help"
                 app:drawableStartCompat="@drawable/ic_setting_help" />
 
             <TextView
+                android:id="@+id/txtAbout"
                 style="@style/text_match_setting"
                 android:text="@string/setting_about"
                 app:drawableStartCompat="@drawable/ic_setting_about" />
