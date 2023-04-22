@@ -22,6 +22,7 @@ import com.htnguyen.ihealth.databinding.FragmentSocialBinding
 import com.htnguyen.ihealth.model.ActivityDaily
 import com.htnguyen.ihealth.model.SocialHealth
 import com.htnguyen.ihealth.support.*
+import com.htnguyen.ihealth.util.CommonUtils
 import com.htnguyen.ihealth.util.Database
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
@@ -173,11 +174,11 @@ class SocialFragment : BaseFragment<FragmentSocialBinding, SocialViewModel>() {
                         itemView.findViewById<TextView>(R.id.txtSocialFollowStep).text =
                             resources.getString(
                                 R.string.social_follow_step,
-                                getItem(position).followStep
+                                CommonUtils.formatNumber(getItem(position).followStep!!)
                             )
 
                         itemView.findViewById<TextView>(R.id.txtSocialYourStep).text =
-                            resources.getString(R.string.social_your_step, totalStep)
+                            resources.getString(R.string.social_your_step, CommonUtils.formatNumber(totalStep))
 
                         if (getItem(position).followStep != null) {
                             itemView.findViewById<LinearProgressIndicator>(R.id.progressCircleDeterminate).progress =

@@ -66,7 +66,7 @@
     <string name="social_title_challenge">Desafío de título</string>
     <string name="social_first_date">Fecha de inicio: %s</string>
     <string name="social_end_date">Fecha de finalización: %s</string>
-    <string name="social_follow_step">%d pasos</string>
+    <string name="social_follow_step">%s pasos</string>
     <string name="social_choose_challenge">Elige Desafío</string>
     <string name="social_compete_create_a_group_challenge">Compite 1 o más personas en un desafío individual o crea un desafío grupal</string>
     <string name="social_finish_first">terminar primero</string>

@@ -89,12 +89,72 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         getEatAndDrink()
         getHealthDaily()
         getStep()
-        modelClassArrayList.add(ModelClass("", "", "","", "https://cdn.brvn.vn/topics/1280px/2021/318721_318721cover_1625227070.jpg", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "https://storage.googleapis.com/leep_app_website/2021/01/Tap-the-duc-theo-nhom1.png", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "https://suckhoedoisong.qltns.mediacdn.vn/Images/duylinh/2016/09/08/1_.jpg", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "https://file1.hutech.edu.vn/file/editor/homepage1/779253-nganh-quan-ly-the-duc-the-thao-hutech3.jpg", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "https://www.cleanipedia.com/images/5iwkm8ckyw6v/9d6d615751ed57a974c1956b1a3aa90d/ccf894cfa45de82f073ae97161933470/aHR0cHNfX193d3cuY2xlYW5pcGVkaWEuY29tX2NvbnRlbnRfZGFtX3VuaWxldmVyX2xpcHRvbl9pbnRlcm5hdGlvbmFsX3NhdWRpX2FyYWJpYV9vbmxpbmVfY29tbXNfXzFfbGlwdG9uXy1fd2VsbGJlaW5nXy1fYmFubi5qcGc/990w-660h/5-sai-lầm-trong-việc-giữ-vệ-sinh-sau-khi-tập-luyện-mà-bạn-hay-mắc-phải.jpg", "", ""))
-        modelClassArrayList.add(ModelClass("", "", "","", "https://acc.vn/wp-content/uploads/2023/01/bai-tap-the-duc-cho-phu-nu-sau-sinh.png", "", ""))
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://cdn.brvn.vn/topics/1280px/2021/318721_318721cover_1625227070.jpg",
+                "",
+                ""
+            )
+        )
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://storage.googleapis.com/leep_app_website/2021/01/Tap-the-duc-theo-nhom1.png",
+                "",
+                ""
+            )
+        )
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://suckhoedoisong.qltns.mediacdn.vn/Images/duylinh/2016/09/08/1_.jpg",
+                "",
+                ""
+            )
+        )
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://file1.hutech.edu.vn/file/editor/homepage1/779253-nganh-quan-ly-the-duc-the-thao-hutech3.jpg",
+                "",
+                ""
+            )
+        )
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://www.cleanipedia.com/images/5iwkm8ckyw6v/9d6d615751ed57a974c1956b1a3aa90d/ccf894cfa45de82f073ae97161933470/aHR0cHNfX193d3cuY2xlYW5pcGVkaWEuY29tX2NvbnRlbnRfZGFtX3VuaWxldmVyX2xpcHRvbl9pbnRlcm5hdGlvbmFsX3NhdWRpX2FyYWJpYV9vbmxpbmVfY29tbXNfXzFfbGlwdG9uXy1fd2VsbGJlaW5nXy1fYmFubi5qcGc/990w-660h/5-sai-lầm-trong-việc-giữ-vệ-sinh-sau-khi-tập-luyện-mà-bạn-hay-mắc-phải.jpg",
+                "",
+                ""
+            )
+        )
+        modelClassArrayList.add(
+            ModelClass(
+                "",
+                "",
+                "",
+                "",
+                "https://acc.vn/wp-content/uploads/2023/01/bai-tap-the-duc-cho-phu-nu-sau-sinh.png",
+                "",
+                ""
+            )
+        )
         setDataForWeek(Util.calendar)
         setPageView()
         optionDailyActivities()
@@ -129,18 +189,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     private fun optionWeight() {
-        binding.layoutHomeWeight.textView4.text = Html.fromHtml("<big><b>" + viewModel.progressWeight.value + "</b></big> kG", Html.FROM_HTML_MODE_COMPACT)
+        binding.layoutHomeWeight.textView4.text = Html.fromHtml(
+            "<big><b>" + viewModel.progressWeight.value + "</b></big> kG",
+            Html.FROM_HTML_MODE_COMPACT
+        )
     }
 
     private fun optionSettingStep() {
         binding.layoutStep.root.setOnClickListener {
-            FollowerStepDialog().newInstance(viewModel.followStep.value!!).show(requireActivity(), "BKAV")
+            FollowerStepDialog().newInstance(viewModel.followStep.value!!)
+                .show(requireActivity(), "BKAV")
         }
     }
 
     private fun optionSettingWater() {
         binding.layoutHomeWater.root.setOnClickListener {
-            FollowerWaterDialog().newInstance(viewModel.followWater.value!!).show(requireActivity(), "BKAV")
+            FollowerWaterDialog().newInstance(viewModel.followWater.value!!)
+                .show(requireActivity(), "BKAV")
         }
     }
 
@@ -165,7 +230,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     private fun optionStep() {
-        binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
+        binding.layoutStep.textView4.text = Html.fromHtml(
+            "<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value,
+            Html.FROM_HTML_MODE_COMPACT
+        )
         binding.layoutStep.processBarStep.progress = viewModel.step.value.toString().toInt()
         binding.layoutStep.processBarStep.max = viewModel.followStep.value.toString().toInt()
 
@@ -175,12 +243,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
         }
         binding.layoutDailyActivities.circularProgressBar.apply {
-            setProgressWithAnimation(CommonUtils.getCaloriesInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            setProgressWithAnimation(
+                CommonUtils.getCaloriesInt(viewModel.step.value ?: 0).toFloat(), 1000
+            )
             progressMax = CommonUtils.getCaloriesInt(viewModel.followStep.value ?: 0).toFloat()
         }
 
         binding.layoutDailyActivities.circularProgressBar2.apply {
-            setProgressWithAnimation(CommonUtils.getDistanceInt(viewModel.step.value ?: 0).toFloat(), 1000)
+            setProgressWithAnimation(
+                CommonUtils.getDistanceInt(viewModel.step.value ?: 0).toFloat(), 1000
+            )
             progressMax = CommonUtils.getDistanceInt(viewModel.followStep.value ?: 0).toFloat()
 
         }
@@ -188,15 +260,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     private fun optionHeartBeat() {
-        binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml("<big><b>" + viewModel.heartBeat.value + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
+        if (viewModel.heartBeat.value != null) {
+            binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml(
+                "<big><b>" + viewModel.heartBeat.value + "</b></big> bpm",
+                Html.FROM_HTML_MODE_COMPACT
+            )
+
+        } else {
+            binding.layoutHomeHeartbeat.textView4.text =
+                Html.fromHtml("<big><b>" + "--" + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
+
+        }
         binding.layoutHomeHeartbeat.txtMeasure.setOnClickListener {
-            requireActivity().startActivity(Intent(requireActivity(), MeasureHeartBeatActivity::class.java))
+            requireActivity().startActivity(
+                Intent(
+                    requireActivity(),
+                    MeasureHeartBeatActivity::class.java
+                )
+            )
         }
     }
 
     private fun optionOxyInBlood() {
         binding.layoutHomeBlood.content.setOnClickListener {
-            requireActivity().startActivity(Intent(requireActivity(), MeasureOxyBloodActivity::class.java))
+            requireActivity().startActivity(
+                Intent(
+                    requireActivity(),
+                    MeasureOxyBloodActivity::class.java
+                )
+            )
         }
     }
 
@@ -237,7 +329,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     }
 
     fun updateActivityDaily() {
-        binding.layoutStep.textView4.text = Html.fromHtml("<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value , Html.FROM_HTML_MODE_COMPACT)
+        binding.layoutStep.textView4.text = Html.fromHtml(
+            "<big><big><big><b>" + viewModel.step.value + "</b></big></big></big>/" + viewModel.followStep.value,
+            Html.FROM_HTML_MODE_COMPACT
+        )
         val activityDaily = ActivityDaily(
             step = viewModel.step.value,
             followStep = viewModel.followStep.value,
@@ -260,7 +355,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
 
     private fun updateEatAndDrink() {
         binding.layoutHomeWater.txtMinus.isClickable = viewModel.water.value!! > 0
-        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
+        binding.layoutHomeWater.textView4.text = Html.fromHtml(
+            "<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass",
+            Html.FROM_HTML_MODE_COMPACT
+        )
         val eatAndDrink = EatAndDrink(
             kcal = viewModel.kcal.value,
             followKcal = viewModel.followKcal.value,
@@ -289,7 +387,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     val activityDaily = postSnapshot.getValue<ActivityDaily>()
                     if (activityDaily != null) {
                         viewModel.followStep.value = activityDaily.followStep
-                        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
+                        binding.layoutHomeWater.textView4.text = Html.fromHtml(
+                            "<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass",
+                            Html.FROM_HTML_MODE_COMPACT
+                        )
                     }
                 }
             }
@@ -330,7 +431,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     if (eatAndDrink != null) {
                         viewModel.water.value = eatAndDrink.water
                         viewModel.followWater.value = eatAndDrink.followWater
-                        binding.layoutHomeWater.textView4.text = Html.fromHtml("<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass", Html.FROM_HTML_MODE_COMPACT)
+                        binding.layoutHomeWater.textView4.text = Html.fromHtml(
+                            "<big><b>" + viewModel.water.value + "</b></big>/" + viewModel.followWater.value + " Glass",
+                            Html.FROM_HTML_MODE_COMPACT
+                        )
                     }
                 }
             }
@@ -353,7 +457,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
                     if (healthDaily != null) {
                         viewModel.heartBeat.value = healthDaily.heartBeat
                         viewModel.fellingToday.value = healthDaily.fellingToday
-                        binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml("<big><b>" + viewModel.heartBeat.value + "</b></big> bpm", Html.FROM_HTML_MODE_COMPACT)
+                        if (viewModel.heartBeat.value != null) {
+                            binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml(
+                                "<big><b>" + viewModel.heartBeat.value + "</b></big> bpm",
+                                Html.FROM_HTML_MODE_COMPACT
+                            )
+
+                        } else {
+                            binding.layoutHomeHeartbeat.textView4.text = Html.fromHtml(
+                                "<big><b>" + "--" + "</b></big> bpm",
+                                Html.FROM_HTML_MODE_COMPACT
+                            )
+
+                        }
                     }
                 }
 
@@ -390,7 +506,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         max.add(Calendar.DAY_OF_YEAR, 6)
         binding.layoutChart.chart.clearDiagram()
 
-        for (i in min.timeInMillis .. max.timeInMillis step 86400000) {
+        for (i in min.timeInMillis..max.timeInMillis step 86400000) {
             getStepDay(i)
         }
 
@@ -399,8 +515,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
     override fun onSensorChanged(event: SensorEvent?) {
         val totalStepSinceReboot: Int = event?.values?.get(0)?.roundToInt() ?: 0
         viewModel.step.value = totalStepSinceReboot - PrefsHelper.getInt("Steps")
-        viewModel.calories.value = CommonUtils.getCaloriesInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
-        viewModel.meter.value = CommonUtils.getDistanceInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
+        viewModel.calories.value =
+            CommonUtils.getCaloriesInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
+        viewModel.meter.value =
+            CommonUtils.getDistanceInt(totalStepSinceReboot - PrefsHelper.getInt("Steps"))
         optionStep()
     }
 

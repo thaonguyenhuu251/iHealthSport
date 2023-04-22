@@ -137,8 +137,8 @@
     <string name="social_title_challenge">Title challenge</string>
     <string name="social_first_date">Date start: %s</string>
     <string name="social_end_date">Date end: %s</string>
-    <string name="social_follow_step">Request Steps %d</string>
-    <string name="social_your_step">Your Steps %d</string>
+    <string name="social_follow_step">Request Steps %s</string>
+    <string name="social_your_step">Your Steps %s</string>
     <string name="social_choose_challenge">Choose Challenge</string>
     <string name="social_compete_create_a_group_challenge">Compete 1 or more people in individual challenge or create a group challenge</string>
     <string name="social_finish_first">Finish first</string>

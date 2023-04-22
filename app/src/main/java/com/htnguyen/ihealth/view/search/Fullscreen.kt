@@ -43,6 +43,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
         super.onCreate(savedInstanceState)
 
         binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
             finish()
         }
 
@@ -52,6 +53,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
         binding.tvFullscreen.text = title
         binding.exoplayerFullscreen.findViewById<ImageView>(R.id.exoplayer_fullscreen_icon).setOnClickListener {
             if (fullscreen) {
+                binding.toolbar.visibility = View.VISIBLE
                 binding.exoplayerFullscreen.findViewById<ImageView>(R.id.exoplayer_fullscreen_icon)
                     .setImageDrawable(
                         ContextCompat.getDrawable(
@@ -71,6 +73,7 @@ class Fullscreen : BaseActivity<ActivityFullscreenBinding, FullScreenViewModel>(
                 binding.exoplayerFullscreen.layoutParams = params
                 fullscreen = false
             } else {
+                binding.toolbar.visibility = View.GONE
                 binding.exoplayerFullscreen.findViewById<ImageView>(R.id.exoplayer_fullscreen_icon).setImageDrawable(
                         ContextCompat.getDrawable(
                             this@Fullscreen,

@@ -43,11 +43,6 @@
     <string name="feeling_good">Cảm thấy tốt</string>
     <string name="feeling_disappointed">Cảm thấy thất vọng</string>
     <string name="feeling_bad">Cảm thấy mệt mỏi</string>
-    <string name="main_home">Home</string>
-    <string name="main_social">Social</string>
-    <string name="main_chat">Chat</string>
-    <string name="main_search">Search</string>
-    <string name="main_profile">Hồ sơ</string>
     <string name="home_header_exercise">Bài tập</string>
     <string name="home_header_see_history">Xem lịch sử</string>
     <string name="home_header_oxy_in_blood">Oxy trong máu</string>
@@ -66,8 +61,8 @@
     <string name="social_title_challenge">Thử thách tiêu đề</string>
     <string name="social_first_date">Ngày bắt đầu: %s</string>
     <string name="social_end_date">Ngày kết thúc: %s</string>
-    <string name="social_follow_step">Số bước yêu cầu: %d</string>
-    <string name="social_your_step">Số bước của bạn: %d</string>
+    <string name="social_follow_step">Số bước yêu cầu: %s</string>
+    <string name="social_your_step">Số bước của bạn: %s</string>
     <string name="social_choose_challenge">Chọn thử thách</string>
     <string name="social_compete_create_a_group_challenge">Thi đấu với 1 hoặc nhiều người trong thử thách cá nhân hoặc tạo thử thách nhóm</string>
     <string name="social_finish_first">Kết thúc đầu tiên</string>
@@ -96,8 +91,8 @@
     <string name="profile_give_us_some_basic_information">Cung cấp cho chúng tôi một số thông tin cơ bản</string>
     <string name="profile_what_your_name">Tên bạn là gì ?</string>
     <string name="progile_your_birthday">Sinh nhật của bạn</string>
-    <string name="profile_male">Nam giới</string>
-    <string name="profile_female">Nữ giới</string>
+    <string name="profile_male">Nam</string>
+    <string name="profile_female">Nữ</string>
     <string name="profile_height">Chiều cao</string>
     <string name="profile_100cm">100cm</string>
     <string name="profile__250cm">250cm</string>

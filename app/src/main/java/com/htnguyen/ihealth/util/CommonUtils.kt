@@ -216,4 +216,30 @@ object CommonUtils {
             else -> R.drawable.ic_language_vietnam
         }
     }
+
+    fun formatNumber(number: Int): String {
+        var formatNumber = ""
+        var result = number
+        val listResult = ArrayList<Int>()
+        do {
+            listResult.add(result % 1000)
+            result /= 1000
+        } while (result > 0)
+
+        for (i in listResult.size - 1 downTo 0 step 1) {
+            if (i == listResult.size - 1) {
+                formatNumber += "${listResult[i]}"
+            } else {
+                if (listResult[i] > 100) {
+                    formatNumber += ".${listResult[i]}"
+                } else if (listResult[i] > 10) {
+                    formatNumber += ".0${listResult[i]}"
+                } else {
+                    formatNumber += ".00${listResult[i]}"
+                }
+            }
+        }
+
+        return formatNumber
+    }
 }
