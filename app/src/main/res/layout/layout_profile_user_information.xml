@@ -21,7 +21,7 @@
         android:padding="@dimen/_10sdp">
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_wrap_header"
             android:text="@string/profile_your_information_detail"
             app:drawableStartCompat="@drawable/ic_profile_user_card" />
 

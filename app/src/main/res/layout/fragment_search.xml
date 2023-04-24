@@ -30,10 +30,12 @@
 
             <include
                 android:id="@+id/layoutNew"
+                android:visibility="gone"
                 layout="@layout/layout_search_list_normal" />
 
             <include
                 android:id="@+id/layoutTrending"
+                android:visibility="gone"
                 layout="@layout/layout_search_list_normal" />
 
             <TextView

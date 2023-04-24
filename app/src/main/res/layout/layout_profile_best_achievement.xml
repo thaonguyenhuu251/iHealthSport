@@ -20,7 +20,7 @@
         android:padding="@dimen/_10sdp">
 
         <TextView
-            style="@style/text_wrap_normal"
+            style="@style/text_wrap_header"
             android:text="@string/best_achievement"
             app:drawableStartCompat="@drawable/ic_profile_achievement" />
 
