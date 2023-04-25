@@ -23,6 +23,7 @@ import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.service.StepDetectorService
+import com.htnguyen.ihealth.util.ContextUtils
 import com.htnguyen.ihealth.util.Event
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.FirebaseUtils.db
@@ -96,6 +97,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         binding.drawerMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         disposable = IHealthApplication.eventBus.subscribe {
             it[Event.EVENT_OPEN_NOTIFICATION]?.let {
                 binding.drawerMain.openDrawer(GravityCompat.START)
@@ -106,11 +113,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             }
 
             it[Event.EVENT_CHANGE_LANGUAGE]?.let {
-                recreate()
+                startActivity(Intent(this@MainActivity, MainActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                })
+                finish()
+                finishAffinity()
             }
 
         }
-
     }
 
     private fun setTabLayout() {

@@ -65,7 +65,7 @@
     <string name="title" translatable="false">Title</string>
     <string name="post" translatable="false">POST</string>
 
-    <string name="open_ihealth">Open iHealth...</string>
+    <string name="open_ihealth">打开 iHealth...</string>
     <string name="skip">Skip</string>
     <string name="water">Water</string>
 

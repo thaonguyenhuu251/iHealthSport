@@ -1,0 +1,211 @@
+<resources>
+    <string name="app_name" translatable="false">iHealth</string>
+
+    <string name="vector_path_menu" translatable="false">M3,8 L21,8 21,6 3,6z M3,18 L21,18 21,16 3,16z M3,13 L21,13 21,11 3,11z</string>
+    <string name="vector_path_line" translatable="false">M3,13 L21,13 21,11 3,11z M3,13 L21,13 21,11 3,11z M3,12 L21,12 21,12 3,12z</string>
+    <string name="vector_path_close" translatable="false">M5,6.41 L17.59,19 19,17.59 6.41,5z M6.41,19 L19,6.41 17.59,5 5,17.59z M12,12 L12,12 12,12 12,12z</string>
+
+    <string name="path_cross" translatable="false">M6.4,6.4 L17.6,17.6 M6.4,17.6 L17.6,6.4</string>
+    <string name="path_plus" translatable="false">M6.4,12 L17.6,12 M12,6.4 L12,17.6</string>
+
+    <string name="plus" translatable="false">plus</string>
+    <string name="groupPlusCross" translatable="false">groupPlusCross</string>
+    <string name="pref_name_ihealth" translatable="false">pref_name_ihealth</string>
+
+    <string name="output_header_template" translatable="false">Heart rate on %s</string>
+    <string name="output_detected_peaks_header" translatable="false">Detected Peaks:</string>
+    <string name="send_output_to" translatable="false">Send output to:</string>
+    <string name="separator" translatable="false">,</string>
+    <string name="row_separator" translatable="false">\n</string>
+    <string name="raw_values" translatable="false">Measurements (Timestamp, Value)</string>
+    <string name="cameraPermissionRequired" translatable="false">Camera permission is required for this application to work.</string>
+    <string name="noFlashWarning" translatable="false">Measurement without flash is less reliable.</string>
+    <string name="new_measurement" translatable="false">New Measurement</string>
+    <string name="export_result" translatable="false">Export Result</string>
+    <string name="export_details" translatable="false">Export Details</string>
+    <string name="dateFormat" translatable="false">yyyy-MM-dd\'T\'HH:mm:ssZZZZZ</string>
+    <string name="dateFormatGranular" translatable="false">yyyy-MM-dd\'T\'HH:mm:ss.SSSZZZZZ</string>
+    <string name="camera_not_found" translatable="false">Camera not available.</string>
+
+    <plurals name="measurement_output_template" translatable="false">
+        <item quantity="zero">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="one">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="other">Pulse: %2.1f (%d cycles in %2.1f seconds)</item>
+    </plurals>
+    <string name="common_format_date" translatable="false">dd/MM/yyyy</string>
+    <string name="common_format_date_standard" translatable="false">dd/MM/yyyy</string>
+    <string name="profile_home" translatable="false">Home</string>
+    <string name="profile_social" translatable="false">Social</string>
+    <string name="profile_chat" translatable="false">Chat</string>
+    <string name="profile_search" translatable="false">Search</string>
+    <string name="profile_profile" translatable="false">Profile</string>
+    <!--    Gps Training-->
+    <string name="title_activity_gps_map" translatable="false">GPS Training</string>
+    <string name="map_id" translatable="false">5618cd7b01db1e2e</string>
+    <string name="distance_title" translatable="false">KILOMETERS</string>
+    <string name="duration_title" translatable="false">TIME</string>
+    <string name="calorie_title" translatable="false">CALORIE</string>
+    <string name="option_get_place" translatable="false">Get place</string>
+    <string name="pick_place" translatable="false">Choose a place</string>
+    <string name="stop_button" translatable="false">STOP</string>
+    <string name="start_button" translatable="false">START</string>
+    <string name="pause_button" translatable="false">PAUSE</string>
+    <string name="continue_button" translatable="false">CONTINUE</string>
+    <string name="duration" translatable="false">%d:%d:%d</string>
+
+    <!-- User Goal -->
+    <string name="user_setup_activity_title" translatable="false">Set Goal</string>
+    <string name="hint_target_step_per_day" translatable="false">Target steps per day</string>
+    <string name="steps_unit" translatable="false">steps</string>
+    <string name="or" translatable="false">or</string>
+    <string name="hint_target_calories_per_day" translatable="false">Target calories per day</string>
+    <string name="calories_unit" translatable="false">calories</string>
+    <string name="go" translatable="false">Go</string>
+    <string name="content" translatable="false">Content</string>
+    <string name="title" translatable="false">Title</string>
+    <string name="post" translatable="false">POST</string>
+
+    <string name="open_ihealth">เปิด iHealth...</string>
+    <string name="skip">ข้าม</string>
+    <string name="water">น้ำ</string>
+
+    <string name="common_back">กลับ</string>
+    <string name="common_password">รหัสผ่าน</string>
+    <string name="common_email_address">ที่อยู่อีเมล</string>
+    <string name="common_forgot_password">ลืมรหัสผ่าน</string>
+    <string name="common_account_not_have">ฉันไม่มีบัญชี?</string>
+    <string name="common_account_have">ฉันมีบัญชี?</string>
+
+    <string name="common_heart_beat">การเต้นของหัวใจ</string>
+    <string name="common_measure">วัด</string>
+    <string name="common_body_weight">น้ำหนักตัว</string>
+    <string name="common_data">ข้อมูล</string>
+    <string name="common_area_code">รหัสพื้นที่</string>
+    <string name="common_phone_number">หมายเลขโทรศัพท์</string>
+    <string name="common_confirm_password">ยืนยันรหัสผ่าน</string>
+    <string name="common_next">ต่อไป</string>
+    <string name="home_choose_your_target_step_count">เลือกจำนวนก้าวเป้าหมายของคุณ</string>
+    <string name="common_confirm">ยืนยัน</string>
+    <string name="common_choose_a_target">เลือกจำนวนถ้วยน้ำเป้าหมายที่คุณดื่มต่อวัน (350มล./ถ้วย)</string>
+    <string name="common_otp_verification">การตรวจสอบ OTP</string>
+    <string name="common_we_have_sent_verification">เราได้ส่งรหัสยืนยันไปที่</string>
+    <string name="common_equest_code">ต้องการรหัส</string>
+    <string name="common_verify_otp">ตรวจสอบ OTP</string>
+    <string name="common_step">ขั้นตอน</string>
+    <string name="common_choose_image">เลือกภาพ</string>
+    <string name="common_save">บันทึก</string>
+
+    <string name="sign_in">เข้าสู่ระบบ</string>
+    <string name="sign_in_your_account">ลงชื่อเข้าใช้บัญชีของคุณ</string>
+    <string name="sign_in_by">Hoặc đăng nhập bằng</string>
+
+    <string name="sign_up">ลงชื่อ</string>
+    <string name="sign_up_small">ลงชื่อ</string>
+    <string name="sign_up_create_your_account">สร้างบัญชีของคุณ</string>
+    <string name="sign_up_email">อีเมล</string>
+    <string name="sign_up_phone_number">หมายเลขโทรศัพท์</string>
+
+    <string name="good_morning">สวัสดีตอนเช้า</string>
+    <string name="good_afternoon">สวัสดีตอนบ่าย</string>
+    <string name="good_evening">สวัสดีตอนเย็น</string>
+
+    <string name="feeling_good">รู้สึกดี</string>
+    <string name="feeling_disappointed">รู้สึกผิดหวัง</string>
+    <string name="feeling_bad">รู้สึกแย่</string>
+
+    <string name="main_home" translatable="false">Home</string>
+    <string name="main_social" translatable="false">Social</string>
+    <string name="main_chat" translatable="false">Chat</string>
+    <string name="main_search" translatable="false">Search</string>
+    <string name="main_profile" translatable="false">Profile</string>
+
+    <string name="home_header_exercise">ออกกำลังกาย</string>
+    <string name="home_header_see_history">ดูประวัติ</string>
+    <string name="home_header_oxy_in_blood">ออกซีในเลือด</string>
+    <string name="home_measure">วัด</string>
+    <string name="home_daily_activities">กิจกรรมประจำวัน</string>
+    <string name="home_today_plan">แผนวันนี้</string>
+    <string name="home_foods">อาหาร</string>
+    <string name="home_stress">ความเครียด</string>
+    <string name="home_notifications">การแจ้งเตือน</string>
+
+    <string name="social_challenge_person">บุคคลที่ท้าทาย</string>
+    <string name="social_challenge_team">ทีมชาเลนจ์</string>
+    <string name="social_create_challenge">สร้างความท้าทาย</string>
+    <string name="social_go_farthest">ไปให้ไกลที่สุด</string>
+    <string name="social_see_who_cmost_steps">ดูว่าใครสามารถทำตามขั้นตอนได้มากที่สุดระหว่างการท้าทาย</string>
+    <string name="social_title_challenge">ความท้าทายชื่อเรื่อง</string>
+    <string name="social_first_date">วันที่เริ่มต้น: %s</string>
+    <string name="social_end_date">วันที่สิ้นสุด: %s</string>
+    <string name="social_follow_step">ขอขั้นตอน %s</string>
+    <string name="social_your_step">ขั้นตอนของคุณ %s</string>
+    <string name="social_choose_challenge">เลือกความท้าทาย</string>
+    <string name="social_compete_create_a_group_challenge">แข่งขันกัน 1 คนขึ้นไปในการท้าทายเดี่ยวหรือสร้างความท้าทายแบบกลุ่ม</string>
+    <string name="social_finish_first">จบก่อน</string>
+    <string name="social_set_a_goal_step">ตั้งเป้าหมายนับก้าว ใครถึงเป้าหมายก่อนชนะ</string>
+    <string name="social_person">บุคคล</string>
+    <string name="social_team">ทีม</string>
+    <string name="social_header_go_farthest">ไปให้ไกลที่สุด</string>
+    <string name="social_see_who_can_get">ดูว่าใครสามารถทำตามขั้นตอนได้มากที่สุดระหว่างการท้าทาย</string>
+
+    <string name="search_recent">ล่าสุด</string>
+    <string name="search_new">มีอะไรใหม่</string>
+    <string name="search_trending">กำลังมาแรง</string>
+    <string name="search_activity">กิจกรรม</string>
+    <string name="search_shred">ฉีกความท้าทาย</string>
+    <string name="search_workouts">ออกกำลังกายที่บ้าน</string>
+    <string name="search_yoga">โยคะสำหรับการสูญเสียอย่างรวดเร็ว</string>
+    <string name="search">ค้นหา...</string>
+    <string name="setting_title">การตั้งค่า</string>
+    <string name="search_propose">เสนอ</string>
+
+    <string name="profile_gender_male">ชาย</string>
+    <string name="profile_gender_female">หญิง</string>
+    <string name="profile_achieve_step">%d ขั้นตอน</string>
+    <string name="profile_achieve_hour">%d ชั่วโมง</string>
+    <string name="profile_achieve_calo">%d คาโล</string>
+    <string name="profile_achieve_distance">%d เมตร</string>
+    <string name="profile_achieve_mountain">%d ระดับความสูง</string>
+    <string name="profile_give_us_some_basic_information">ให้ข้อมูลเบื้องต้นแก่เรา</string>
+    <string name="profile_what_your_name">คุณชื่ออะไร ?</string>
+    <string name="progile_your_birthday">วันเกิดของคุณ</string>
+    <string name="profile_male">ชาย</string>
+    <string name="profile_female">หญิง</string>
+    <string name="profile_height">ความสูง</string>
+    <string name="profile_100cm">100ซม</string>
+    <string name="profile__250cm">250ซม</string>
+    <string name="profile_weight">น้ำหนัก</string>
+    <string name="profile_20kg">20กก</string>
+    <string name="profile_100kg">100Kg</string>
+    <string name="profile_edit">แก้ไข</string>
+    <string name="profile_medal">เหรียญ</string>
+    <string name="profile_your_information_detail">รายละเอียดข้อมูลของคุณ</string>
+    <string name="profile_your_profile">โปรไฟล์ของคุณ</string>
+
+    <string name="tutorial_exercise_comfort_title">ออกกำลังกายด้วยความสบาย</string>
+    <string name="tutorial_exercise_comfort_content_one">ออกกำลังกายด้วยแอพไม่จำกัดจากความสะดวกสบายในบ้านของคุณ</string>
+    <string name="tutorial_exercise_comfort_content_two">ทางเลือกของคู่มือกีฬาตามที่คุณต้องการ</string>
+    <string name="tutorial_exercise_comfort_content_three">สูตรอาหารของเราคัดสรรมาเป็นพิเศษเพื่อให้คุณทำอาหารได้ในเวลาไม่นาน</string>
+    <string name="tutorial_connect_doctor_title">เชื่อมต่อแพทย์ที่คุณต้องการ</string>
+    <string name="tutorial_connect_doctor_content">ติดต่อกับผู้เชี่ยวชาญได้จากที่บ้านอย่างสะดวกสบายผ่านแฮงเอาท์วิดีโอ แฮงเอาท์เสียง หรือแชทสด</string>
+    <string name="tutorial_choose_doctor_title">เลือกแพทย์ที่คุณต้องการ</string>
+    <string name="tutorial_choose_doctor_content">ติดต่อกับผู้เชี่ยวชาญได้จากที่บ้านอย่างสะดวกสบายผ่านแฮงเอาท์วิดีโอ แฮงเอาท์เสียง หรือแชทสด</string>
+    <string name="tutorial_healthy_way_content">ค้นหาแพทย์ผู้เชี่ยวชาญใกล้ตำแหน่งของคุณโดยใช้ Chatbot และจองนัดหมายได้ในคลิกเดียว</string>
+    <string name="tutorial_healthy_way_title">HealthWay \nวิธีที่ดีที่สุดในการไปพบแพทย์</string>
+
+    <string name="setting_change_password">เปลี่ยนรหัสผ่าน</string>
+    <string name="setting_language">ภาษา</string>
+    <string name="setting_notification">การแจ้งเตือน</string>
+    <string name="setting_dark_mode">โหมดมืด</string>
+    <string name="setting_contact_us">ติดต่อเรา</string>
+    <string name="setting_help">ช่วย</string>
+    <string name="setting_about">เกี่ยวกับ</string>
+    <string name="setting_log_out">ออกจากระบบ</string>
+
+    <string name="email_address_or_phone_number">ที่อยู่อีเมลหรือหมายเลขโทรศัพท์</string>
+    <string name="thank_you">ฟีเจอร์นี้อยู่ระหว่างการพัฒนา เราจะพยายามนำประสบการณ์นี้มาให้คุณโดยเร็วที่สุด ขอบคุณ!</string>
+    <string name="how_are_you_feeling_today">วันนี้คุณรู้สึกอย่างไรบ้าง?</string>
+    <string name="best_achievement">ความสำเร็จที่ดีที่สุด</string>
+    <string name="version">เวอร์ชัน 1.0</string>
+
+</resources>

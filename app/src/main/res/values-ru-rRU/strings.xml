@@ -1,0 +1,211 @@
+<resources>
+    <string name="app_name" translatable="false">iHealth</string>
+
+    <string name="vector_path_menu" translatable="false">M3,8 L21,8 21,6 3,6z M3,18 L21,18 21,16 3,16z M3,13 L21,13 21,11 3,11z</string>
+    <string name="vector_path_line" translatable="false">M3,13 L21,13 21,11 3,11z M3,13 L21,13 21,11 3,11z M3,12 L21,12 21,12 3,12z</string>
+    <string name="vector_path_close" translatable="false">M5,6.41 L17.59,19 19,17.59 6.41,5z M6.41,19 L19,6.41 17.59,5 5,17.59z M12,12 L12,12 12,12 12,12z</string>
+
+    <string name="path_cross" translatable="false">M6.4,6.4 L17.6,17.6 M6.4,17.6 L17.6,6.4</string>
+    <string name="path_plus" translatable="false">M6.4,12 L17.6,12 M12,6.4 L12,17.6</string>
+
+    <string name="plus" translatable="false">plus</string>
+    <string name="groupPlusCross" translatable="false">groupPlusCross</string>
+    <string name="pref_name_ihealth" translatable="false">pref_name_ihealth</string>
+
+    <string name="output_header_template" translatable="false">Heart rate on %s</string>
+    <string name="output_detected_peaks_header" translatable="false">Detected Peaks:</string>
+    <string name="send_output_to" translatable="false">Send output to:</string>
+    <string name="separator" translatable="false">,</string>
+    <string name="row_separator" translatable="false">\n</string>
+    <string name="raw_values" translatable="false">Measurements (Timestamp, Value)</string>
+    <string name="cameraPermissionRequired" translatable="false">Camera permission is required for this application to work.</string>
+    <string name="noFlashWarning" translatable="false">Measurement without flash is less reliable.</string>
+    <string name="new_measurement" translatable="false">New Measurement</string>
+    <string name="export_result" translatable="false">Export Result</string>
+    <string name="export_details" translatable="false">Export Details</string>
+    <string name="dateFormat" translatable="false">yyyy-MM-dd\'T\'HH:mm:ssZZZZZ</string>
+    <string name="dateFormatGranular" translatable="false">yyyy-MM-dd\'T\'HH:mm:ss.SSSZZZZZ</string>
+    <string name="camera_not_found" translatable="false">Camera not available.</string>
+
+    <plurals name="measurement_output_template" translatable="false">
+        <item quantity="zero">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="one">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="other">Pulse: %2.1f (%d cycles in %2.1f seconds)</item>
+    </plurals>
+    <string name="common_format_date" translatable="false">dd/MM/yyyy</string>
+    <string name="common_format_date_standard" translatable="false">dd/MM/yyyy</string>
+    <string name="profile_home" translatable="false">Home</string>
+    <string name="profile_social" translatable="false">Social</string>
+    <string name="profile_chat" translatable="false">Chat</string>
+    <string name="profile_search" translatable="false">Search</string>
+    <string name="profile_profile" translatable="false">Profile</string>
+    <!--    Gps Training-->
+    <string name="title_activity_gps_map" translatable="false">GPS Training</string>
+    <string name="map_id" translatable="false">5618cd7b01db1e2e</string>
+    <string name="distance_title" translatable="false">KILOMETERS</string>
+    <string name="duration_title" translatable="false">TIME</string>
+    <string name="calorie_title" translatable="false">CALORIE</string>
+    <string name="option_get_place" translatable="false">Get place</string>
+    <string name="pick_place" translatable="false">Choose a place</string>
+    <string name="stop_button" translatable="false">STOP</string>
+    <string name="start_button" translatable="false">START</string>
+    <string name="pause_button" translatable="false">PAUSE</string>
+    <string name="continue_button" translatable="false">CONTINUE</string>
+    <string name="duration" translatable="false">%d:%d:%d</string>
+
+    <!-- User Goal -->
+    <string name="user_setup_activity_title" translatable="false">Set Goal</string>
+    <string name="hint_target_step_per_day" translatable="false">Target steps per day</string>
+    <string name="steps_unit" translatable="false">steps</string>
+    <string name="or" translatable="false">or</string>
+    <string name="hint_target_calories_per_day" translatable="false">Target calories per day</string>
+    <string name="calories_unit" translatable="false">calories</string>
+    <string name="go" translatable="false">Go</string>
+    <string name="content" translatable="false">Content</string>
+    <string name="title" translatable="false">Title</string>
+    <string name="post" translatable="false">POST</string>
+
+    <string name="open_ihealth">Откройте iHealth...</string>
+    <string name="skip">Пропускать</string>
+    <string name="water">Вода</string>
+
+    <string name="common_back">Назад</string>
+    <string name="common_password">Пароль</string>
+    <string name="common_email_address">Адрес электронной почты</string>
+    <string name="common_forgot_password">Забыли пароль</string>
+    <string name="common_account_not_have">У меня нет аккаунта?</string>
+    <string name="common_account_have">У меня есть аккаунт?</string>
+
+    <string name="common_heart_beat">Сердцебиение</string>
+    <string name="common_measure">Мера</string>
+    <string name="common_body_weight">Вес тела</string>
+    <string name="common_data">Данные</string>
+    <string name="common_area_code">Код города</string>
+    <string name="common_phone_number">Номер телефона</string>
+    <string name="common_confirm_password">Подтвердите пароль</string>
+    <string name="common_next">Следующий</string>
+    <string name="home_choose_your_target_step_count">Выберите целевое количество шагов</string>
+    <string name="common_confirm">Подтверждать</string>
+    <string name="common_choose_a_target">Выберите целевое количество чашек воды, которые вы выпиваете в день (350 мл на чашку)</string>
+    <string name="common_otp_verification">Проверка одноразового пароля</string>
+    <string name="common_we_have_sent_verification">Мы отправили код подтверждения на .</string>
+    <string name="common_equest_code">Запрашиваемый код</string>
+    <string name="common_verify_otp">Подтвердить одноразовый пароль</string>
+    <string name="common_step">Шаг</string>
+    <string name="common_choose_image">Выберите ИЗОБРАЖЕНИЕ</string>
+    <string name="common_save">Сохранять</string>
+
+    <string name="sign_in">Войти</string>
+    <string name="sign_in_your_account">Войдите в свою учетную запись</string>
+    <string name="sign_in_by">Hoặc đăng nhập bằng</string>
+
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_up_small">Зарегистрироваться</string>
+    <string name="sign_up_create_your_account">Создать аккаунт</string>
+    <string name="sign_up_email">Электронная почта</string>
+    <string name="sign_up_phone_number">Номер телефона</string>
+
+    <string name="good_morning">Доброе утро</string>
+    <string name="good_afternoon">Добрый день</string>
+    <string name="good_evening">Добрый вечер</string>
+
+    <string name="feeling_good">Чувствую себя хорошо</string>
+    <string name="feeling_disappointed">Чувствовать себя расстроенным</string>
+    <string name="feeling_bad">Плохо себя чувствовать</string>
+
+    <string name="main_home" translatable="false">Home</string>
+    <string name="main_social" translatable="false">Social</string>
+    <string name="main_chat" translatable="false">Chat</string>
+    <string name="main_search" translatable="false">Search</string>
+    <string name="main_profile" translatable="false">Profile</string>
+
+    <string name="home_header_exercise">Упражнение</string>
+    <string name="home_header_see_history">Посмотреть историю</string>
+    <string name="home_header_oxy_in_blood">Окси в крови</string>
+    <string name="home_measure">Мера</string>
+    <string name="home_daily_activities">Ежедневные занятия</string>
+    <string name="home_today_plan">Сегодняшний план</string>
+    <string name="home_foods">Еда</string>
+    <string name="home_stress">стресс</string>
+    <string name="home_notifications">Уведомления</string>
+
+    <string name="social_challenge_person">Вызов человека</string>
+    <string name="social_challenge_team">Команда вызова</string>
+    <string name="social_create_challenge">Создать вызов</string>
+    <string name="social_go_farthest">идти дальше всех</string>
+    <string name="social_see_who_cmost_steps">Посмотрите, кто сможет сделать больше всего шагов во время испытания</string>
+    <string name="social_title_challenge">Вызов титула</string>
+    <string name="social_first_date">Дата начала: %s</string>
+    <string name="social_end_date">Дата окончания: %s</string>
+    <string name="social_follow_step">Шаги запроса %s</string>
+    <string name="social_your_step">Ваши шаги %s</string>
+    <string name="social_choose_challenge">Выберите вызов</string>
+    <string name="social_compete_create_a_group_challenge">Соревнуйтесь с 1 или более людьми в индивидуальном соревновании или создайте групповое испытание.</string>
+    <string name="social_finish_first">Финишировать первым</string>
+    <string name="social_set_a_goal_step">установить целевое количество шагов. Выигрывает тот, кто первым достигнет цели</string>
+    <string name="social_person">Человек</string>
+    <string name="social_team">Команда</string>
+    <string name="social_header_go_farthest">Идти дальше всех</string>
+    <string name="social_see_who_can_get">Посмотрите, кто сможет сделать больше всего шагов во время испытания</string>
+
+    <string name="search_recent">Недавний</string>
+    <string name="search_new">Что нового</string>
+    <string name="search_trending">В тренде</string>
+    <string name="search_activity">Деятельность</string>
+    <string name="search_shred">Измельчить вызов</string>
+    <string name="search_workouts">Домашние тренировки</string>
+    <string name="search_yoga">Йога для быстро потерянных</string>
+    <string name="search">Поиск...</string>
+    <string name="setting_title">Параметр</string>
+    <string name="search_propose">Предложить</string>
+
+    <string name="profile_gender_male">Мужской</string>
+    <string name="profile_gender_female">Женский</string>
+    <string name="profile_achieve_step">%d шагов</string>
+    <string name="profile_achieve_hour">%d часов</string>
+    <string name="profile_achieve_calo">%d Кало</string>
+    <string name="profile_achieve_distance">%d метров</string>
+    <string name="profile_achieve_mountain">%d Высота</string>
+    <string name="profile_give_us_some_basic_information">Дайте нам основную информацию</string>
+    <string name="profile_what_your_name">Как тебя зовут ?</string>
+    <string name="progile_your_birthday">Твой день рождения</string>
+    <string name="profile_male">Мужской</string>
+    <string name="profile_female">Женский</string>
+    <string name="profile_height">Высота</string>
+    <string name="profile_100cm">100см</string>
+    <string name="profile__250cm">250см</string>
+    <string name="profile_weight">Масса</string>
+    <string name="profile_20kg">20 кг</string>
+    <string name="profile_100kg">100 кг</string>
+    <string name="profile_edit">Редактировать</string>
+    <string name="profile_medal">Медаль</string>
+    <string name="profile_your_information_detail">Ваша информация</string>
+    <string name="profile_your_profile">Ваш профиль</string>
+
+    <string name="tutorial_exercise_comfort_title">ЗАНИМАЙТЕСЬ С КОМФОРТОМ</string>
+    <string name="tutorial_exercise_comfort_content_one">Тренируйтесь с неограниченным количеством приложений, не выходя из дома</string>
+    <string name="tutorial_exercise_comfort_content_two">Выбор спортивного гида по вашему желанию</string>
+    <string name="tutorial_exercise_comfort_content_three">Наши рецепты специально подобраны, чтобы вы могли приготовить еду в кратчайшие сроки.</string>
+    <string name="tutorial_connect_doctor_title">ПОДКЛЮЧИТЕ НУЖНОГО ВРАЧА</string>
+    <string name="tutorial_connect_doctor_content">Общайтесь со специалистами, не выходя из дома, с помощью видеозвонка, аудиозвонка или живого чата.</string>
+    <string name="tutorial_choose_doctor_title">ВЫБЕРИТЕ ВАШЕГО ВРАЧА</string>
+    <string name="tutorial_choose_doctor_content">Общайтесь со специалистами, не выходя из дома, с помощью видеозвонка, аудиозвонка или живого чата.</string>
+    <string name="tutorial_healthy_way_content">Найдите врача, специалиста рядом с вами с помощью чат-бота и запишитесь на прием в один клик</string>
+    <string name="tutorial_healthy_way_title">HealthWay \nЛучший способ связаться с врачом</string>
+
+    <string name="setting_change_password">Изменить пароль</string>
+    <string name="setting_language">Язык</string>
+    <string name="setting_notification">Уведомление</string>
+    <string name="setting_dark_mode">Темный режим</string>
+    <string name="setting_contact_us">Связаться с нами</string>
+    <string name="setting_help">Помощь</string>
+    <string name="setting_about">О</string>
+    <string name="setting_log_out">Выйти</string>
+
+    <string name="email_address_or_phone_number">Адрес электронной почты или номер телефона</string>
+    <string name="thank_you">Функция находится в разработке, мы постараемся предоставить вам этот опыт как можно скорее, спасибо!</string>
+    <string name="how_are_you_feeling_today">Как самочувствие сегодня?</string>
+    <string name="best_achievement">Лучшее достижение</string>
+    <string name="version">Версия 1.0</string>
+
+</resources>
