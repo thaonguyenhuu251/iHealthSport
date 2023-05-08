@@ -44,9 +44,9 @@ object PreferencesUtil {
 
     const val LANGUAGE = "LANGUAGE"
 
-    var language: String?
+    var language: String
         get() {
-            return preferences.getString(LANGUAGE, Constant.LG_VIETNAMESE)
+            return preferences.getString(LANGUAGE, Constant.LG_VIETNAMESE).toString()
         }
         set(value) {
             preferencesEdit.putString(LANGUAGE, value).apply()
