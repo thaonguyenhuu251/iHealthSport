@@ -54,7 +54,7 @@ class ProfileEditActivity :
         viewModel.gender.value = PreferencesUtil.userGender
         viewModel.progressHeight.value = PreferencesUtil.userHeight?.roundToInt()
         viewModel.progressWeight.value = PreferencesUtil.userWeight?.roundToInt()
-        viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
+        viewModel.birthDay.value = SimpleDateFormat("dd/MM/yyyy")
             .format(viewModel.birthDayLong.value)
             .toString()
 
@@ -145,7 +145,7 @@ class ProfileEditActivity :
 
     override fun onClickOk(date: Long) {
         viewModel.birthDayLong.value = date
-        viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
+        viewModel.birthDay.value = SimpleDateFormat("dd/MM/yyyy")
             .format(viewModel.birthDayLong.value)
             .toString()
     }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.core.widget.NestedScrollView
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_10sdp"
         android:background="@color/color_background_grey"
-        android:paddingBottom="@dimen/_20sdp"
         tools:context=".view.search.SearchFragment">
 
         <LinearLayout
@@ -20,6 +20,7 @@
             <include layout="@layout/layout_search_first" />
 
             <include
+                android:id="@+id/layoutSearch"
                 layout="@layout/layout_search_list"
                 android:visibility="gone" />
 
@@ -29,15 +30,19 @@
 
             <include
                 android:id="@+id/layoutNew"
+                android:visibility="gone"
                 layout="@layout/layout_search_list_normal" />
 
             <include
                 android:id="@+id/layoutTrending"
+                android:visibility="gone"
                 layout="@layout/layout_search_list_normal" />
 
             <TextView
-                style="@style/text_wrap_normal"
-                android:text="Propose"
+                style="@style/text_heading_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_propose"
                 android:textStyle="bold" />
 
             <include

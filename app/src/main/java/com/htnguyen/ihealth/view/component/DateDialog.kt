@@ -62,7 +62,7 @@ class DateDialog : DialogFragment() {
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
-        setStyle(STYLE_NORMAL, R.style.MyDialog)
+        setStyle(STYLE_NO_TITLE, R.style.MyDialog)
     }
 
     companion object {

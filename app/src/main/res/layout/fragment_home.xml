@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
         <import type="android.view.View" />
@@ -10,11 +12,11 @@
             name="viewModel"
             type="com.htnguyen.ihealth.view.home.HomeViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_background_grey"
+        android:background="@color/background_grey"
         tools:context=".view.home.HomeFragment">
 
         <TextView
@@ -31,10 +33,14 @@
             style="@style/text_wrap_normal"
             android:layout_marginHorizontal="@dimen/_15sdp"
             android:text="@{viewModel.onTime}"
+            android:gravity="center"
+            android:drawablePadding="@dimen/_5sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelloUser" />
+            app:layout_constraintTop_toBottomOf="@+id/txtHelloUser"
+            app:drawableStartCompat="@drawable/ic_hello" />
 
         <ImageView
+            android:id="@+id/imgNotification"
             style="@style/image_wrap_normal"
             android:layout_margin="@dimen/_10sdp"
             android:padding="@dimen/_5sdp"
@@ -42,10 +48,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,36 +68,63 @@
                 android:paddingBottom="@dimen/_25sdp">
 
                 <include
+                    android:id="@+id/layoutHomeDailyPlan"
                     layout="@layout/layout_home_daily_plan"
-                    app:viewModel="@{viewModel}"/>
+                    app:viewModel="@{viewModel}" />
 
                 <include
                     android:id="@+id/layoutDailyActivities"
                     layout="@layout/layout_home_daily_activities"
-                    app:viewModel="@{viewModel}"/>
+                    app:viewModel="@{viewModel}" />
 
                 <include
                     android:id="@+id/layoutStep"
                     layout="@layout/layout_home_step"
-                    app:viewModel="@{viewModel}"/>
+                    app:viewModel="@{viewModel}" />
 
                 <include layout="@layout/layout_home_exercise" />
 
-                <include layout="@layout/layout_home_foods" />
-
                 <include
-                    android:id="@+id/layoutHomeWater"
-                    layout="@layout/layout_home_water"
-                    app:viewModel="@{viewModel}"/>
+                    android:id="@+id/layoutChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/layout_home_chart"
+                    app:viewModel="@{viewModel}" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <include
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        layout="@layout/layout_home_foods"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        android:layout_height="match_parent" />
+
+                    <include
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/layoutHomeWater"
+                        layout="@layout/layout_home_water"
+                        app:viewModel="@{viewModel}" />
+
+                </LinearLayout>
 
                 <include
                     android:id="@+id/layoutHomeHeartbeat"
                     layout="@layout/layout_home_heartbeat"
-                    app:viewModel="@{viewModel}"/>
+                    app:viewModel="@{viewModel}" />
 
                 <include
                     android:id="@+id/layoutHomeBlood"
-                    layout="@layout/layout_home_blood" />
+                    layout="@layout/layout_home_blood"
+                    android:elevation="@dimen/_1sdp" />
 
                 <include
                     android:id="@+id/layoutHomeWeight"
@@ -103,7 +138,7 @@
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

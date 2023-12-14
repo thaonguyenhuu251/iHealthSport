@@ -15,13 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_5sdp"
+        android:elevation="@dimen/_1sdp"
         android:background="@drawable/bg_white_four_corner_normal"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp">
 
         <TextView
-            style="@style/text_wrap_normal"
-            android:text="Your Information Detail"
+            style="@style/text_wrap_header"
+            android:text="@string/profile_your_information_detail"
             app:drawableStartCompat="@drawable/ic_profile_user_card" />
 
         <LinearLayout

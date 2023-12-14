@@ -16,7 +16,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_background_grey">
+        android:background="#F6F2F2">
 
         <LinearLayout
             android:id="@+id/content"
@@ -66,7 +66,7 @@
                     android:background="@drawable/tab_color_selector_register"
                     android:button="@android:color/transparent"
                     android:gravity="center"
-                    android:text="Email" />
+                    android:text="@string/sign_up_email" />
 
                 <RadioButton
                     android:id="@+id/rdPhoneNumber"
@@ -78,7 +78,7 @@
                     android:button="@android:color/transparent"
                     android:checked="false"
                     android:gravity="center"
-                    android:text="Phone Number" />
+                    android:text="@string/sign_up_phone_number" />
 
             </RadioGroup>
 
@@ -88,11 +88,11 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/ic_login_email"
                 android:drawablePadding="@dimen/_10sdp"
-                android:hint="Email address"
+                android:hint="@string/common_email_address"
                 android:imeOptions="actionNone"
                 android:lines="1"
                 android:maxLines="1"
-                android:text="@={viewModel.email}"/>
+                android:text="@={viewModel.email}" />
 
             <LinearLayout
                 android:id="@+id/lnPhoneNumber"
@@ -111,7 +111,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/bg_white_four_corner_normal"
                     android:gravity="center"
-                    android:text="Area Code" />
+                    android:text="@string/common_area_code" />
 
                 <EditText
                     android:id="@+id/edtPhoneNumber"
@@ -122,13 +122,13 @@
                     android:digits="0123456789"
                     android:drawableStart="@drawable/ic_register_phone"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:hint="Phone number"
+                    android:hint="@string/common_phone_number"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:lines="1"
                     android:maxLength="9"
                     android:maxLines="1"
-                    android:text="@={viewModel.phone}"/>
+                    android:text="@={viewModel.phone}" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -167,7 +167,7 @@
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_login_password"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:hint="Password"
+                    android:hint="@string/common_password"
                     android:inputType="textPassword"
                     android:text="@={viewModel.password}" />
 
@@ -202,7 +202,7 @@
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_login_password"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:hint="Confirm Password"
+                    android:hint="@string/common_confirm_password"
                     android:inputType="textPassword"
                     android:text="@={viewModel.confirmPassword}" />
 
@@ -222,15 +222,6 @@
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.validationMatchPasswordMsg}"
                 android:visibility="@{viewModel.validationMatchPasswordMsg != null ? View.VISIBLE : View.GONE}" />
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/text_small"
-                android:layout_gravity="end"
-                android:layout_margin="30dp"
-                android:text="@string/common_forgot_password"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
             <Button
                 android:id="@+id/tvRegister"
@@ -252,12 +243,12 @@
 
                 <TextView
                     style="@style/text_small"
-                    android:text="@string/common_account_not_have"
+                    android:text="@string/common_account_have"
                     android:textColor="@color/color_black_little" />
 
                 <TextView
                     style="@style/text_small"
-                    android:text="@string/sign_up_small" />
+                    android:text="@string/sign_in" />
 
             </LinearLayout>
         </LinearLayout>

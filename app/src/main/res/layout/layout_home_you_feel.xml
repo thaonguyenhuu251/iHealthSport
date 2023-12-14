@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/textView3"
-        style="@style/text_wrap_normal"
-        android:text="How are you feeling today?"
+        style="@style/text_wrap_header"
+        android:text="@string/how_are_you_feeling_today"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
             android:id="@+id/rdGood"
             style="@style/text_wrap_feel"
             android:layout_height="match_parent"
-            android:text="Feeling Good"
+            android:text="@string/feeling_good"
             android:drawableBottom="@drawable/selector_radio"
             android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_good" />
@@ -34,7 +34,7 @@
         <RadioButton
             android:id="@+id/rdDis"
             style="@style/text_wrap_feel"
-            android:text="Feeling Disappointed"
+            android:text="@string/feeling_disappointed"
             android:drawableBottom="@drawable/selector_radio"
             android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_dis" />
@@ -43,7 +43,7 @@
             android:id="@+id/rdBad"
             style="@style/text_wrap_feel"
             android:layout_height="match_parent"
-            android:text="Feeling Bad"
+            android:text="@string/feeling_bad"
             android:drawableBottom="@drawable/selector_radio"
             android:button="@null"
             app:drawableTopCompat="@drawable/ic_home_feeling_bad" />

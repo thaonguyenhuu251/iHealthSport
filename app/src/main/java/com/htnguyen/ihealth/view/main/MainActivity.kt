@@ -1,6 +1,8 @@
 package com.htnguyen.ihealth.view.main
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -9,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -20,23 +23,30 @@ import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.service.StepDetectorService
+import com.htnguyen.ihealth.util.ContextUtils
+import com.htnguyen.ihealth.util.Event
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.FirebaseUtils.db
 import com.htnguyen.ihealth.util.PreferencesUtil
+import com.htnguyen.ihealth.view.IHealthApplication
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.component.LoadingDialog2
+import com.htnguyen.ihealth.view.dialog.CalendarDialog
+import com.htnguyen.ihealth.view.dialog.ChangePasswordDialog
+import com.htnguyen.ihealth.view.dialog.LanguageDialog
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
+import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val layout: Int get() = R.layout.activity_main
     override val viewModel: MainViewModel by viewModel()
+    private var disposable: Disposable? = null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -44,10 +54,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private val imageResId = intArrayOf(
         R.drawable.ic_main_home,
-        R.drawable.ic_main_social,
-        R.drawable.ic_main_chat,
-        R.drawable.ic_main_search,
-        R.drawable.ic_main_profile
+        R.drawable.ic_home_group,
+        R.drawable.ic_home_chat,
+        R.drawable.ic_home_search,
+        R.drawable.ic_home_profile
     )
 
     private val stringResId = intArrayOf(
@@ -63,6 +73,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !PreferencesUtil.isNotification) {
+            checkNotification()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            dispatchTakePictureIntent()
+            checkPermissionCamera()
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            checkRecognition()
+        }
+
         loadingDialog = LoadingDialog2(this)
         setViewPager()
         setTabLayout()
@@ -71,6 +94,34 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         val intent = Intent(this, StepDetectorService::class.java)
         startService(intent)
+
+        binding.drawerMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        disposable = IHealthApplication.eventBus.subscribe {
+            it[Event.EVENT_OPEN_NOTIFICATION]?.let {
+                binding.drawerMain.openDrawer(GravityCompat.START)
+            }
+
+            it[Event.EVENT_OPEN_SETTING]?.let {
+                binding.drawerMain.openDrawer(GravityCompat.END)
+            }
+
+            it[Event.EVENT_CHANGE_LANGUAGE]?.let {
+                startActivity(Intent(this@MainActivity, MainActivity::class.java).also {
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                })
+                finish()
+                finishAffinity()
+            }
+
+        }
     }
 
     private fun setTabLayout() {
@@ -86,16 +137,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 tab.position.let { binding.viewPagerMain.setCurrentItem(it, false) }
-
-                if (tab.position == 4) {
-                    binding.imgSetting.visibility = View.VISIBLE
-
-                    binding.imgSetting.setOnClickListener {
-                        binding.drawerMain.openDrawer(GravityCompat.END)
-                    }
-                } else {
-                    binding.imgSetting.visibility = View.GONE
-                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -140,6 +181,34 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                         PreferencesUtil.userHeight = 0f
                         PreferencesUtil.userWeight = 0f
                     }
+
+                binding.navMain.findViewById<TextView>(R.id.txtChangePassWord).setOnClickListener {
+                    val changePasswordDialog = ChangePasswordDialog()
+                    changePasswordDialog.show(this@MainActivity)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtContact).setOnClickListener {
+                    val tel = "0562638838"
+                    val intent1 = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", tel, null))
+                    startActivity(intent1)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtHelp).setOnClickListener {
+                    val mail = "nguyenhuuthao2001@gmail.com"
+                    val intent2 = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", mail, null))
+                    startActivity(intent2)
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtAbout).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, WebViewActivity::class.java))
+                }
+
+                binding.navMain.findViewById<TextView>(R.id.txtLanguage).setOnClickListener {
+                    val languageDialog = LanguageDialog()
+                    languageDialog.show(this@MainActivity)
+                }
+
+
             }
 
             override fun onDrawerClosed(drawerView: View) {

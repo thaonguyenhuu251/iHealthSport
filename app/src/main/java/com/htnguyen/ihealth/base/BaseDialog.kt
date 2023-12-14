@@ -76,7 +76,7 @@ sealed class BaseDialog : DialogFragment() {
             return dialog
         }
 
-        final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        open override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
             binding = DataBindingUtil.inflate(inflater, layout, container, false)
             binding.lifecycleOwner = this
             val root = binding.root
@@ -116,6 +116,25 @@ sealed class BaseDialog : DialogFragment() {
             window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         }
 
+    }
+
+    abstract class ScaffoldBinding<T : ViewDataBinding, R : BaseViewModel> : Scaffold<T>() {
+        abstract val viewModel: R
+        abstract fun getBindingVariable(): Int
+        final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+            binding = DataBindingUtil.inflate<T>(inflater, layout, container, true)
+            binding.lifecycleOwner = this
+            binding.setVariable(getBindingVariable(), viewModel)
+            val root = binding.root
+            (root.parent as ViewGroup?)?.endViewTransition(root)
+            if (cancelable) {
+                root.isFocusable = true
+                root.isClickable = true
+                root.setOnClickListener { dismiss() }
+            }
+            onCreateView(savedInstanceState)
+            return binding.root
+        }
     }
 
     abstract class Main<T : ViewDataBinding> : Scaffold<T>() {

@@ -17,4 +17,7 @@ object FirebaseUtils {
 
     val database = Firebase.database
     val activityDaily = database.reference
+    val video = database.reference
+    val socialHealth = database.reference
+    val databaseReferenceVideo = database.getReference("video_study")
 }

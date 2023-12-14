@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:gravity="start"
                 android:textSize="@dimen/text_normal_plus"
-                android:text="Setting" />
+                android:text="@string/setting_title" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -31,7 +31,7 @@
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_80sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/image" />
+                    android:src="@drawable/images" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -39,40 +39,42 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:text="Version 1.0"/>
+                android:text="@string/version"/>
 
             <TextView
+                android:id="@+id/txtChangePassWord"
                 style="@style/text_match_setting"
-                android:text="Change Password"
+                android:text="@string/setting_change_password"
                 app:drawableStartCompat="@drawable/ic_setting_change_password" />
 
             <TextView
+                android:id="@+id/txtLanguage"
                 style="@style/text_match_setting"
-                android:text="Language"
+                android:text="@string/setting_language"
                 app:drawableStartCompat="@drawable/ic_setting_language" />
 
             <TextView
                 style="@style/text_match_setting"
-                android:text="Notification"
+                android:text="@string/setting_notification"
                 app:drawableStartCompat="@drawable/ic_setting_notification" />
-
-
 
             <LinearLayout
                 android:id="@+id/lnDarkMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    style="@style/text_wrap_normal"
+                    style="@style/text_match_setting"
                     android:layout_weight="1"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:text="Dark Mode"
+                    android:text="@string/setting_dark_mode"
                     android:layout_gravity="center"
-                    app:drawableStartCompat="@drawable/ic_setting_display" />
+                    app:drawableStartCompat="@drawable/ic_setting_display"
+                    app:drawableEndCompat="@null" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/swDarkMode"
@@ -87,30 +89,34 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtContact"
                 style="@style/text_match_setting"
-                android:text="Contact Us"
+                android:text="@string/setting_contact_us"
                 app:drawableStartCompat="@drawable/ic_setting_connect" />
 
             <TextView
+                android:id="@+id/txtHelp"
                 style="@style/text_match_setting"
-                android:text="Help"
+                android:text="@string/setting_help"
                 app:drawableStartCompat="@drawable/ic_setting_help" />
 
             <TextView
+                android:id="@+id/txtAbout"
                 style="@style/text_match_setting"
-                android:text="About"
+                android:text="@string/setting_about"
                 app:drawableStartCompat="@drawable/ic_setting_about" />
 
-            <Space
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/txtLogout"
                 style="@style/button_navigation"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="bottom"
-                android:text="Log Out"/>
+                android:text="@string/setting_log_out"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

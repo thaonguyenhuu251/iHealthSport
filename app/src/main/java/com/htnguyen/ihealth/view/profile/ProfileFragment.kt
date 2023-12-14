@@ -11,17 +11,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.TutorialActivity
+import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.base.BaseFragment
 import com.htnguyen.ihealth.databinding.FragmentProfileBinding
+import com.htnguyen.ihealth.model.ActivityDaily
+import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.support.SimpleDateFormat
-import com.htnguyen.ihealth.util.Constant
+import com.htnguyen.ihealth.support.endYear
+import com.htnguyen.ihealth.support.firstYear
+import com.htnguyen.ihealth.util.*
+import com.htnguyen.ihealth.util.CommonUtils.getCaloriesInt
+import com.htnguyen.ihealth.util.CommonUtils.getDistanceInt
 import com.htnguyen.ihealth.util.Constant.getRealPathFromUri
-import com.htnguyen.ihealth.util.FirebaseUtils
-import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.component.LoadingDialog2
 import java.io.File
 import java.io.IOException
@@ -35,6 +41,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     private val storageRef = Firebase.storage.reference
 
     private var loadingDialog: LoadingDialog2? = null
+    var totalStep = 0
 
     @SuppressLint("ResourceAsColor")
     private val startForResult =
@@ -60,8 +67,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         Glide.with(this).load(PreferencesUtil.userPhotoUrl)
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_profile_achievement))
             .into(binding.imgAvatar)
-    }
 
+        for (i in Calendar().firstYear .. Calendar().endYear step 86400000) {
+            getStepDay(i)
+        }
+    }
 
     private fun actionMoveScreen() {
         binding.layoutProfileInformation.txtEdit.setOnClickListener {
@@ -72,14 +82,39 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }
 
         binding.imgCamera.setOnClickListener {
+            (activity as BaseActivity<*, *>).goToGallery()
             startForResult.launch(Intent(requireActivity(), PickImageActivity::class.java))
+        }
+
+        binding.imgSetting.setOnClickListener {
+            Event.eventOpenSetting()
         }
 
         binding.viewModel = viewModel
 
-        viewModel.birthDay.value = SimpleDateFormat(getString(R.string.common_format_date))
+        viewModel.birthDay.value = SimpleDateFormat("dd/MM/yyyy")
             .format(PreferencesUtil.userBirthDay)
             .toString()
+    }
+
+    private fun getStepDay(day: Long) {
+        FirebaseUtils.activityDaily
+            .child("record_history")
+            .child(PreferencesUtil.idPrivate.toString())
+            .child("activity_daily")
+            .child("date$day")
+            .get().addOnSuccessListener { data ->
+                val activityDaily = data.getValue<ActivityDaily>()
+                if (activityDaily != null) {
+                    totalStep += activityDaily.step ?: 0
+                }
+            }.addOnCompleteListener {
+                viewModel.achieveStep.value = getString(R.string.profile_achieve_step, totalStep)
+                viewModel.achieveCalo.value = getString(R.string.profile_achieve_calo, getCaloriesInt(totalStep))
+                viewModel.achieveDistance.value = getString(R.string.profile_achieve_distance, getDistanceInt(totalStep))
+                viewModel.achieveMoutain.value = getString(R.string.profile_achieve_mountain, getCaloriesInt(totalStep))
+                viewModel.achieveTime.value = getString(R.string.profile_achieve_hour, (totalStep/4000))
+            }
     }
 
     private fun uploadFile(fileName: String) {

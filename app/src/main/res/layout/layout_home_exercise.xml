@@ -15,14 +15,15 @@
 
         <TextView
             android:layout_weight="1"
-            style="@style/text_wrap_normal"
-            android:text="Exercise"
+            style="@style/text_wrap_header"
+            android:text="@string/home_header_exercise"
             app:drawableStartCompat="@drawable/ic_home_exercise" />
 
         <TextView
             android:gravity="end"
-            style="@style/text_normal"
-            android:text="See History"/>
+            style="@style/text_small"
+            android:textColor="@color/color_grey"
+            android:text="@string/home_header_see_history"/>
 
     </LinearLayout>
 

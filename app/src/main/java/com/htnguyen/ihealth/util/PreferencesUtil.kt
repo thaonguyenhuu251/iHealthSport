@@ -37,6 +37,20 @@ object PreferencesUtil {
     const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
 
     const val PREF_FLOW_STEP = "PREF_FLOW_STEP"
+    const val PREF_STEP = "PREF_STEP"
+
+    const val PREF_FOLLOW_WATER = "PREF_FOLLOW_WATER"
+    const val PREF_WATER = "PREF_WATER"
+
+    const val LANGUAGE = "LANGUAGE"
+
+    var language: String
+        get() {
+            return preferences.getString(LANGUAGE, Constant.LG_VIETNAMESE).toString()
+        }
+        set(value) {
+            preferencesEdit.putString(LANGUAGE, value).apply()
+        }
 
     val keyToday: String
         get() {
