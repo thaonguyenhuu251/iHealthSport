@@ -30,11 +30,6 @@ fun Calendar(
 }
 
 
-/**
- * Year
- *
- * @author QIAO LIYUN
- */
 var Calendar.year
     get() = get(Calendar.YEAR)
     set(value) = set(Calendar.YEAR, value)
@@ -62,6 +57,30 @@ var Calendar.second
 val Calendar.dateInMillis: Long
     get() {
         val calendar = Calendar(timeInMillis)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.timeInMillis
+    }
+
+val Calendar.firstYear: Long
+    get() {
+        val calendar = Calendar(timeInMillis)
+        calendar.set(Calendar.DAY_OF_YEAR, 1)
+        calendar.set(Calendar.MONTH, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.timeInMillis
+    }
+
+val Calendar.endYear: Long
+    get() {
+        val calendar = Calendar(timeInMillis)
+        calendar.set(Calendar.DAY_OF_MONTH, 31)
+        calendar.set(Calendar.MONTH, 12)
         calendar.set(Calendar.HOUR_OF_DAY, 0)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)

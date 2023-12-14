@@ -16,13 +16,17 @@ class HomeViewModel : BaseViewModel() {
     val kcal: MutableLiveData<Float> = MutableLiveData(0f)
     val followKcal: MutableLiveData<Float> = MutableLiveData(0f)
     val water: MutableLiveData<Int> = MutableLiveData(0)
-    val followWater: MutableLiveData<Int> = MutableLiveData(0)
+    val followStep: MutableLiveData<Int> = MutableLiveData(PreferencesUtil.followStep)
+    val followWater: MutableLiveData<Int> = MutableLiveData(5)
     val waterMil: MutableLiveData<Int> = MutableLiveData(0)
     val heartBeat: MutableLiveData<Float> = MutableLiveData(0f)
     val fellingToday: MutableLiveData<Int> = MutableLiveData(0)
     val progressWeight: MutableLiveData<Float> = MutableLiveData(PreferencesUtil.userWeight)
 
-
+    val step: MutableLiveData<Int> = MutableLiveData(0)
+    val calories: MutableLiveData<Int> = MutableLiveData(0)
+    val meter: MutableLiveData<Int> = MutableLiveData(0)
+    
     val stepString: MutableLiveData<String> = MutableLiveData(null)
 
     private fun timeOnDay() : String {

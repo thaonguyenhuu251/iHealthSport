@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.htnguyen.ihealth.view.social.CreateChallengeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background_grey"
+        android:padding="@dimen/_10sdp"
+        tools:context=".view.social.CreateChallengeActivity">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/ic_general_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/text_normal"
+            android:layout_gravity="center"
+            android:text="@string/social_create_challenge"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/text_wrap_normal"
+            android:text="@{viewModel.typeChallenge % 2 == 0 ? @string/social_challenge_person : @string/social_challenge_team}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_four_corner_normal"
+            android:drawablePadding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/social_title_challenge"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:background="@drawable/bg_white_four_corner_normal"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText2">
+
+            <TextView
+                android:id="@+id/txtGoFarthestTitle"
+                style="@style/text_normal"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/social_go_farthest"
+                android:textSize="@dimen/_20ssp"
+                android:visibility="@{viewModel.typeChallenge % 2 == 0 ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_grey"
+                android:visibility="@{viewModel.typeChallenge % 2 == 0 ? View.GONE : View.VISIBLE}"/>
+
+            <TextView
+                android:id="@+id/txtGoFarthestContent"
+                style="@style/text_wrap_normal"
+                android:text="@string/social_see_who_cmost_steps"
+                android:textAlignment="center"
+                android:visibility="@{viewModel.typeChallenge % 2 == 0 ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtGoFarthestTitle" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:orientation="horizontal">
+                
+                <ImageView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:src="@drawable/ic_social_add_image"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtFirstDate"
+                        style="@style/text_wrap_normal"
+                        android:layout_width="match_parent"
+                        android:text="First Date"
+                        app:drawableStartCompat="@drawable/ic_social_start_date" />
+
+                    <TextView
+                        android:id="@+id/txtEndDate"
+                        style="@style/text_wrap_normal"
+                        android:layout_width="match_parent"
+                        android:text="End Date"
+                        app:drawableStartCompat="@drawable/ic_social_start_date"/>
+
+                    <TextView
+                        android:id="@+id/txtFollowerStep"
+                        style="@style/text_wrap_normal"
+                        android:layout_width="match_parent"
+                        android:text="Follower Step"
+                        app:drawableStartCompat="@drawable/ic_social_follower_step"/>
+
+                </LinearLayout>
+                
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/txtExit"
+                android:layout_weight="1"
+                style="@style/text_normal"
+                android:layout_gravity="center"
+                android:text="Exit"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20ssp"/>
+
+            <TextView
+                android:id="@+id/txtCreate"
+                android:layout_weight="1"
+                style="@style/text_normal"
+                android:layout_gravity="center"
+                android:text="Create"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20ssp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

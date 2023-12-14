@@ -64,18 +64,14 @@ dependencies {
 
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
-
     implementation 'com.tbuonomo:dotsindicator:4.3'
-
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
-
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
     // ViewModel
     def lifecycle_version = "2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
     // Retrofit2
     def retrofit_version = "2.9.0"
@@ -97,8 +93,6 @@ dependencies {
     //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
-    implementation 'com.google.code.gson:gson:2.8.7'
-
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
 
@@ -108,6 +102,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
     implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.firebaseui:firebase-ui-database:4.3.2'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.0'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.8.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.8.0'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.8.0'
+    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.8.0'
 
     // Google map service
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
@@ -118,8 +119,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.code.gson:gson:2.9.1'
-
     implementation 'io.nlopez.smartlocation:library:3.3.3'
     implementation 'org.apache.commons:commons-math3:3.6.1'
 
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.3'
 }

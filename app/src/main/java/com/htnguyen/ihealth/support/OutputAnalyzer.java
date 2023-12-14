@@ -108,8 +108,8 @@ public class OutputAnalyzer {
 
                         sendMessage(MeasureHeartBeatActivity.MESSAGE_UPDATE_REALTIME, currentValue);
                         CommonUtils.INSTANCE.updateHeartBeat((valleys.size() == 1)
-                                ? (60f * (detectedValleys) / (Math.max(1, (measurementLength - millisUntilFinished - clipLength) / 1000f)))
-                                : (60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f)))
+                                ? Math.round(60f * (detectedValleys) / (Math.max(1, (measurementLength - millisUntilFinished - clipLength) / 1000f)))
+                                : Math.round((60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f))))
                         );
                     }
 
@@ -145,7 +145,7 @@ public class OutputAnalyzer {
 
                 sendMessage(MeasureHeartBeatActivity.MESSAGE_UPDATE_REALTIME, currentValue);
                 CommonUtils.INSTANCE.updateHeartBeat(
-                    60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f))
+                    Math.round(60f * (detectedValleys - 1) / (Math.max(1, (valleys.get(valleys.size() - 1) - valleys.get(0)) / 1000f)))
                 );
 
 

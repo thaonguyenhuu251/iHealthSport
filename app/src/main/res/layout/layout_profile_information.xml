@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="@dimen/_1sdp"
         android:background="@drawable/bg_white_four_corner_normal"
         android:orientation="vertical">
 
@@ -21,8 +22,12 @@
             style="@style/text_wrap_exercise"
             android:layout_gravity="end"
             android:layout_margin="@dimen/_10sdp"
-            android:text="Edit"
-            android:textSize="@dimen/_8ssp" />
+            android:text="@string/profile_edit"
+            android:gravity="center"
+            android:drawablePadding="@dimen/_5sdp"
+            android:textSize="@dimen/_8ssp"
+            android:paddingHorizontal="@dimen/_8sdp"
+            app:drawableEndCompat="@drawable/ic_edit" />
 
         <TextView
             android:id="@+id/txtName"

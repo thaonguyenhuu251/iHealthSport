@@ -8,14 +8,15 @@
 
     <TextView
         android:id="@+id/txtTitle"
-        style="@style/text_normal"
+        style="@style/text_wrap_header"
         android:layout_width="match_parent"
         android:textSize="@dimen/text_normal_plus"
         android:textStyle="bold"
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvList"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_120sdp"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,14 +23,14 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
-                style="@style/text_wrap_normal"
-                android:text="Daily Activities"
+                style="@style/text_wrap_header"
+                android:text="@string/home_daily_activities"
                 app:drawableStartCompat="@drawable/ic_home_plan" />
 
             <LinearLayout
@@ -47,16 +47,18 @@
                     android:text="@{viewModel.step.toString()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
+                    android:gravity="center"
                     app:drawableTopCompat="@drawable/ic_home_active_running" />
 
                 <TextView
                     style="@style/text_normal"
                     android:layout_marginHorizontal="@dimen/dimen_normal"
+                    android:gravity="center"
                     android:paddingVertical="@dimen/_5sdp"
-                    android:text="@{viewModel.calories.toString()}"
+                    android:text="@{viewModel.meter.toString()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
-                    app:drawableTopCompat="@drawable/ic_home_active_timer" />
+                    app:drawableTopCompat="@drawable/ic_home_distance" />
 
                 <TextView
                     style="@style/text_normal"
@@ -65,6 +67,7 @@
                     android:text="@{viewModel.calories.toString()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
+                    android:gravity="center"
                     app:drawableTopCompat="@drawable/ic_home_active_calo" />
             </LinearLayout>
 
@@ -92,10 +95,10 @@
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:layout_gravity="center"
-                app:cpb_background_progressbar_color="#A9CFEA"
+                app:cpb_background_progressbar_color="#FFB4A6"
                 app:cpb_background_progressbar_width="@dimen/_5sdp"
                 app:cpb_progress_direction="to_right"
-                app:cpb_progressbar_color="#318BCB"
+                app:cpb_progressbar_color="#FF6243"
                 app:cpb_progressbar_width="@dimen/_5sdp"
                 app:cpb_round_border="true" />
 

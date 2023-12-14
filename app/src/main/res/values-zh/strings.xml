@@ -1,0 +1,209 @@
+<resources>
+    <string name="vector_path_menu" translatable="false">M3,8 L21,8 21,6 3,6z M3,18 L21,18 21,16 3,16z M3,13 L21,13 21,11 3,11z</string>
+    <string name="vector_path_line" translatable="false">M3,13 L21,13 21,11 3,11z M3,13 L21,13 21,11 3,11z M3,12 L21,12 21,12 3,12z</string>
+    <string name="vector_path_close" translatable="false">M5,6.41 L17.59,19 19,17.59 6.41,5z M6.41,19 L19,6.41 17.59,5 5,17.59z M12,12 L12,12 12,12 12,12z</string>
+
+    <string name="path_cross" translatable="false">M6.4,6.4 L17.6,17.6 M6.4,17.6 L17.6,6.4</string>
+    <string name="path_plus" translatable="false">M6.4,12 L17.6,12 M12,6.4 L12,17.6</string>
+
+    <string name="plus" translatable="false">plus</string>
+    <string name="groupPlusCross" translatable="false">groupPlusCross</string>
+    <string name="pref_name_ihealth" translatable="false">pref_name_ihealth</string>
+
+    <string name="output_header_template" translatable="false">Heart rate on %s</string>
+    <string name="output_detected_peaks_header" translatable="false">Detected Peaks:</string>
+    <string name="send_output_to" translatable="false">Send output to:</string>
+    <string name="separator" translatable="false">,</string>
+    <string name="row_separator" translatable="false">\n</string>
+    <string name="raw_values" translatable="false">Measurements (Timestamp, Value)</string>
+    <string name="cameraPermissionRequired" translatable="false">Camera permission is required for this application to work.</string>
+    <string name="noFlashWarning" translatable="false">Measurement without flash is less reliable.</string>
+    <string name="new_measurement" translatable="false">New Measurement</string>
+    <string name="export_result" translatable="false">Export Result</string>
+    <string name="export_details" translatable="false">Export Details</string>
+    <string name="dateFormat" translatable="false">yyyy-MM-dd\'T\'HH:mm:ssZZZZZ</string>
+    <string name="dateFormatGranular" translatable="false">yyyy-MM-dd\'T\'HH:mm:ss.SSSZZZZZ</string>
+    <string name="camera_not_found" translatable="false">Camera not available.</string>
+
+    <plurals name="measurement_output_template" translatable="false">
+        <item quantity="zero">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="one">Pulse: %2.1f (%d cycle in %2.1f seconds)</item>
+        <item quantity="other">Pulse: %2.1f (%d cycles in %2.1f seconds)</item>
+    </plurals>
+    <string name="common_format_date" translatable="false">dd/MM/yyyy</string>
+    <string name="common_format_date_standard" translatable="false">dd/MM/yyyy</string>
+    <string name="profile_home" translatable="false">Home</string>
+    <string name="profile_social" translatable="false">Social</string>
+    <string name="profile_chat" translatable="false">Chat</string>
+    <string name="profile_search" translatable="false">Search</string>
+    <string name="profile_profile" translatable="false">Profile</string>
+    <!--    Gps Training-->
+    <string name="title_activity_gps_map" translatable="false">GPS Training</string>
+    <string name="map_id" translatable="false">5618cd7b01db1e2e</string>
+    <string name="distance_title" translatable="false">KILOMETERS</string>
+    <string name="duration_title" translatable="false">TIME</string>
+    <string name="calorie_title" translatable="false">CALORIE</string>
+    <string name="option_get_place" translatable="false">Get place</string>
+    <string name="pick_place" translatable="false">Choose a place</string>
+    <string name="stop_button" translatable="false">STOP</string>
+    <string name="start_button" translatable="false">START</string>
+    <string name="pause_button" translatable="false">PAUSE</string>
+    <string name="continue_button" translatable="false">CONTINUE</string>
+    <string name="duration" translatable="false">%d:%d:%d</string>
+
+    <!-- User Goal -->
+    <string name="user_setup_activity_title" translatable="false">Set Goal</string>
+    <string name="hint_target_step_per_day" translatable="false">Target steps per day</string>
+    <string name="steps_unit" translatable="false">steps</string>
+    <string name="or" translatable="false">or</string>
+    <string name="hint_target_calories_per_day" translatable="false">Target calories per day</string>
+    <string name="calories_unit" translatable="false">calories</string>
+    <string name="go" translatable="false">Go</string>
+    <string name="content" translatable="false">Content</string>
+    <string name="title" translatable="false">Title</string>
+    <string name="post" translatable="false">POST</string>
+
+    <string name="open_ihealth">打开 iHealth...</string>
+    <string name="skip">Skip</string>
+    <string name="water">Water</string>
+
+    <string name="common_back">Back</string>
+    <string name="common_password">Password</string>
+    <string name="common_email_address">Email address</string>
+    <string name="common_forgot_password">Forgot Password</string>
+    <string name="common_account_not_have">I don’t have an account?</string>
+    <string name="common_account_have">I have an account?</string>
+
+    <string name="common_heart_beat">Heartbeat</string>
+    <string name="common_measure">Measure</string>
+    <string name="common_body_weight">Body Weight</string>
+    <string name="common_data">Data</string>
+    <string name="common_area_code">Area Code</string>
+    <string name="common_phone_number">Phone number</string>
+    <string name="common_confirm_password">Confirm Password</string>
+    <string name="common_next">Next</string>
+    <string name="home_choose_your_target_step_count">Choose your target step count</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_choose_a_target">Choose a target number of cups of water you drink per day (350ml/cup)</string>
+    <string name="common_otp_verification">OTP Verification</string>
+    <string name="common_we_have_sent_verification">We have sent verification code to.</string>
+    <string name="common_equest_code">Request Code</string>
+    <string name="common_verify_otp">Verify OTP</string>
+    <string name="common_step">Step</string>
+    <string name="common_choose_image">Choose IMAGE</string>
+    <string name="common_save">Save</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_your_account">Sign In Your Account</string>
+    <string name="sign_in_by">Or sign in by</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_small">Sign up</string>
+    <string name="sign_up_create_your_account">Create Your Account</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_phone_number">Phone Number</string>
+
+    <string name="good_morning">Good morning</string>
+    <string name="good_afternoon">Good afternoon</string>
+    <string name="good_evening">Good evening</string>
+
+    <string name="feeling_good">Feeling Good</string>
+    <string name="feeling_disappointed">Feeling Disappointed</string>
+    <string name="feeling_bad">Feeling Bad</string>
+
+    <string name="main_home" translatable="false">Home</string>
+    <string name="main_social" translatable="false">Social</string>
+    <string name="main_chat" translatable="false">Chat</string>
+    <string name="main_search" translatable="false">Search</string>
+    <string name="main_profile" translatable="false">Profile</string>
+
+    <string name="home_header_exercise">Exercise</string>
+    <string name="home_header_see_history">See history</string>
+    <string name="home_header_oxy_in_blood">Oxy in blood</string>
+    <string name="home_measure">Measure</string>
+    <string name="home_daily_activities">Daily Activities</string>
+    <string name="home_today_plan">Today\'s Plan</string>
+    <string name="home_foods">Foods</string>
+    <string name="home_stress">Stress</string>
+    <string name="home_notifications">Notifications</string>
+
+    <string name="social_challenge_person">Challenge Person</string>
+    <string name="social_challenge_team">Challenge Team</string>
+    <string name="social_create_challenge">Create Challenge</string>
+    <string name="social_go_farthest">go farthest</string>
+    <string name="social_see_who_cmost_steps">See who can get the most steps during the challenge</string>
+    <string name="social_title_challenge">Title challenge</string>
+    <string name="social_first_date">Date start: %s</string>
+    <string name="social_end_date">Date end: %s</string>
+    <string name="social_follow_step">Request Steps %s</string>
+    <string name="social_your_step">Your Steps %s</string>
+    <string name="social_choose_challenge">Choose Challenge</string>
+    <string name="social_compete_create_a_group_challenge">Compete 1 or more people in individual challenge or create a group challenge</string>
+    <string name="social_finish_first">Finish first</string>
+    <string name="social_set_a_goal_step">set a goal step count. Whoever reaches the goal first wins</string>
+    <string name="social_person">Person</string>
+    <string name="social_team">Team</string>
+    <string name="social_header_go_farthest">Go farthest</string>
+    <string name="social_see_who_can_get">See who can get the most steps during the challenge</string>
+
+    <string name="search_recent">Recent</string>
+    <string name="search_new">What\'s New</string>
+    <string name="search_trending">Trending</string>
+    <string name="search_activity">Activities</string>
+    <string name="search_shred">Shred Challenge</string>
+    <string name="search_workouts">Home Workouts</string>
+    <string name="search_yoga">Yoga For Fast Lost</string>
+    <string name="search">Search...</string>
+    <string name="setting_title">Setting</string>
+    <string name="search_propose">Propose</string>
+
+    <string name="profile_gender_male">Male</string>
+    <string name="profile_gender_female">FeMale</string>
+    <string name="profile_achieve_step">%d Steps</string>
+    <string name="profile_achieve_hour">%d Hours</string>
+    <string name="profile_achieve_calo">%d Calo</string>
+    <string name="profile_achieve_distance">%d Meters</string>
+    <string name="profile_achieve_mountain">%d Altitude</string>
+    <string name="profile_give_us_some_basic_information">Give us some basic information</string>
+    <string name="profile_what_your_name">What your name ?</string>
+    <string name="progile_your_birthday">Your Birthday</string>
+    <string name="profile_male">Male</string>
+    <string name="profile_female">Female</string>
+    <string name="profile_height">Height</string>
+    <string name="profile_100cm">100cm</string>
+    <string name="profile__250cm">250cm</string>
+    <string name="profile_weight">Weight</string>
+    <string name="profile_20kg">20Kg</string>
+    <string name="profile_100kg">100Kg</string>
+    <string name="profile_edit">Edit</string>
+    <string name="profile_medal">Medal</string>
+    <string name="profile_your_information_detail">Your Information Detail</string>
+    <string name="profile_your_profile">Your Profile</string>
+
+    <string name="tutorial_exercise_comfort_title">EXERCISE WITH COMFORT</string>
+    <string name="tutorial_exercise_comfort_content_one">Work out with unlimited apps from the comfort of your home</string>
+    <string name="tutorial_exercise_comfort_content_two">The choice of sports guide as you want</string>
+    <string name="tutorial_exercise_comfort_content_three">Our recipes are specially picked so you can get cooking in no time</string>
+    <string name="tutorial_connect_doctor_title">CONNECT THE DOCTOR YOU WANT</string>
+    <string name="tutorial_connect_doctor_content">Connect with specialists right from the comfort of your home via video call, audio call or live chat</string>
+    <string name="tutorial_choose_doctor_title">CHOOSE THE DOCTOR YOU WANT</string>
+    <string name="tutorial_choose_doctor_content">Connect with specialists right from the comfort of your home via video call, audio call or live chat</string>
+    <string name="tutorial_healthy_way_content">Find a doctor, a specialist near your location using the Chatbot and book an appointment with just a click</string>
+    <string name="tutorial_healthy_way_title">HealthWay \n Best way to reach your doctor</string>
+
+    <string name="setting_change_password">Change Password</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_notification">Notification</string>
+    <string name="setting_dark_mode">Dark Mode</string>
+    <string name="setting_contact_us">Contact Us</string>
+    <string name="setting_help">Help</string>
+    <string name="setting_about">About</string>
+    <string name="setting_log_out">Log Out</string>
+
+    <string name="email_address_or_phone_number">Email address or Phone number</string>
+    <string name="thank_you">The feature is under development, we will try to bring this experience to you as soon as possible, thanks you!</string>
+    <string name="how_are_you_feeling_today">How are you feeling today?</string>
+    <string name="best_achievement">Best Achievement</string>
+    <string name="version">Version 1.0</string>
+
+</resources>

@@ -18,8 +18,8 @@
 
         <TextView
             android:id="@+id/textView3"
-            style="@style/text_wrap_normal"
-            android:text="Oxy in blood"
+            style="@style/text_wrap_header"
+            android:text="@string/home_header_oxy_in_blood"
             app:drawableStartCompat="@drawable/ic_home_blood" />
 
         <LinearLayout
@@ -31,7 +31,6 @@
                 android:id="@+id/textView4"
                 style="@style/text_normal"
                 android:paddingVertical="@dimen/_5sdp"
-                android:text="0/1.600 kcal"
                 android:textSize="@dimen/_16ssp" />
         </LinearLayout>
 
@@ -39,7 +38,7 @@
 
     <TextView
         style="@style/text_normal"
-        android:text="Measure"
+        android:text="@string/home_measure"
         android:layout_margin="@dimen/_5sdp"
         android:paddingHorizontal="@dimen/_20sdp"
         android:paddingVertical="@dimen/_5sdp"

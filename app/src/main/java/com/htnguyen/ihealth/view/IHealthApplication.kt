@@ -8,6 +8,7 @@ import android.content.ContextWrapper
 import android.os.Build
 import com.htnguyen.ihealth.di.viewModelModule
 import com.htnguyen.ihealth.helper.PrefsHelper
+import io.reactivex.rxjava3.subjects.PublishSubject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -17,6 +18,7 @@ class IHealthApplication : Application() {
 
     companion object {
         lateinit var mInstance: IHealthApplication
+        val eventBus: PublishSubject<HashMap<String, Any>> by lazy { PublishSubject.create() }
     }
 
     private var currentActivity: Activity? = null

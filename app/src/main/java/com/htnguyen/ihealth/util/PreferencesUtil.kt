@@ -1,9 +1,7 @@
 package com.htnguyen.ihealth.util
 
 import android.content.Context
-import com.google.android.gms.common.util.SharedPreferencesUtils
 import com.htnguyen.ihealth.R
-import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.view.IHealthApplication
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +26,7 @@ object PreferencesUtil {
 
     const val PREF_USER_ID = "PREF_USER_ID"
     const val PREF_USER_ID_PRIVATE = "PREF_USER_ID_PRIVATE"
+    const val PREF_USER_ACCOUNT = "PREF_USER_ACCOUNT"
     const val PREF_USER_PASSWORD = "PREF_USER_PASSWORD"
     const val PREF_USER_NAME = "PREF_USER_NAME"
     const val PREF_USER_BIRTHDAY = "PREF_USER_BIRTHDAY"
@@ -37,6 +36,20 @@ object PreferencesUtil {
     const val PREF_USER_PHOTO = "PREF_USER_PHOTO"
 
     const val PREF_FLOW_STEP = "PREF_FLOW_STEP"
+    const val PREF_STEP = "PREF_STEP"
+
+    const val PREF_FOLLOW_WATER = "PREF_FOLLOW_WATER"
+    const val PREF_WATER = "PREF_WATER"
+
+    const val LANGUAGE = "LANGUAGE"
+
+    var language: String
+        get() {
+            return preferences.getString(LANGUAGE, Constant.LG_VIETNAMESE).toString()
+        }
+        set(value) {
+            preferencesEdit.putString(LANGUAGE, value).apply()
+        }
 
     val keyToday: String
         get() {
@@ -139,6 +152,14 @@ object PreferencesUtil {
         }
         set(value) {
             preferencesEdit.putString(PREF_USER_ID_PRIVATE, value).apply()
+        }
+
+    var account: String?
+        get() {
+            return preferences.getString(PREF_USER_ACCOUNT, null)
+        }
+        set(value) {
+            preferencesEdit.putString(PREF_USER_ACCOUNT, value).apply()
         }
 
     var passWord: String?

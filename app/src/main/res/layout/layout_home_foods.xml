@@ -6,7 +6,7 @@
     android:layout_marginVertical="@dimen/_5sdp"
     android:background="@drawable/bg_white_four_corner_normal"
     android:gravity="center"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="@dimen/_10sdp">
 
     <LinearLayout
@@ -17,8 +17,8 @@
 
         <TextView
             android:id="@+id/textView3"
-            style="@style/text_wrap_normal"
-            android:text="Foods"
+            style="@style/text_wrap_header"
+            android:text="@string/home_foods"
             app:drawableStartCompat="@drawable/ic_home_food" />
 
         <LinearLayout
@@ -30,7 +30,6 @@
                 android:id="@+id/textView4"
                 style="@style/text_normal"
                 android:paddingVertical="@dimen/_5sdp"
-                android:text="0/1.600 kcal"
                 android:textSize="@dimen/_16ssp" />
         </LinearLayout>
 
@@ -38,7 +37,7 @@
 
     <TextView
         style="@style/text_normal"
-        android:text="Measure"
+        android:text="@string/home_measure"
         android:layout_margin="@dimen/_5sdp"
         android:paddingHorizontal="@dimen/_20sdp"
         android:paddingVertical="@dimen/_5sdp"
