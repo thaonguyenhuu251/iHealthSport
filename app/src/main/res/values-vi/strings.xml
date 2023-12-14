@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">iHealth</string>
     <string name="open_ihealth">Đang mở iHealth...</string>
     <string name="skip">Bỏ qua</string>
     <string name="common_back">Quay lại</string>

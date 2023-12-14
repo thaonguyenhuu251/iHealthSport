@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">iHealth</string>
     <string name="open_ihealth">Apertura iHealth...</string>
     <string name="skip">Saltare</string>
     <string name="common_back">Ritorno</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">iHealth</string>
+    <string name="app_name" translatable="false">iHealth Sport</string>
 
     <string name="vector_path_menu" translatable="false">M3,8 L21,8 21,6 3,6z M3,18 L21,18 21,16 3,16z M3,13 L21,13 21,11 3,11z</string>
     <string name="vector_path_line" translatable="false">M3,13 L21,13 21,11 3,11z M3,13 L21,13 21,11 3,11z M3,12 L21,12 21,12 3,12z</string>

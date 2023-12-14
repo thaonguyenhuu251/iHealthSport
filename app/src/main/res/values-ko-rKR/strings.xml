@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">iHealth</string>
     <string name="open_ihealth">아이헬스 열기...</string>
     <string name="skip">건너뛰다</string>
     <string name="water">물</string>
