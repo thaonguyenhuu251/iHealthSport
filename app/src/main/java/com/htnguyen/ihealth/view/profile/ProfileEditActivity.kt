@@ -12,6 +12,8 @@ import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityProfileEditBinding
 import com.htnguyen.ihealth.inter.OnDialog
+import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.model.UserLogin
 import com.htnguyen.ihealth.support.SimpleDateFormat
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.FirebaseUtils
@@ -95,17 +97,19 @@ class ProfileEditActivity :
     }
 
     private fun updateProfileUser() {
-        FirebaseUtils.db.collection("user")
-            .document(intent.getStringExtra(Constant.USER_ID).toString())
-            .update(
-                mapOf(
-                    "name" to viewModel.name.value.toString(),
-                    "birthDay" to viewModel.birthDayLong.value,
-                    "gender" to viewModel.gender.value,
-                    "height" to viewModel.progressHeight.value?.toFloat(),
-                    "weight" to viewModel.progressWeight.value?.toFloat()
-                )
-            )
+        val idUser = intent.getStringExtra(Constant.USER_ID) ?: PreferencesUtil.idUser
+        val user = User(
+            idUser = intent.getStringExtra(Constant.USER_ID),
+            email = "",
+            phoneNumber = "",
+            birthDay = viewModel.birthDayLong.value,
+            gender = viewModel.gender.value,
+            height = viewModel.progressHeight.value?.toFloat(),
+            weight = viewModel.progressWeight.value?.toFloat(),
+            name = viewModel.name.value.toString()
+        )
+
+        FirebaseUtils.db.collection("User").document().set(user)
             .addOnSuccessListener {
                 PreferencesUtil.userName = viewModel.name.value.toString()
                 PreferencesUtil.userBirthDay = viewModel.birthDayLong.value
@@ -122,7 +126,7 @@ class ProfileEditActivity :
                 startActivity(intent)
                 finish()
             }
-            .addOnFailureListener { e ->
+            .addOnFailureListener{ e ->
                 loadingDialog?.dismissDialog()
                 finish()
             }

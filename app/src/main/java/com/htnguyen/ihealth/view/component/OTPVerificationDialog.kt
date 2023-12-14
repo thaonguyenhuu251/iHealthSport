@@ -20,6 +20,7 @@ import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.databinding.DialogOtpVerificationBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.model.UserLogin
 import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.FirebaseUtils
@@ -238,9 +239,11 @@ class OTPVerificationDialog : DialogFragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    val user = task.result?.user
+                    val idUser = task.result?.user?.uid
+                        ?: "user" + Calendar().timeInMillis.toString() + Random.nextInt(0, 999)
+                            .toString()
                     loadingDialog?.dismissDialog()
-                    addUser(numberPhone!!)
+                    addUser(idUser)
 
                 } else {
                     loadingDialog?.dismissDialog()
@@ -253,29 +256,33 @@ class OTPVerificationDialog : DialogFragment() {
     }
 
 
-    private fun addUser(idAccount: String) {
-        val userNew = User(
-            idUser = "user" + Calendar().timeInMillis.toString() + Random.nextInt(0, 999999999).toString(),
-            idAccount = numberPhone,
-            passWord = passWord
+    private fun addUser(idUser: String) {
+        val userNew = UserLogin(
+            idUser = idUser,
+            account = numberPhone,
+            password = passWord
         )
 
-        db.collection("user").document(idAccount).set(userNew)
-            .addOnSuccessListener {
-                loadingDialog?.dismissDialog()
+        numberPhone?.let {
+            db.collection("UserLogin").document(it).set(userNew)
+                .addOnSuccessListener {
+                    loadingDialog?.dismissDialog()
 
-                PreferencesUtil.idUser = numberPhone
-                PreferencesUtil.passWord = passWord
+                    PreferencesUtil.idUser = idUser
+                    PreferencesUtil.account = numberPhone
+                    PreferencesUtil.passWord = passWord
 
-                val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
-                intent.putExtra(Constant.TYPE_PROFILE, 0)
-                intent.putExtra(Constant.USER_ID, numberPhone)
-                startActivity(intent)
-                requireActivity().finish()
-            }
-            .addOnFailureListener{ e ->
+                    val intent = Intent(requireActivity(), ProfileEditActivity::class.java)
+                    intent.putExtra(Constant.TYPE_PROFILE, 0)
+                    intent.putExtra(Constant.USER_ID, idUser)
+                    intent.putExtra(Constant.USER_ACCOUNT, numberPhone)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+                .addOnFailureListener { e ->
 
-            }
+                }
+        }
     }
 
     companion object {

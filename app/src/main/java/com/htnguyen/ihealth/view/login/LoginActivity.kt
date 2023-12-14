@@ -13,6 +13,7 @@ import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityLoginBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.model.UserLogin
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.FirebaseUtils
 import com.htnguyen.ihealth.util.PreferencesUtil
@@ -52,28 +53,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun loginWithAccountAndPassword() {
         val idAccount = viewModel.idAccount.value.toString()
         val password = viewModel.password.value.toString()
-        FirebaseUtils.db.collection("user").document(idAccount).get()
+        FirebaseUtils.db.collection("UserLogin").document(idAccount).get()
             .addOnSuccessListener { document ->
-                PreferencesUtil.idUser = idAccount
+                PreferencesUtil.account = idAccount
                 PreferencesUtil.passWord = password
                 if (document != null) {
-                    val user = document.toObject(User::class.java)
-                    if (user?.passWord == PreferencesUtil.passWord) {
-                        loadingDialog?.dismissDialog()
-                        val intent: Intent?
-                        if (user?.height == 0f && user.weight == 0f) {
-                            intent = Intent(this@LoginActivity, ProfileEditActivity::class.java)
-                            intent.putExtra(Constant.TYPE_PROFILE, 0)
-                            intent.putExtra(Constant.USER_ID, PreferencesUtil.idUser)
-                        } else if (PreferencesUtil.isAgreedTerms) {
-                            intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            loadingDialog?.dismissDialog()
-
-                        } else {
-                            intent = Intent(this@LoginActivity, TutorialActivity::class.java)
-                        }
-                        startActivity(intent)
-                        finish()
+                    val user = document.toObject(UserLogin::class.java)
+                    if (user?.password == PreferencesUtil.passWord) {
+                        PreferencesUtil.idUser = user?.idUser
+                        getInformationUser()
                     } else {
                         loadingDialog?.dismissDialog()
                         Toast.makeText(baseContext, "Password Wrong.", Toast.LENGTH_SHORT).show()
@@ -83,6 +71,32 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             .addOnFailureListener { exception ->
                 Toast.makeText(baseContext, "Login Fail", Toast.LENGTH_SHORT).show()
                 loadingDialog?.dismissDialog()
+            }
+    }
+
+    private fun getInformationUser() {
+        FirebaseUtils.db.collection("User").document(PreferencesUtil.idUser!!).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val user = document.toObject(User::class.java)
+                    loadingDialog?.dismissDialog()
+                    val intent: Intent?
+                    if (user?.height == 0f && user.weight == 0f) {
+                        intent = Intent(this@LoginActivity, ProfileEditActivity::class.java)
+                        intent.putExtra(Constant.TYPE_PROFILE, 0)
+                        intent.putExtra(Constant.USER_ID, PreferencesUtil.idUser)
+                    } else if (PreferencesUtil.isAgreedTerms) {
+                        intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    } else {
+                        intent = Intent(this@LoginActivity, TutorialActivity::class.java)
+                    }
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            .addOnFailureListener { exception ->
+                loadingDialog?.dismissDialog()
+                Toast.makeText(baseContext, exception.toString(), Toast.LENGTH_SHORT).show()
             }
     }
 }

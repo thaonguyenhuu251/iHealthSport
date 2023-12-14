@@ -15,6 +15,7 @@ import com.htnguyen.ihealth.R
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityRegisterBinding
 import com.htnguyen.ihealth.model.User
+import com.htnguyen.ihealth.model.UserLogin
 import com.htnguyen.ihealth.support.Calendar
 import com.htnguyen.ihealth.util.Constant
 import com.htnguyen.ihealth.util.FirebaseUtils
@@ -84,19 +85,22 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val userNew = User(
-                                idUser = "user" + Calendar().timeInMillis.toString() + Random.nextInt(0, 999999999).toString(),
-                                idAccount = viewModel.email.value.toString(),
-                                passWord = viewModel.password.value.toString()
+                            val idUser = task.result.user?.uid ?: "user" + Calendar().timeInMillis.toString() + Random.nextInt(0, 999).toString()
+                            val userLogin = UserLogin(
+                                idUser = idUser,
+                                account = viewModel.email.value.toString(),
+                                password = viewModel.password.value.toString()
                             )
 
-                            FirebaseUtils.db.collection("user").document(email).set(userNew)
+                            FirebaseUtils.db.collection("UserLogin").document(viewModel.email.value.toString()).set(userLogin)
                                 .addOnSuccessListener {
                                     loadingDialog?.dismissDialog()
-                                    PreferencesUtil.idUser = email
+                                    PreferencesUtil.idUser = idUser
+                                    PreferencesUtil.account = email
                                     PreferencesUtil.passWord = password
                                     val intent = Intent(this@RegisterActivity, ProfileEditActivity::class.java)
-                                    intent.putExtra(Constant.USER_ID, email)
+                                    intent.putExtra(Constant.USER_ID, idUser)
+                                    intent.putExtra(Constant.USER_ACCOUNT, email)
                                     intent.putExtra(Constant.TYPE_PROFILE, 0)
                                     startActivity(intent)
                                     finish()
