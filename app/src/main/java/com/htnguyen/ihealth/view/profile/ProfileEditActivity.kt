@@ -72,7 +72,7 @@ class ProfileEditActivity :
             }
         }
         binding.imgNext.setOnClickListener {
-            updateProfileUser()
+            addProfileUser()
         }
 
         binding.imgBack.setOnClickListener {
@@ -96,7 +96,7 @@ class ProfileEditActivity :
         binding.scrollviewProfile.viewTreeObserver.addOnScrollChangedListener(this)
     }
 
-    private fun updateProfileUser() {
+    private fun addProfileUser() {
         val idUser = intent.getStringExtra(Constant.USER_ID) ?: PreferencesUtil.idUser
         val user = User(
             idUser = intent.getStringExtra(Constant.USER_ID),
@@ -127,6 +127,52 @@ class ProfileEditActivity :
                 finish()
             }
             .addOnFailureListener{ e ->
+                loadingDialog?.dismissDialog()
+                finish()
+            }
+    }
+
+    private fun updateProfileUser() {
+        val idUser = intent.getStringExtra(Constant.USER_ID) ?: PreferencesUtil.idUser
+        val user = User(
+            idUser = intent.getStringExtra(Constant.USER_ID),
+            email = "",
+            phoneNumber = "",
+            birthDay = viewModel.birthDayLong.value,
+            gender = viewModel.gender.value,
+            height = viewModel.progressHeight.value?.toFloat(),
+            weight = viewModel.progressWeight.value?.toFloat(),
+            name = viewModel.name.value.toString()
+        )
+
+        FirebaseUtils.db.collection("User")
+            .document(PreferencesUtil.idUser!!)
+            .update(
+                mapOf(
+                    "name" to viewModel.name.value.toString(),
+                    "birthDay" to viewModel.birthDayLong.value,
+                    "gender" to viewModel.gender.value!!,
+                    "height" to viewModel.progressHeight.value?.toFloat(),
+                    "weight" to viewModel.progressWeight.value?.toFloat()
+                )
+            )
+            .addOnSuccessListener {
+                PreferencesUtil.userName = viewModel.name.value.toString()
+                PreferencesUtil.userBirthDay = viewModel.birthDayLong.value
+                PreferencesUtil.userGender = viewModel.gender.value!!
+                PreferencesUtil.userHeight = viewModel.progressHeight.value?.toFloat()
+                PreferencesUtil.userWeight = viewModel.progressWeight.value?.toFloat()
+                loadingDialog?.dismissDialog()
+                val intent = if (PreferencesUtil.isAgreedTerms) {
+                    Intent(this@ProfileEditActivity, MainActivity::class.java)
+                } else {
+                    Intent(this@ProfileEditActivity, TutorialActivity::class.java)
+                }
+
+                startActivity(intent)
+                finish()
+            }
+            .addOnFailureListener { e ->
                 loadingDialog?.dismissDialog()
                 finish()
             }
