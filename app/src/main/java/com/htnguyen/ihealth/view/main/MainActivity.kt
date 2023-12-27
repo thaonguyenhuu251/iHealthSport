@@ -19,15 +19,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.htnguyen.ihealth.BR
 import com.htnguyen.ihealth.R
+import com.htnguyen.ihealth.TutorialActivity
 import com.htnguyen.ihealth.base.BaseActivity
 import com.htnguyen.ihealth.databinding.ActivityMainBinding
 import com.htnguyen.ihealth.model.User
 import com.htnguyen.ihealth.service.StepDetectorService
-import com.htnguyen.ihealth.util.ContextUtils
-import com.htnguyen.ihealth.util.Event
-import com.htnguyen.ihealth.util.FirebaseUtils
+import com.htnguyen.ihealth.util.*
 import com.htnguyen.ihealth.util.FirebaseUtils.db
-import com.htnguyen.ihealth.util.PreferencesUtil
 import com.htnguyen.ihealth.view.IHealthApplication
 import com.htnguyen.ihealth.view.chat.ChatFragment
 import com.htnguyen.ihealth.view.component.LoadingDialog2
@@ -36,6 +34,7 @@ import com.htnguyen.ihealth.view.dialog.ChangePasswordDialog
 import com.htnguyen.ihealth.view.dialog.LanguageDialog
 import com.htnguyen.ihealth.view.home.HomeFragment
 import com.htnguyen.ihealth.view.login.LoginActivity
+import com.htnguyen.ihealth.view.profile.ProfileEditActivity
 import com.htnguyen.ihealth.view.profile.ProfileFragment
 import com.htnguyen.ihealth.view.search.SearchFragment
 import com.htnguyen.ihealth.view.social.SocialFragment
@@ -246,18 +245,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun getProfileUser() {
         loadingDialog?.showDialog()
-        db.collection("user").document(PreferencesUtil.idUser!!).get()
-            .addOnSuccessListener { result ->
-                val user = result.toObject(User::class.java)
-                if (user != null) {
-                    PreferencesUtil.userName = user.name
-                    PreferencesUtil.userBirthDay = user.birthDay
-                    PreferencesUtil.userGender = user.gender ?: false
-                    PreferencesUtil.userHeight = user.height
-                    PreferencesUtil.userWeight = user.weight
-                    PreferencesUtil.userPhotoUrl = user.photoUrl
-                    PreferencesUtil.idPrivate = user.idUser
+        db.collection("User").document(PreferencesUtil.idUser!!).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val user = document.toObject(User::class.java)
                     loadingDialog?.dismissDialog()
+                    if (user != null) {
+                        PreferencesUtil.userName = user.name
+                        PreferencesUtil.userBirthDay = user.birthDay
+                        PreferencesUtil.userGender = user.gender ?: false
+                        PreferencesUtil.userHeight = user.height
+                        PreferencesUtil.userWeight = user.weight
+                        PreferencesUtil.userPhotoUrl = user.photoUrl
+                        PreferencesUtil.idPrivate = user.idUser
+                        loadingDialog?.dismissDialog()
+                    }
                 }
             }
             .addOnFailureListener { exception ->

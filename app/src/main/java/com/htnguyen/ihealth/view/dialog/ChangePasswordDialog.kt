@@ -53,8 +53,8 @@ class ChangePasswordDialog :
             if (viewModel.oldPassword.value == PreferencesUtil.passWord) {
                 if (viewModel.isValidatePasswordFinish()) {
                     loadingDialog?.showDialog()
-                    FirebaseUtils.db.collection("user").document(PreferencesUtil.idUser!!)
-                        .update("passWord", viewModel.newPassword.value.toString())
+                    FirebaseUtils.db.collection("UserLogin").document(PreferencesUtil.account!!)
+                        .update("password", viewModel.newPassword.value.toString())
                         .addOnSuccessListener {
                             loadingDialog?.dismissDialog()
                             PreferencesUtil.passWord = viewModel.newPassword.value.toString()

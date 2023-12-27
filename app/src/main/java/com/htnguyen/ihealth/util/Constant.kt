@@ -9,6 +9,7 @@ object Constant {
 
     const val USER_ID = "user_id"
     const val USER_PHONE = "user_phone"
+    const val USER_ACCOUNT = "user_account"
     const val USER_OTP = "user_otp"
     const val USER_PASSWORD = "user_password"
 
