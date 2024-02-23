@@ -341,9 +341,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
         )
 
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordActivity")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("activity_daily")
+            .child("ActivityDaily")
             .child("date" + Calendar().dateInMillis.toString())
             .setValue(activityDaily)
             .addOnSuccessListener {
@@ -367,9 +367,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             waterMil = viewModel.waterMil.value
         )
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordActivity")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("eat_and_drink")
+            .child("EatAndDrink")
             .child("date" + Calendar().dateInMillis.toString())
             .setValue(eatAndDrink)
             .addOnSuccessListener {
@@ -400,16 +400,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }
         }
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordActivity")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("activity_daily").addValueEventListener(postListener)
+            .child("ActivityDaily").addValueEventListener(postListener)
     }
 
     private fun getStepDay(day: Long) {
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordActivity")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("activity_daily")
+            .child("ActivityDaily")
             .child("date$day")
             .get().addOnSuccessListener { data ->
                 val activityDaily = data.getValue<ActivityDaily>()
@@ -444,9 +444,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }
         }
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("eat_and_drink").addValueEventListener(postListener)
+            .child("EatAndDrink").addValueEventListener(postListener)
     }
 
     private fun getHealthDaily() {
@@ -481,9 +481,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(), SensorE
             }
         }
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("health_daily").addValueEventListener(postListener)
+            .child("HealthDaily").addValueEventListener(postListener)
     }
 
     override fun onResume() {

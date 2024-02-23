@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:background="@drawable/bg_radius_16_border_grey"
+    android:padding="@dimen/_8sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            style="@style/text_wrap_header"
+            android:text="BMI Calculator"/>
+
+        <TextView
+            android:gravity="end"
+            style="@style/text_small"
+            android:textColor="@color/color_grey"
+            android:background="@drawable/bg_radius_8"
+            android:padding="@dimen/_4sdp"
+            android:text="Last week"
+            android:drawableEnd="@drawable/fab_add"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_radius_8"
+            android:backgroundTint="#F8DEBD"
+            android:layout_margin="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_ruler"
+                android:layout_gravity="end"/>
+
+            <TextView
+                style="@style/text_wrap_header"
+                android:text="170 cm"
+                android:padding="@dimen/_8sdp"
+                android:layout_gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_4sdp"
+            android:background="@drawable/bg_radius_8"
+            android:backgroundTint="#D0FBFF"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_ruler"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:layout_weight="1"
+                style="@style/text_wrap_header"
+                android:text="72 kg"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:padding="@dimen/_8sdp"
+                android:layout_gravity="end"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@color/color_grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_wrap_header"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="Body Mesurements"/>
+
+            <TextView
+                style="@style/text_normal"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="Last checked 2 Days Ago"/>
+
+            <TextView
+                style="@style/text_small"
+                android:layout_margin="@dimen/_4sdp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/bg_radius_8"
+                android:backgroundTint="@color/color_grey"
+                android:textColor="@color/white"
+                android:text="Inverted Triangle Body Shape"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_8"
+                android:backgroundTint="@color/white"
+                android:layout_margin="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="Chest (in)"/>
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="170"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_8"
+                android:backgroundTint="@color/white"
+                android:layout_margin="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="Waist (in)"/>
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="170"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_8"
+                android:backgroundTint="@color/white"
+                android:layout_margin="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="Hip (in)"/>
+
+                <TextView
+                    style="@style/text_wrap_header"
+                    android:text="170"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_home_body"/>
+
+    </LinearLayout>
+
+</LinearLayout>

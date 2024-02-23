@@ -19,17 +19,22 @@ import com.htnguyen.ihealth.util.PreferencesUtil
 import kotlin.math.roundToInt
 
 class StepDetectorService : Service(), SensorEventListener {
+
+    override fun onCreate() {
+        super.onCreate()
+
+    }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        val sensorManager: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        val sensorManager: SensorManager = getSystemService(Context.SENSOR_SERVICE) as? SensorManager ?: throw IllegalStateException("could not get sensor service")
         val countSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
-        if(countSensor != null){
+        if (countSensor != null) {
             Toast.makeText(this, "Step Detecting Start", Toast.LENGTH_SHORT).show()
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_NORMAL)
             GeneralHelper.updateNotification(this, this, PrefsHelper.getInt("FSteps"))
 
-        }else{
+        } else {
             Toast.makeText(this, "Sensor Not Detected", Toast.LENGTH_SHORT).show()
         }
 
@@ -37,7 +42,7 @@ class StepDetectorService : Service(), SensorEventListener {
     }
 
     override fun onBind(p0: Intent?): IBinder? {
-        TODO("Not yet implemented")
+        return null
     }
 
     override fun onSensorChanged(event: SensorEvent?) {

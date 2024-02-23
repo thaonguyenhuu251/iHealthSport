@@ -43,6 +43,6 @@
         android:paddingHorizontal="@dimen/_20sdp"
         android:paddingVertical="@dimen/_5sdp"
         android:elevation="@dimen/_2sdp"
-        android:background="@drawable/bg_white_border_grey" />
+        android:background="@drawable/bg_radius_16_border_grey" />
 
 </LinearLayout>

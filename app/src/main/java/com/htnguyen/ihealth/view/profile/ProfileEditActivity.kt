@@ -109,7 +109,7 @@ class ProfileEditActivity :
             name = viewModel.name.value.toString()
         )
 
-        FirebaseUtils.db.collection("User").document().set(user)
+        FirebaseUtils.db.collection("User").document(PreferencesUtil.idUser!!).set(user)
             .addOnSuccessListener {
                 PreferencesUtil.userName = viewModel.name.value.toString()
                 PreferencesUtil.userBirthDay = viewModel.birthDayLong.value

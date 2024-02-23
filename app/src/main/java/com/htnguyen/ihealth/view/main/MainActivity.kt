@@ -92,11 +92,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         getProfileUser()
 
         val intent = Intent(this, StepDetectorService::class.java)
-        startService(intent)
+         startService(intent)
 
         binding.drawerMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-
-
 
     }
 
@@ -187,13 +185,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
 
                 binding.navMain.findViewById<TextView>(R.id.txtContact).setOnClickListener {
-                    val tel = "0562638838"
+                    val tel = "+84398604771"
                     val intent1 = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", tel, null))
                     startActivity(intent1)
                 }
 
                 binding.navMain.findViewById<TextView>(R.id.txtHelp).setOnClickListener {
-                    val mail = "nguyenhuuthao2001@gmail.com"
+                    val mail = "ihealth686@gmail.com"
                     val intent2 = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", mail, null))
                     startActivity(intent2)
                 }
@@ -206,7 +204,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     val languageDialog = LanguageDialog()
                     languageDialog.show(this@MainActivity)
                 }
-
 
             }
 

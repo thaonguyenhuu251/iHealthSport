@@ -9,6 +9,8 @@
 
     <ImageView
         style="@style/image_wrap_normal"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_180sdp"
         android:src="@drawable/ic_splash_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

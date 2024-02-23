@@ -71,7 +71,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
 
     abstract fun getBindingVariable(): Int
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+
     protected fun checkNotification() {
         permissionHelper.withActivity(this)
             .check(Manifest.permission.POST_NOTIFICATIONS)
@@ -89,7 +89,6 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
             .run()
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     fun checkPermissionCamera() {
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
@@ -104,7 +103,6 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
             .run()
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     protected fun dispatchTakePictureIntent() {
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
@@ -119,7 +117,6 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
             .run()
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     fun goToGallery() {
         permissionHelper.withActivity(this)
             .check(Manifest.permission.READ_MEDIA_IMAGES)
@@ -135,7 +132,6 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
             .run()
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     fun checkRecognition() {
         permissionHelper.withActivity(this)
             .check(Manifest.permission.ACTIVITY_RECOGNITION)

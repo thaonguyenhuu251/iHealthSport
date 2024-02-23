@@ -73,6 +73,7 @@
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:text="@string/setting_dark_mode"
                     android:layout_gravity="center"
+                    android:drawableEnd="@null"
                     app:drawableStartCompat="@drawable/ic_setting_display"
                     app:drawableEndCompat="@null" />
 

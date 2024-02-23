@@ -30,7 +30,6 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
             binding.lifecycleOwner = this
             onCreateView(savedInstanceState)
         } else {
-            // prevent crash when transition animation is not over
             (root.parent as ViewGroup?)?.endViewTransition(root)
         }
         return root
@@ -46,13 +45,9 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
     }
     protected open fun onCreateView(savedInstanceState: Bundle?) {}
 
-    //abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, binding: B)
-
     override fun onDestroyView() {
         super.onDestroyView()
     }
-
-    //abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
     protected fun transitFragment(
         fragment: BaseFragment<*,*>,

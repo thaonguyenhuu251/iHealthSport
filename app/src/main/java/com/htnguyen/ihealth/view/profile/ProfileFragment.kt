@@ -132,7 +132,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUri = task.result
-                FirebaseUtils.db.collection("user")
+                    FirebaseUtils.db.collection("User")
                     .document(PreferencesUtil.idUser!!)
                     .update(
                         mapOf(

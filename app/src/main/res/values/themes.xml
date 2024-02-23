@@ -27,7 +27,7 @@
         <item name="android:padding">@dimen/dimen_normal</item>
         <item name="android:layout_margin">@dimen/_5sdp</item>
         <item name="android:elevation">@dimen/_2sdp</item>
-        <item name="android:background">@drawable/bg_white_border_grey</item>
+        <item name="android:background">@drawable/bg_radius_16_border_grey</item>
     </style>
 
     <style name="image_profile_information">
@@ -43,7 +43,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_large</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_wrap_large_plus">
@@ -51,7 +51,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_large</item>
         <item name="android:textColor">@color/color_black</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_wrap_normal">
@@ -60,7 +60,7 @@
         <item name="android:textSize">@dimen/text_small</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_wrap_header">
@@ -69,7 +69,8 @@
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/mulish_semibold</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
 
@@ -82,8 +83,8 @@
         <item name="android:elevation">@dimen/_2sdp</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:textColor">@color/color_black</item>
-        <item name="android:background">@drawable/bg_white_border_grey</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:background">@drawable/bg_radius_16_border_grey</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_wrap_feel">
@@ -95,7 +96,7 @@
         <item name="android:layout_margin">@dimen/_5sdp</item>
         <item name="android:drawablePadding">@dimen/dimen_normal</item>
         <item name="android:background">@drawable/bg_white_four_corner_normal</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_match_setting">
@@ -107,14 +108,14 @@
         <item name="android:textColor">@color/color_black</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:drawableEnd">@drawable/ic_setting_right</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_heading_large">
         <item name="android:textColor">@color/color_black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/_26ssp</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="text_heading_small">
@@ -122,7 +123,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/mulish_medium</item>
     </style>
 
     <style name="text_heading_normal">
@@ -131,8 +132,8 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:fontFamily">@font/mulish_medium</item>
     </style>
 
     <style name="text_normal">
@@ -141,7 +142,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_regular</item>
     </style>
 
     <style name="text_small">
@@ -149,26 +150,26 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/color_blue_general</item>
         <item name="android:textSize">@dimen/_12ssp</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="button_navigation">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginHorizontal">@dimen/_15sdp</item>
-        <item name="android:background">@drawable/bg_button_normal</item>
+        <item name="android:background">@drawable/bg_radius_8</item>
         <item name="android:backgroundTint">@color/color_blue_general</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_small</item>
         <item name="android:elevation">@dimen/dimen_normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/mulish_medium</item>
     </style>
 
     <style name="TabLayoutStyle" parent="Base.Widget.Design.TabLayout">
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="edt_normal">
@@ -180,7 +181,7 @@
         <item name="android:background">@drawable/bg_white_four_corner_normal</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:textSize">@dimen/_14ssp</item>
-        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
     </style>
 
     <style name="DialogWidth" parent="Theme.AppCompat.Dialog.Alert">

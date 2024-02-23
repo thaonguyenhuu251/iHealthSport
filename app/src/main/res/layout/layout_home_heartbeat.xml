@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/_5sdp"
-        android:background="@drawable/bg_white_four_corner_normal"
+        android:background="@drawable/bg_radius_16_border_grey"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp">
@@ -36,9 +36,25 @@
             <TextView
                 android:id="@+id/textView4"
                 style="@style/text_normal"
-                android:paddingVertical="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_8sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                style="@style/text_normal"
+                android:padding="@dimen/_4sdp"
+                android:background="@drawable/bg_radius_8"
+                android:backgroundTint="#FBF0F3"
+                android:text="Normal"
+                android:fontFamily="@font/mulish_semibold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chart_heart"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
@@ -46,10 +62,11 @@
             android:id="@+id/txtMeasure"
             style="@style/text_normal"
             android:layout_margin="@dimen/_5sdp"
-            android:background="@drawable/bg_white_border_grey"
+            android:background="@drawable/bg_radius_16_border_grey"
             android:elevation="@dimen/_2sdp"
             android:paddingHorizontal="@dimen/_20sdp"
             android:paddingVertical="@dimen/_5sdp"
+            android:visibility="gone"
             android:text="@string/common_measure" />
 
     </LinearLayout>

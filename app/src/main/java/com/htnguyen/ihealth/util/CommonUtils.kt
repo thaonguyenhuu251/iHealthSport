@@ -45,9 +45,9 @@ object CommonUtils {
         )
 
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("activity_daily")
+            .child("ActivityDaily")
             .child("date" + Calendar().dateInMillis.toString())
             .setValue(activityDaily)
             .addOnSuccessListener {
@@ -59,9 +59,9 @@ object CommonUtils {
 
     fun updateHealthDaily() {
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("health_daily")
+            .child("HealthDaily")
             .child("date" + Calendar().dateInMillis.toString())
             .setValue(ActivityDaily())
             .addOnSuccessListener {
@@ -73,9 +73,9 @@ object CommonUtils {
 
     fun updateHeartBeat(heartBeat: Float) {
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("health_daily")
+            .child("HealthDaily")
             .child("date" + Calendar().dateInMillis.toString())
             .child("heartBeat")
             .setValue(heartBeat)
@@ -88,9 +88,9 @@ object CommonUtils {
 
     fun updateFelling(fellingToday: Int) {
         FirebaseUtils.activityDaily
-            .child("record_history")
+            .child("RecordHistory")
             .child(PreferencesUtil.idPrivate.toString())
-            .child("health_daily")
+            .child("HealthDaily")
             .child("date" + Calendar().dateInMillis.toString())
             .child("fellingToday")
             .setValue(fellingToday)

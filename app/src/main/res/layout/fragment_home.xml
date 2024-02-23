@@ -130,6 +130,8 @@
                     android:id="@+id/layoutHomeWeight"
                     layout="@layout/layout_home_weight" />
 
+                <include layout="@layout/layout_home_bmi" />
+
                 <include layout="@layout/layout_home_stress" />
 
                 <include
